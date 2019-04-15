@@ -8,6 +8,7 @@
 // gail add a comment
 // gail another commit
 // gail third commit
+// gail 4th commit
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 
