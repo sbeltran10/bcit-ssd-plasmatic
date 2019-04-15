@@ -6,6 +6,7 @@
  * @flow
  */
 // gail add a comment
+// shawn added a comment
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
