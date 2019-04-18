@@ -6,14 +6,8 @@ import styles from '../styles/main';
 
 export default (props) => (
   <View style={styles.style1}>
-    <Text style={styles.style2}>{props.text}</Text>
-    <Button
-      title="Outline button"
-      type="outline"
-      raised
-      containerStyle={styles.button}
-    />
-      />
-    ))}
+    <Text>List Screen</Text>
+    <Button title="Select" onPress={() => props.navigation.navigate('Questionnaire')}/>
   </View>
 )
+

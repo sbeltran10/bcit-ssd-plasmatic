@@ -9,13 +9,30 @@
 // shawn added a comment
 
 import React, { Component } from 'react';
-import Main from './src/containers/main';
+import {createStackNavigator, createAppContainer} from 'react-navigation';
+import IndexScreen from './src/components/Index';
+import ListScreen from './src/components/List';
+import QuestionnaireContainer from './src/containers/QuestionnaireContainer';
+import QuestionScreen from './src/components/Question';
 
 // type Props = {};
-export default class App extends Component {
+class App extends Component {
   render () {
     return (
-      <Main />
+      <MainApp />
     );
   }
 }
+
+export default App;
+
+const MainNavigator = createStackNavigator({
+  Index: { screen: IndexScreen },
+  List: { screen: ListScreen },
+  Questionnaire: { screen: QuestionnaireContainer },
+  Question: { screen: QuestionScreen },
+  // Result: { screen: ResultScreen}
+});
+
+const MainApp = createAppContainer(MainNavigator);
+
