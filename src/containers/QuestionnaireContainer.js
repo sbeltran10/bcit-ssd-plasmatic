@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Index from '../components/Index'
-import {Button, View, Text, StyleSheet} from 'react-native';
+import { View, Text } from 'react-native';
+import { Button, ListItem } from 'react-native-elements';
 import styles from '../styles/main';
 
 class QuestionnaireContainer extends Component {
