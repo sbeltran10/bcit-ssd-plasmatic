@@ -1,0 +1,9 @@
+[
+  {
+    "id": 1,
+    "title": "Website survey",
+    "description": "In the following survey we ask you questions about your experience with our website",
+    "type": "survey",
+    "firstQuestionId": 1
+  }
+]

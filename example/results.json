@@ -1,0 +1,22 @@
+{
+  "id": 1,
+  "surveyId": 1,
+  "results": [
+    {
+      "question":"How did you hear about our website?",
+      "answer": "Email"
+    },
+    {
+      "question":"How would you rate your experience with our website?",
+      "answer": "Good"
+    },
+    {
+      "question":"For how many years have you been using websites similar to this one?",
+      "answer": "Average"
+    },
+    {
+      "question":"Would you recommend our website to your friends?",
+      "answer": "Yes"
+    }
+  ]
+}
