@@ -6,5 +6,9 @@ export default StyleSheet.create({
   },
   answerContainerSelected: {
     backgroundColor: '#d8d8ff'
+  },
+  submitButton: {
+    position: 'absolute',
+    bottom: 5,
   }
 })

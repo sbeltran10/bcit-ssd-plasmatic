@@ -32,6 +32,7 @@ export default ({ question, answers, selectAnswer, submitAnswer, modalVisible, s
         }
       </ScrollView>
       <Button
+        containerStyle={styl}
         onPress={submitAnswer} >
         Submit answer
       </Button>
