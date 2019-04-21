@@ -6,7 +6,11 @@ import QuestionnaireList from '../components/QuestionnaireList';
 class IndexScreen extends Component {
     constructor (props) {
         super(props)
-        this.state = {type: 'survey', list:surveyList}
+        this.state = {
+            type: 'survey', 
+            list: surveyList,
+            id:0
+        }
     }
 
     onPickerValueChange=(value)=>{
@@ -35,13 +39,22 @@ class IndexScreen extends Component {
         return (
             <View style={styles.container}>
                 <Text style={styles.title}>Questionnaire Selection</Text>
-                <Picker style={styles.title} selectedValue={this.state.type} onValueChange={(value, index) => this.onPickerValueChange(value)}>
+                <Picker 
+                    style={styles.title} 
+                    selectedValue={this.state.type} 
+                    onValueChange={(value, index) => this.onPickerValueChange(value)}>
                     <Picker.Item label="Survey" value="survey"></Picker.Item>
                     <Picker.Item label="Quiz" value="quiz"></Picker.Item>
                     <Picker.Item label="Game" value="game"></Picker.Item>
                 </Picker>
-                <QuestionnaireList list={this.state.list}/>
-                <Button title="Super Survey" onPress={() => props.navigation.navigate('List')}/>
+                <QuestionnaireList 
+                    list={this.state.list} 
+                    onSelect={(id) => this.setState({id:id})}
+                />          
+                <Button 
+                    title={"Start questionnaire " + this.state.id}
+                    onPress={() => props.navigation.navigate('List')}
+                />  
             </View>
         )
     }
