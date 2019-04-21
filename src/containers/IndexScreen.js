@@ -35,7 +35,7 @@ class IndexScreen extends Component {
         return (
             <View style={styles.container}>
                 <Text style={styles.title}>Questionnaire Selection</Text>
-                <Picker placeholder="test" style={styles.title} selectedValue={0} onValueChange={(value, index) => this.onPickerValueChange(value)}>
+                <Picker style={styles.title} selectedValue={this.state.type} onValueChange={(value, index) => this.onPickerValueChange(value)}>
                     <Picker.Item label="Survey" value="survey"></Picker.Item>
                     <Picker.Item label="Quiz" value="quiz"></Picker.Item>
                     <Picker.Item label="Game" value="game"></Picker.Item>
