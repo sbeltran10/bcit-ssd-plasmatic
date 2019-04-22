@@ -1,28 +1,64 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Text, Button, ListItem } from 'react-native-elements';
+import { Text, Button, ListItem, Overlay } from 'react-native-elements';
 import styles from '../styles/Question';
 import { ScrollView } from 'react-native-gesture-handler';
 
+const props = {
+  question: {
+    "id": 1,
+    "content": "How did you hear about our website?"
+  },
+  answers: [
+    {
+      "id": 1,
+      "content": "Email",
+      "parentQuestion": 1,
+      "childQuestion": 2
+    },
+    {
+      "id": 2,
+      "content": "Newspaper ad",
+      "parentQuestion": 1,
+      "childQuestion": 2
+    },
+    {
+      "id": 3,
+      "content": "Radio",
+      "parentQuestion": 1,
+      "childQuestion": 2
+    },
+    {
+      "id": 4,
+      "content": "Tv",
+      "parentQuestion": 1,
+      "childQuestion": 2
+    }
+  ],
+  selectAnswer: () => { },
+  submitAnswer: () => { },
+  modalVisible: false,
+  selectedAnswerId: 2
+}
 
 export default ({ question, answers, selectAnswer, submitAnswer, modalVisible, selectedAnswerId }) => (
   <View style={styles.mainView}>
     <View>
-      <Text h4>{question.content}</Text>
+      <Text h4>{props.question.content}</Text>
     </View>
     <View>
       <ScrollView>
         {
-          answers.map((answer, i) => (
+          props.answers.map((answer, i) => (
             <ListItem
               key={i}
-              leftIcon={selectedAnswerId === answer.id ?
-                { name: 'radio_button_checked' }
+              leftIcon={props.selectedAnswerId === answer.id ?
+                { name: 'radio-button-checked' }
                 :
-                { name: 'radio_button_unchecked' }}
-              title={item.title}
-              onPress={() => selectAnswer(i)}
-              containerStyle={selectedAnswerId === answer.id ?
+                { name: 'radio-button-unchecked' }}
+              title={answer.content}
+              onPress={() => props.selectAnswer(i)}
+              containerStyle={props.selectedAnswerId === answer.id ?
                 styles.answerContainerSelected
                 :
                 styles.answerContainer
@@ -32,17 +68,18 @@ export default ({ question, answers, selectAnswer, submitAnswer, modalVisible, s
         }
       </ScrollView>
       <Button
-        containerStyle={styl}
-        onPress={submitAnswer} >
-        Submit answer
-      </Button>
+        containerStyle={styles.submitButton}
+        onPress={props.submitAnswer}
+        title="Submit answer" />
     </View>
     <Overlay
-      isVisible={modalVisible}
+      isVisible={props.modalVisible}
       windowBackgroundColor="rgba(255, 255, 255, .5)"
       width="auto"
       height="auto"
-    ></Overlay>
+    >
+      <View></View>
+    </Overlay>
   </View>
 )
 
