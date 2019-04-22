@@ -10,7 +10,7 @@
 
 import React, { Component } from 'react';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
-import IndexScreen from './src/components/Index';
+import IndexScreen from './src/containers/IndexScreen';
 import ListScreen from './src/components/List';
 import QuestionnaireContainer from './src/containers/QuestionnaireContainer';
 import QuestionScreen from './src/components/Question';
