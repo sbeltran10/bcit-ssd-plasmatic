@@ -15,12 +15,12 @@ class IndexScreen extends Component {
         }
     }
 
-    onPickerValueChange=(value)=>{
-        this.setState(
-            {
-                type:value
-            },
-            () => { this.setState({list:completeList.filter(q => { return q.type == this.state.type})}) }
+    onPickerValueChange=(value) => {
+        this.setState({type: value},
+            () => {this.setState(
+                    {
+                        list: completeList.filter(q => { return q.type == this.state.type})}) 
+                    }
         );
     }
 
