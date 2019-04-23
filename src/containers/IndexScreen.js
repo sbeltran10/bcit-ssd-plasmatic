@@ -6,13 +6,6 @@ import QuestionnaireList from '../components/QuestionnaireList';
 import QuestionnairePicker from '../components/QuestionnaireType';
 
 class IndexScreen extends Component {
-    constructor (props) {
-        super(props)
-        this.state = {
-            id: 0
-        }
-    }
-
 
     render(){
 
@@ -20,9 +13,9 @@ class IndexScreen extends Component {
             <View style={styles.container}>
                 <Text style={styles.title}>Questionnaire Selection</Text>
                 <QuestionnairePicker 
-                    selectedValue={this.state.type}
-                    onSelect={()=> {
-                        let type = this.props.type;
+                    updateType = {this.props.updateType}
+                    selectedValue={this.props.type}
+                    onSelect={(type)=> {
                         let picker = this.props.onPickerValueChange;
                         picker(type);
                     }}/>
@@ -34,7 +27,7 @@ class IndexScreen extends Component {
                         updater(id);
                     }}/>          
                 <Button style={styles.container}
-                    title={"Start questionnaire " + this.state.id}
+                    title={"Start questionnaire " + this.props.selectedQuestionnaireId}
                     onPress={() => this.props.navigation.navigate('List')}/>  
             </View>
         )

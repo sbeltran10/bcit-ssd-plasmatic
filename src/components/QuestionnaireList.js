@@ -4,7 +4,7 @@ import styles from '../styles/QuestionnaireList';
 
 export default (props) => (
     <View style={styles.container}>
-        {props.list.map((item, key) => (
+        {props.questionnaires.map((item, key) => (
             <Text style={styles.items}
                 style={styles.items} 
                 key={key} 
