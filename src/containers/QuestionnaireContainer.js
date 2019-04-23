@@ -2,22 +2,32 @@ import React, { Component } from 'react';
 import Index from '../components/Index'
 import { View, Text } from 'react-native';
 import { Button, ListItem } from 'react-native-elements';
-import styles from '../styles/main';
+// import styles from '../styles/main';
 
 class QuestionnaireContainer extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      text: "Alright then"
+      text: "Alright then",
+      // surveyId: this.props.surveyId,
+      // firstQuestionId: this.props.firstQuestionId,
+      // firstQuestion: this.props.firstQuestion,
+      results: {}
     }
+
+    this.updateResults = this.updateResults.bind(this);
+  }
+
+  updateResults() {
+    console.log("updateResult method invoked")
   }
 
   render() {
     return (
-      // <Index {...this.props} {...this.state}/>
-      <View style={styles.style1}>
+      <View>
           <Text>Questionnaire container</Text>
-          <Button title="Start" onPress={() => this.props.navigation.navigate('Question')} />
+          <Text>questionnaire</Text>
+          <Button title="Start" onPress={() => this.props.navigation.navigate('Question', { updateResults: this.updateResults})} />
       </View>
     )
   }

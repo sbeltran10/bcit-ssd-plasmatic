@@ -1,17 +1,18 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-  style1: {
+  container: {
     flex: 1,
-    backgroundColor: 'green',
+    backgroundColor: '#F5FCFF',
     justifyContent: 'center',
     alignItems: 'center',
   },
-  style2: {
-    flex: 1,
-    color: 'white'
+  title: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
   },
   button: {
-    width: 200
+    width: 200,
   }
 })
