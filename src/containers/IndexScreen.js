@@ -9,20 +9,10 @@ class IndexScreen extends Component {
     constructor (props) {
         super(props)
         this.state = {
-            type: '', 
-            list: [],
             id: 0
         }
     }
 
-    onPickerValueChange=(value) => {
-        this.setState({type: value},
-            () => {this.setState(
-                    {
-                        list: completeList.filter(q => { return q.type == this.state.type})}) 
-                    }
-        );
-    }
 
     render(){
 
@@ -31,10 +21,18 @@ class IndexScreen extends Component {
                 <Text style={styles.title}>Questionnaire Selection</Text>
                 <QuestionnairePicker 
                     selectedValue={this.state.type}
-                    onSelect={(type)=>this.onPickerValueChange(type)}/>
+                    onSelect={()=> {
+                        let type = this.props.type;
+                        let picker = this.props.onPickerValueChange;
+                        picker(type);
+                    }}/>
                 <QuestionnaireList 
-                    list={this.state.list} 
-                    onSelect={(id)=>this.setState({id:id})}/>          
+                    questionnaires={this.props.questionnaires} 
+                    onSelect={()=> {
+                        let id = this.props.selectedQuestionnaireId;
+                        let updater = this.props.updateSelectedQuestionnaireId;
+                        updater(id);
+                    }}/>          
                 <Button style={styles.container}
                     title={"Start questionnaire " + this.state.id}
                     onPress={() => this.props.navigation.navigate('List')}/>  
@@ -44,21 +42,3 @@ class IndexScreen extends Component {
 }
 
 export default IndexScreen;
-
-const completeList  = [
-    {id: 1, type: "survey", title: "Housing Survey"},
-    {id: 2, type: "survey", title: "Customer Satisfaction"},
-    {id: 3, type: "survey", title: "Website Feedback"},
-    {id: 4, type: "survey", title: "Employee Engagement"},
-    {id: 5, type: "survey", title: "Brand Awareness"},
-    {id: 6, type: "quiz", title: "General Information"},
-    {id: 7, type: "quiz", title: "Science Trivia"},
-    {id: 8, type: "quiz", title: "Recycling"},
-    {id: 9, type: "quiz", title: "Financial Management"},
-    {id: 10, type: "quiz", title: "Pet Ownership"},
-    {id: 11, type: "game", title: "Game 1"},
-    {id: 12, type: "game", title: "Game 2"},
-    {id: 13, type: "game", title: "Game 3"},
-    {id: 14, type: "game", title: "Game 4"},
-    {id: 15, type: "game", title: "Game 5"},
-]
