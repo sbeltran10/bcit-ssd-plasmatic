@@ -14,6 +14,7 @@ import IndexScreen from './src/containers/IndexScreen';
 import ListScreen from './src/components/List';
 import QuestionnaireContainer from './src/containers/QuestionnaireContainer';
 import QuestionScreen from './src/components/Question';
+import styles from './src/styles/main';
 
 // type Props = {};
 class App extends Component {
@@ -68,9 +69,9 @@ class App extends Component {
 
   render () {
       return (
-      <View>
+      <View style={styles.container}>
         {this.state.currentStep === 'index'  &&
-        <IndexScreen questionnaires = {this.state.questionnaires}
+          <IndexScreen questionnaires = {this.state.questionnaires}
                      selectedQuestionnaireId = {this.state.selectedQuestionnaireId}
                      type = {this.state.type}
 
@@ -78,7 +79,9 @@ class App extends Component {
                      updateSelectedQuestionnaireId = {this.updateSelectedQuestionnaireId}
         />
         }
-        <QuestionnaireContainer />
+        {this.state.currentStep === 'list' && 
+          <QuestionnaireContainer />
+        }
       </View>
     );
   }

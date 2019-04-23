@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, Text } from "react-native";
 import { Button } from 'react-native-elements';
-import styles from '../styles/IndexScreen';
+// import styles from '../styles/IndexScreen';
 import QuestionnaireList from '../components/QuestionnaireList';
 import QuestionnairePicker from '../components/QuestionnaireType';
 
@@ -10,8 +10,8 @@ class IndexScreen extends Component {
     render(){
 
         return (
-            <View style={styles.container}>
-                <Text style={styles.title}>Questionnaire Selection</Text>
+            <View>
+                <Text>Questionnaire Selection</Text>
                 <QuestionnairePicker 
                     selectedValue={this.props.type}
                     onSelect={(type)=> {
@@ -25,7 +25,7 @@ class IndexScreen extends Component {
                         let updater = this.props.updateSelectedQuestionnaireId;
                         updater(id);
                     }}/>          
-                <Button style={styles.container}
+                <Button
                     title={"Start questionnaire " + this.props.selectedQuestionnaireId}
                     onPress={() => this.props.navigation.navigate('List')}/>  
             </View>

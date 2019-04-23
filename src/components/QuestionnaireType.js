@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {Text, View, Picker} from 'react-native';
-import styles from '../styles/QuestionnaireList';
+// import styles from '../styles/QuestionnaireList';
 
 export default (props) => (
     <View>
         <Picker 
-            style={styles.title} 
+            // style={styles.title} 
             selectedValue={props.selectedValue} 
             onValueChange={(value, index) => props.onSelect(value)}>
             <Picker.Item label="Please select a category" value="0"></Picker.Item>

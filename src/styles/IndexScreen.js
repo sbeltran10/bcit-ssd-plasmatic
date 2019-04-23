@@ -5,7 +5,7 @@ export default StyleSheet.create({
         flex: 1,
         backgroundColor: '#F5FCFF',
         justifyContent: 'center',
-        //alignItems: 'center'
+        // alignItems: 'center'
       },
       title: {
         fontSize: 20,

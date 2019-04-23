@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Index from '../components/Index'
 import { View, Text } from 'react-native';
 import { Button, ListItem } from 'react-native-elements';
-import styles from '../styles/main';
+// import styles from '../styles/main';
 
 class QuestionnaireContainer extends Component {
   constructor (props) {
@@ -24,7 +24,7 @@ class QuestionnaireContainer extends Component {
 
   render() {
     return (
-      <View style={styles.style1}>
+      <View>
           <Text>Questionnaire container</Text>
           <Text>questionnaire</Text>
           <Button title="Start" onPress={() => this.props.navigation.navigate('Question', { updateResults: this.updateResults})} />
