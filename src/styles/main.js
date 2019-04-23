@@ -6,9 +6,6 @@ export default StyleSheet.create({
     backgroundColor: '#F5FCFF',
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: 1,
-    borderStyle: 'solid',
-    borderColor: 'black'
   },
   title: {
     fontSize: 20,
