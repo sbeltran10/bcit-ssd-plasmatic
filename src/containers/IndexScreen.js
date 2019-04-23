@@ -13,7 +13,6 @@ class IndexScreen extends Component {
             <View style={styles.container}>
                 <Text style={styles.title}>Questionnaire Selection</Text>
                 <QuestionnairePicker 
-                    updateType = {this.props.updateType}
                     selectedValue={this.props.type}
                     onSelect={(type)=> {
                         let picker = this.props.onPickerValueChange;
