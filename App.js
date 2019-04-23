@@ -72,6 +72,7 @@ class App extends Component {
         {this.state.currentStep === 'index'  &&
         <IndexScreen questionnaires = {this.state.questionnaires}
                      selectedQuestionnaireId = {this.state.selectedQuestionnaireId}
+                     type = {this.state.type}
 
                      onPickerValueChange = {this.onPickerValueChange}
                      updateSelectedQuestionnaireId = {this.updateSelectedQuestionnaireId}
