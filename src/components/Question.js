@@ -3,8 +3,9 @@ import { View } from 'react-native';
 import { Text, Button, ListItem, Overlay } from 'react-native-elements';
 import styles from '../styles/Question';
 import { ScrollView } from 'react-native-gesture-handler';
+import PropTypes from 'prop-types';
 
-export default ({ question, answers, selectAnswer, submitAnswer, modalVisible, selectedAnswerId }) => (
+const Question = ({ question, answers, selectAnswer, submitAnswer, modalVisible, selectedAnswerId }) => (
   <View style={styles.mainView}>
     <View>
       <Text h4>{question.content}</Text>
@@ -45,4 +46,15 @@ export default ({ question, answers, selectAnswer, submitAnswer, modalVisible, s
     </Overlay>
   </View>
 )
+
+Question.propTypes = {
+  question: PropTypes.object,
+  answers: PropTypes.array,
+  selectAnswer: PropTypes.func,
+  submitAnswer: PropTypes.func,
+  modalVisible: PropTypes.bool,
+  selectedAnswerId: PropTypes.string
+};
+
+export default Question;
 
