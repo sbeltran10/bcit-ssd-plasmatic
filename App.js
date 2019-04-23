@@ -5,18 +5,20 @@
  * @format
  * @flow
  */
-// gail add a comment
-// shawn added a comment
 
 import React, { Component } from 'react';
 import { View, Text } from "react-native";
-import IndexScreen from './src/containers/IndexScreen';
-import ListScreen from './src/components/List';
+import Index from './src/containers/Index';
 import Intro from './src/containers/Intro';
 import Question from './src/components/Question';
 import styles from './src/styles/main';
 
-// type Props = {};
+//test data
+import surveys from './example/surveys.json';
+import questions from './example/questions.json';
+import answers from './example/answers.json'
+import results from './example/results.json';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -31,18 +33,23 @@ class App extends Component {
     this.onPickerValueChange = this.onPickerValueChange.bind(this);
     this.updateSelectedQuestionnaireId = this.updateSelectedQuestionnaireId.bind(this);
     this.updateCurrentStep = this.updateCurrentStep.bind(this);
+    this.fetchList = this.fetchList.bind(this);
     
+  }
+  
+
+  fetchList = () => {
+    console.dir(surveys);
+    let stateCopy = {...this.state};
+    stateCopy.questionnaires = surveys.filter(q => { return q.type === this.state.type });
+    this.setState(stateCopy);
   }
 
   // updates type and populate questionnaire array with corresponding list of questionnaires
-  onPickerValueChange = (value) => {
+  onPickerValueChange = (type) => {
     let stateCopy = {...this.state};
-    stateCopy.type = value;
-    this.setState(stateCopy, () => {
-      let copy = {...this.state};
-      copy.questionnaires = completeList.filter(q => {return q.type === this.state.type});
-      this.setState(copy);
-    });
+    stateCopy.type = type;
+    this.setState(stateCopy, () => this.fetchList());
   }
 
   updateSelectedQuestionnaireId = (id) => {
@@ -62,7 +69,7 @@ class App extends Component {
       return (
       <View style={styles.container}>
         {this.state.currentStep === 'index'  &&
-          <IndexScreen questionnaires = {this.state.questionnaires}
+          <Index questionnaires = {this.state.questionnaires}
                      selectedQuestionnaireId = {this.state.selectedQuestionnaireId}
                      type = {this.state.type}
 

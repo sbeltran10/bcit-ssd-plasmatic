@@ -5,7 +5,7 @@ import { Button } from 'react-native-elements';
 import QuestionnaireList from '../components/QuestionnaireList';
 import QuestionnairePicker from '../components/QuestionnaireType';
 
-class IndexScreen extends Component {
+class Index extends Component {
 
     render(){
 
@@ -41,4 +41,4 @@ class IndexScreen extends Component {
     }
 }
 
-export default IndexScreen;
+export default Index;
