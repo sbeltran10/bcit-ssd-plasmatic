@@ -37,7 +37,7 @@ class IndexScreen extends Component {
                     onSelect={(id)=>this.setState({id:id})}/>          
                 <Button style={styles.container}
                     title={"Start questionnaire " + this.state.id}
-                    onPress={() => props.navigation.navigate('List')}/>  
+                    onPress={() => this.props.navigation.navigate('List')}/>  
             </View>
         )
     }
