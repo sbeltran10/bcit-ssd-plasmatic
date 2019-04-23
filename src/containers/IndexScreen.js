@@ -53,7 +53,7 @@ class IndexScreen extends Component {
                 />          
                 <Button 
                     title={"Start questionnaire " + this.state.id}
-                    onPress={() => props.navigation.navigate('List')}
+                    onPress={() => this.props.navigation.navigate('List')}
                 />  
             </View>
         )

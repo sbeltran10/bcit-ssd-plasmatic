@@ -27,7 +27,7 @@ class QuestionnaireContainer extends Component {
       <View style={styles.style1}>
           <Text>Questionnaire container</Text>
           <Text>questionnaire</Text>
-          <Button title="Start" onPress={() => this.props.navigation.navigate('Question', { updateResults: this.updateResults })} />
+          <Button title="Start" onPress={() => this.props.navigation.navigate('Question', { updateResults: this.updateResults})} />
       </View>
     )
   }
