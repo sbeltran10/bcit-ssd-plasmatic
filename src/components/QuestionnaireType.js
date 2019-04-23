@@ -3,7 +3,7 @@ import {Text, View, Picker} from 'react-native';
 import styles from '../styles/QuestionnaireList';
 
 export default (props) => (
-    <View style={styles.container}>
+    <View>
         <Picker 
             style={styles.title} 
             selectedValue={props.selectedValue} 

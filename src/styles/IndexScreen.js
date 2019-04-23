@@ -4,6 +4,8 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#F5FCFF',
+        justifyContent: 'center',
+        //alignItems: 'center'
       },
       title: {
         fontSize: 20,
@@ -11,6 +13,6 @@ export default StyleSheet.create({
         margin: 10,
       },
       button: {
-        width: 200
+        width: 200,
       }
     })
