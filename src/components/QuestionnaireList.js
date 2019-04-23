@@ -5,8 +5,8 @@ import styles from '../styles/QuestionnaireList';
 export default (props) => (
     <View style={styles.container}>
         {props.list.map((item, key) => (
-            <Text 
-                style={styles.title} 
+            <Text style={styles.items}
+                style={styles.items} 
                 key={key} 
                 onPress={()=>(props.onSelect(item.id))}>{item.title}
             </Text>
