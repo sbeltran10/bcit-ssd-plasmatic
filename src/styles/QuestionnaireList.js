@@ -12,7 +12,7 @@ export default StyleSheet.create({
       items: {
         // fontSize: 15,
         // textAlign: 'center',
-        // margin: 10,
+      //   margin: 10,
       },
       button: {
         width: 200

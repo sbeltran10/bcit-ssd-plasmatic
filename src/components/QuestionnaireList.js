@@ -8,7 +8,10 @@ export default (props) => (
             <Text
                 // style={styles.listContainer}
                 key={key} 
-                onPress={()=>(props.onSelect(item.id))}>{item.title}
+                onPress={()=>(props.onSelect(item.id))}>
+            
+            {item.title}
+        
             </Text>
         ))}
     </View>

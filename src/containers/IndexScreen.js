@@ -18,13 +18,17 @@ class IndexScreen extends Component {
                         let picker = this.props.onPickerValueChange;
                         picker(type);
                     }}/>
-                <QuestionnaireList 
+                {
+                    this.props.type !== '' &&
+                    <QuestionnaireList 
                     questionnaires={this.props.questionnaires} 
                     onSelect={()=> {
                         let id = this.props.selectedQuestionnaireId;
                         let updater = this.props.updateSelectedQuestionnaireId;
                         updater(id);
-                    }}/>          
+                    }}/>        
+                }
+  
                 <Button
                     title={"Start questionnaire " + this.props.selectedQuestionnaireId}
                     onPress={() => this.props.navigation.navigate('List')}/>  
