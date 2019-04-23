@@ -31,7 +31,11 @@ class IndexScreen extends Component {
   
                 <Button
                     title={"Start questionnaire " + this.props.selectedQuestionnaireId}
-                    onPress={() => this.props.navigation.navigate('List')}/>  
+                    onPress={() => {
+                        let step = 'intro';
+                        let updater = this.props.updateCurrentStep;
+                        updater(step);
+                    }}/>  
             </View>
         )
     }

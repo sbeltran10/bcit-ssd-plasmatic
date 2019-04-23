@@ -12,8 +12,8 @@ import React, { Component } from 'react';
 import { View, Text } from "react-native";
 import IndexScreen from './src/containers/IndexScreen';
 import ListScreen from './src/components/List';
-import QuestionnaireContainer from './src/containers/QuestionnaireContainer';
-import QuestionScreen from './src/components/Question';
+import Intro from './src/containers/Intro';
+import Question from './src/components/Question';
 import styles from './src/styles/main';
 
 // type Props = {};
@@ -30,6 +30,7 @@ class App extends Component {
 
     this.onPickerValueChange = this.onPickerValueChange.bind(this);
     this.updateSelectedQuestionnaireId = this.updateSelectedQuestionnaireId.bind(this);
+    this.updateCurrentStep = this.updateCurrentStep.bind(this);
     
   }
 
@@ -50,6 +51,11 @@ class App extends Component {
     this.setState(stateCopy, () => { console.log(this.state) })
   }
 
+  updateCurrentStep = (step) => {
+    let stateCopy = {...this.state};
+    stateCopy.currentStep = step;
+    this.setState(stateCopy);
+  }
 
 
   render () {
@@ -62,10 +68,15 @@ class App extends Component {
 
                      onPickerValueChange = {this.onPickerValueChange}
                      updateSelectedQuestionnaireId = {this.updateSelectedQuestionnaireId}
+                     updateCurrentStep = {this.updateCurrentStep}
         />
+        
         }
-        {this.state.currentStep === 'list' && 
-          <QuestionnaireContainer />
+        {this.state.currentStep === 'intro' && 
+          <Intro updateCurrentStep = {this.updateCurrentStep} />
+        }
+        {this.state.currentStep === 'question' &&
+          <Question />
         }
       </View>
     );
