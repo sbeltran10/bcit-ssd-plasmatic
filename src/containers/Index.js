@@ -17,7 +17,9 @@ class Index extends Component {
                     onSelect={(type)=> {
                         let picker = this.props.onPickerValueChange;
                         picker(type);
-                    }}/>
+                    }}
+                />
+                
                 {
                     this.props.type !== '' &&
                     <QuestionnaireList 
