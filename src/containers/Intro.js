@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Index from '../components/Index'
 import { View, Text } from 'react-native';
 import { Button, ListItem } from 'react-native-elements';
 // import styles from '../styles/main';
