@@ -79,13 +79,14 @@ class App extends Component {
     this.setState(stateCopy, () => { console.log(this.state) })
   }
 
+  // used as callback for fetchAnswers to update currentStep property in state
   updateCurrentStep = (step) => {
     let stateCopy = {...this.state};
     stateCopy.currentStep = step;
     this.setState(stateCopy);
   }
 
-  // used as callback to fetch answers, and updates current step via updateCurrentStep 
+  // used as callback for fetchFirstQuestion/fetchQuestion, and updates current step via updateCurrentStep 
   fetchAnswers = (step) => {
     let stateCopy = {...this.state};
     stateCopy.answers = answers.filter(a => { return a.parentQuestion === this.state.question[0].id });
