@@ -2,7 +2,15 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   mainView: {
-
+    flex: 1,
+    justifyContent: 'space-between',
+    backgroundColor: 'white'
+  },
+  questionView: {
+    padding: 10
+  },
+  answersView: {
+    flex: 1,
   },
   answerContainer: {
     backgroundColor: 'white'
@@ -11,7 +19,7 @@ export default StyleSheet.create({
     backgroundColor: '#d8d8ff'
   },
   submitButton: {
-    position: 'absolute',
-    bottom: 5,
+    height: 50,
+    borderRadius: 1
   }
 })
