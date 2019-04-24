@@ -28,9 +28,10 @@ class App extends Component {
       currentStep: "index",
       selectedQuestionnaireId: null,
       questionnaire: [],
-      question: {},
+      question: [],
       answers: [],
       selectedAnswer: null,
+      modalVisible: false
 
     }
 
@@ -52,7 +53,6 @@ class App extends Component {
   // fetches first question based on selected survey
 
   fetchQuestionnaire = (step) => {
-    console.log("fetchQuestionnaire Called");
     stateCopy = {...this.state};
     stateCopy.questionnaire = surveys.filter(q => { return q.id === stateCopy.selectedQuestionnaireId });
     this.setState(stateCopy, ()=>{this.updateCurrentStep(step)});
@@ -86,10 +86,10 @@ class App extends Component {
 
   // methods for Question component
 
-  fetchFirstQuestion = () => {
+  fetchFirstQuestion = (step) => {
     stateCopy = {...this.state};
-    stateCopy.question = questions.filter(q => { return q.id === this.state.questionnaire.firstQuestionId });
-    this.setState(stateCopy);
+    stateCopy.question = questions.filter(q => { return q.id === this.state.questionnaire[0].firstQuestionId });
+    this.setState(stateCopy, () => { this.updateCurrentStep(step) });
   }
 
   fetchQuestion = () => {
@@ -97,6 +97,12 @@ class App extends Component {
     stateCopy.question = questions.filter(q => { return q.id === this.state.selectedAnswer.childQuestion });
     this.setState(stateCopy, () => { console.log(this.state) });
   }
+
+  // fetchAnswers = (id) => {
+  //   let stateCopy = {...this.state};
+  //   stateCopy.answers = answers.filter(a => { return a.parentQuestion === id });
+  //   this.setState(stateCopy);
+  // }
 
   selectAnswer = (id) => {
     stateCopy = {...this.state};
@@ -135,6 +141,7 @@ class App extends Component {
           <Intro 
             updateCurrentStep = {this.updateCurrentStep} 
             questionnaire = {this.state.questionnaire}
+            fetchFirstQuestion = {this.fetchFirstQuestion}
           />
         }
 
