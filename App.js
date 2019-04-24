@@ -47,6 +47,7 @@ class App extends Component {
     this.fetchQuestionnaire = this.fetchQuestionnaire.bind(this);
     this.fetchFirstQuestion = this.fetchFirstQuestion.bind(this);
     this.fetchQuestion = this.fetchQuestion.bind(this);
+    this.fetchAnswers = this.fetchAnswers.bind(this);
     
   }
 
@@ -89,7 +90,7 @@ class App extends Component {
   fetchFirstQuestion = (step) => {
     stateCopy = {...this.state};
     stateCopy.question = questions.filter(q => { return q.id === this.state.questionnaire[0].firstQuestionId });
-    this.setState(stateCopy, () => { this.updateCurrentStep(step) });
+    this.setState(stateCopy, () => { this.fetchAnswers(step) });
   }
 
   fetchQuestion = () => {
@@ -98,15 +99,15 @@ class App extends Component {
     this.setState(stateCopy, () => { console.log(this.state) });
   }
 
-  // fetchAnswers = (id) => {
-  //   let stateCopy = {...this.state};
-  //   stateCopy.answers = answers.filter(a => { return a.parentQuestion === id });
-  //   this.setState(stateCopy);
-  // }
+  fetchAnswers = (step) => {
+    let stateCopy = {...this.state};
+    stateCopy.answers = answers.filter(a => { return a.parentQuestion === this.state.question[0].id });
+    this.setState(stateCopy, () => {this.updateCurrentStep(step)});
+  }
 
   selectAnswer = (id) => {
     stateCopy = {...this.state};
-    stateCopy.selectedAnswer = answers.filter(a => { return q.id === id });
+    stateCopy.selectedAnswer = answers.filter(a => { return a.id === id });
     this.setState(stateCopy);
   }
 
