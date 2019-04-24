@@ -1,12 +1,13 @@
 import React from 'react';
 import { View } from 'react-native';
 import { Text, Button, ListItem, Overlay } from 'react-native-elements';
-import styles from '../styles/main';
+import mainStyles from '../styles/main';
+import styles from '../styles/Question';
 import { ScrollView } from 'react-native-gesture-handler';
 import PropTypes from 'prop-types';
 
 const Question = ({ question, answers, selectAnswer, submitAnswer, modalVisible, selectedAnswerId }) => (
-  <View style={styles.container}>
+  <View style={mainStyles.container}>
     <View>
       <Text h4>{question[0].content}</Text>
     </View>
@@ -33,7 +34,11 @@ const Question = ({ question, answers, selectAnswer, submitAnswer, modalVisible,
       </ScrollView>
       <Button
         // containerStyle={styles.submitButton}
-        onPress={submitAnswer}
+        onPress={ () => {
+          let step = "question";
+          submitAnswer(step);
+          }
+        }
         title="Submit answer" />
     </View>
     <Overlay

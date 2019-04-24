@@ -30,9 +30,9 @@ class App extends Component {
       questionnaire: [],
       question: [],
       answers: [],
-      selectedAnswer: null,
-      modalVisible: false
-
+      selectedAnswer: [],
+      modalVisible: false,
+      summary: []
     }
 
     this.onPickerValueChange = this.onPickerValueChange.bind(this);
@@ -85,34 +85,34 @@ class App extends Component {
     this.setState(stateCopy);
   }
 
-  // methods for Question component
-
-  fetchFirstQuestion = (step) => {
-    stateCopy = {...this.state};
-    stateCopy.question = questions.filter(q => { return q.id === this.state.questionnaire[0].firstQuestionId });
-    this.setState(stateCopy, () => { this.fetchAnswers(step) });
-  }
-
-  fetchQuestion = () => {
-    let stateCopy = {...this.state};
-    stateCopy.question = questions.filter(q => { return q.id === this.state.selectedAnswer.childQuestion });
-    this.setState(stateCopy, () => { console.log(this.state) });
-  }
-
+  // used as callback to fetch answers, and updates current step via updateCurrentStep 
   fetchAnswers = (step) => {
     let stateCopy = {...this.state};
     stateCopy.answers = answers.filter(a => { return a.parentQuestion === this.state.question[0].id });
     this.setState(stateCopy, () => {this.updateCurrentStep(step)});
   }
 
+  // methods for Question component
+  fetchFirstQuestion = (step) => {
+    stateCopy = {...this.state};
+    stateCopy.question = questions.filter(q => { return q.id === this.state.questionnaire[0].firstQuestionId });
+    this.setState(stateCopy, () => { this.fetchAnswers(step) });
+  }
+
+  fetchQuestion = (step) => {
+    let stateCopy = {...this.state};
+    stateCopy.question = questions.filter(q => { return q.id === this.state.selectedAnswer[0].childQuestion });
+    this.setState(stateCopy, () => { this.fetchAnswers(step) });
+  }
+
   selectAnswer = (id) => {
     stateCopy = {...this.state};
     stateCopy.selectedAnswer = answers.filter(a => { return a.id === id });
-    this.setState(stateCopy);
+    this.setState(stateCopy, () => { console.log(this.state) });
   }
 
-  submitAnswer = () => {
-    this.fetchQuestion();
+  submitAnswer = (step) => {
+    this.fetchQuestion(step);
   }
 
 
@@ -155,6 +155,7 @@ class App extends Component {
             selectedAnswerId = {this.state.selectedAnswerId}
             selectAnswer = {this.selectAnswer}
             submitAnswer = {this.submitAnswer}
+            fetchQuestion = {this.fetchQuestion}
             modalVisible = {this.state.modalVisible}
           />
         }
