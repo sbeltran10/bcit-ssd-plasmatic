@@ -21,7 +21,7 @@ const Question = ({ question, answers, selectAnswer, submitAnswer, modalVisible,
                 :
                 { name: 'radio-button-unchecked' }}
               title={answer.content}
-              onPress={() => selectAnswer(i)}
+              onPress={() => selectAnswer(answer.id)}
               containerStyle={selectedAnswerId === answer.id ?
                 styles.answerContainerSelected
                 :

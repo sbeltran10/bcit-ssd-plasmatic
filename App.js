@@ -26,13 +26,19 @@ class App extends Component {
       type: '', 
       questionnaires: [],
       currentStep: "index",
-      selectedQuestionnaireId: 0
+      selectedQuestionnaireId: null,
+      question: {},
+      answers: [],
+      selectedAnswerId: null,
+
     }
 
     this.onPickerValueChange = this.onPickerValueChange.bind(this);
     this.updateSelectedQuestionnaireId = this.updateSelectedQuestionnaireId.bind(this);
     this.updateCurrentStep = this.updateCurrentStep.bind(this);
     this.fetchList = this.fetchList.bind(this);
+
+    this.selectAnswer = this.selectAnswer.bind(this);
     
   }
   
@@ -62,6 +68,18 @@ class App extends Component {
     this.setState(stateCopy);
   }
 
+  // methods for Question component
+
+  selectAnswer = (id) => {
+    stateCopy = {...this.state};
+    stateCopy.selectedAnswerId = answers.filter(a => { return q.id === id });
+    this.setState(stateCopy);
+  }
+
+  submitAnswer = () => {
+    
+  }
+
 
   render () {
       return (
@@ -70,14 +88,15 @@ class App extends Component {
         {/* ---index screen--- */}
         {
           this.state.currentStep === 'index'  &&
-          <Index questionnaires = {this.state.questionnaires}
-                 selectedQuestionnaireId = {this.state.selectedQuestionnaireId}
-                 type = {this.state.type}
+          <Index 
+            questionnaires = {this.state.questionnaires}
+            selectedQuestionnaireId = {this.state.selectedQuestionnaireId}
+            type = {this.state.type}
 
-                 onPickerValueChange = {this.onPickerValueChange}
-                 updateSelectedQuestionnaireId = {this.updateSelectedQuestionnaireId}
-                 updateCurrentStep = {this.updateCurrentStep}
-        />
+            onPickerValueChange = {this.onPickerValueChange}
+            updateSelectedQuestionnaireId = {this.updateSelectedQuestionnaireId}
+            updateCurrentStep = {this.updateCurrentStep}
+          />
         }
 
         {/* ---intro screen--- */}
@@ -89,7 +108,14 @@ class App extends Component {
         {/* ---question screen--- */}
         {
           this.state.currentStep === 'question' &&
-          <Question />
+          <Question 
+            question = {this.state.question}
+            answers = {this.state.answers}
+            selectedAnswerId = {this.state.selectedAnswerId}
+            selectAnswer = {this.selectAnswer}
+            submitAnswer = {this.submitAnswer}
+            modalVisible = {this.state.modalVisible}
+          />
         }
 
       </View>
