@@ -1,17 +1,18 @@
 import React from 'react';
 import { View } from 'react-native';
 import { Text, Button, ListItem, Overlay } from 'react-native-elements';
+import mainStyles from '../styles/main';
 import styles from '../styles/Question';
 import { ScrollView } from 'react-native-gesture-handler';
 import PropTypes from 'prop-types';
 
 const Question = ({ question, answers, selectAnswer, submitAnswer, modalVisible, selectedAnswerId }) => (
-  <View style={styles.mainView}>
+  <View style={mainStyles.container}>
     <View>
-      <Text h4>{question.content}</Text>
+      <Text h4>{question[0].content}</Text>
     </View>
     <View>
-      <ScrollView>
+      <ScrollView style={{maxHeight: 150, borderWidth: 1, borderStyle: "solid"}}>
         {
           answers.map((answer, i) => (
             <ListItem
@@ -21,7 +22,7 @@ const Question = ({ question, answers, selectAnswer, submitAnswer, modalVisible,
                 :
                 { name: 'radio-button-unchecked' }}
               title={answer.content}
-              onPress={() => selectAnswer(i)}
+              onPress={() => selectAnswer(answer.id)}
               containerStyle={selectedAnswerId === answer.id ?
                 styles.answerContainerSelected
                 :
@@ -32,8 +33,12 @@ const Question = ({ question, answers, selectAnswer, submitAnswer, modalVisible,
         }
       </ScrollView>
       <Button
-        containerStyle={styles.submitButton}
-        onPress={submitAnswer}
+        // containerStyle={styles.submitButton}
+        onPress={ () => {
+          let step = "question";
+          submitAnswer(step);
+          }
+        }
         title="Submit answer" />
     </View>
     <Overlay
@@ -48,7 +53,7 @@ const Question = ({ question, answers, selectAnswer, submitAnswer, modalVisible,
 )
 
 Question.propTypes = {
-  question: PropTypes.object,
+  question: PropTypes.array,
   answers: PropTypes.array,
   selectAnswer: PropTypes.func,
   submitAnswer: PropTypes.func,

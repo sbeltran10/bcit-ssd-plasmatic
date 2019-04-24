@@ -24,8 +24,7 @@ class Index extends Component {
                     this.props.type !== '' &&
                     <QuestionnaireList 
                     questionnaires={this.props.questionnaires} 
-                    onSelect={()=> {
-                        let id = this.props.selectedQuestionnaireId;
+                    onSelect={(id)=> {
                         let updater = this.props.updateSelectedQuestionnaireId;
                         updater(id);
                     }}/>        
@@ -35,8 +34,9 @@ class Index extends Component {
                     title={"Start questionnaire " + this.props.selectedQuestionnaireId}
                     onPress={() => {
                         let step = 'intro';
-                        let updater = this.props.updateCurrentStep;
-                        updater(step);
+                        let fetchQuestionnaire = this.props.fetchQuestionnaire;
+                        fetchQuestionnaire(step);
+
                     }}/>  
             </View>
         )

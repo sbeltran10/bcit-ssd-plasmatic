@@ -9,12 +9,12 @@ class Intro extends Component {
   render() {
     return (
       <View style={{backgroundColor: 'green'}}>
-          <Text>Questionnaire Intro</Text>
-          <Text>questionnaire Description</Text>
+          <Text>{this.props.questionnaire[0].title}</Text>
+          <Text>{this.props.questionnaire[0].description}</Text>
           <Button title="Start" onPress={()=> {
             let step = 'question'
-            let updater = this.props.updateCurrentStep;
-            updater(step);
+            let fetchFirstQuestion = this.props.fetchFirstQuestion;
+            fetchFirstQuestion(step);
           }} />
       </View>
     )

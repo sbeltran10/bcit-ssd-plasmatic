@@ -249,32 +249,40 @@
   {
     "id": 42,
     "content": "Not at all fair",
-    "parentQuestion": 13,
-    "childQuestion": -1
+    "parentQuestion": 12,
+    "childQuestion": 13
   },
   {
     "id": 43,
-    "content": "Not at all fair",
+    "content": "Extremely Satisfied",
     "parentQuestion": 13,
     "childQuestion": -1
   },
   {
     "id": 44,
-    "content": "Not at all fair",
+    "content": "Quite Satisfied",
     "parentQuestion": 13,
     "childQuestion": -1
   },
   {
     "id": 45,
-    "content": "Not at all fair",
+    "content": "Somewhat Satisfied",
     "parentQuestion": 13,
     "childQuestion": -1
   },
   {
     "id": 46,
-    "content": "Not at all fair",
+    "content": "Quite dissatisfied",
     "parentQuestion": 13,
-
+    "childQuestion": -1
+  },
+  {
+    "id": 47,
+    "content": "Extremely dissatisfied",
+    "parentQuestion": 13,
+    "childQuestion": -1
+  },
+  {
     "id": 200,
     "content": "Male",
     "parentQuestion": 100,
