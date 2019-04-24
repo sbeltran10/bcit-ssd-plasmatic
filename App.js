@@ -51,13 +51,6 @@ class App extends Component {
     
   }
 
-  // fetches first question based on selected survey
-
-  fetchQuestionnaire = (step) => {
-    stateCopy = {...this.state};
-    stateCopy.questionnaire = surveys.filter(q => { return q.id === stateCopy.selectedQuestionnaireId });
-    this.setState(stateCopy, ()=>{this.updateCurrentStep(step)});
-  }
   
   // call back for setState in onPickerValueChange
   fetchList = () => {
@@ -79,6 +72,19 @@ class App extends Component {
     this.setState(stateCopy, () => { console.log(this.state) })
   }
 
+  // fetches first question based on selected survey
+  fetchQuestionnaire = (step) => {
+    stateCopy = {...this.state};
+    stateCopy.questionnaire = surveys.filter(q => { return q.id === stateCopy.selectedQuestionnaireId });
+    this.setState(stateCopy, ()=>{this.updateCurrentStep(step)});
+  }
+
+  fetchFirstQuestion = (step) => {
+    stateCopy = {...this.state};
+    stateCopy.question = questions.filter(q => { return q.id === this.state.questionnaire[0].firstQuestionId });
+    this.setState(stateCopy, () => { this.fetchAnswers(step) });
+  }
+
   // used as callback for fetchAnswers to update currentStep property in state
   updateCurrentStep = (step) => {
     let stateCopy = {...this.state};
@@ -86,18 +92,15 @@ class App extends Component {
     this.setState(stateCopy);
   }
 
+
+  /*-------------------------------methods for Question component----------------------------------------*/
+
+
   // used as callback for fetchFirstQuestion/fetchQuestion, and updates current step via updateCurrentStep 
   fetchAnswers = (step) => {
     let stateCopy = {...this.state};
     stateCopy.answers = answers.filter(a => { return a.parentQuestion === this.state.question[0].id });
     this.setState(stateCopy, () => {this.updateCurrentStep(step)});
-  }
-
-  // methods for Question component
-  fetchFirstQuestion = (step) => {
-    stateCopy = {...this.state};
-    stateCopy.question = questions.filter(q => { return q.id === this.state.questionnaire[0].firstQuestionId });
-    this.setState(stateCopy, () => { this.fetchAnswers(step) });
   }
 
   fetchQuestion = (step) => {
@@ -116,6 +119,8 @@ class App extends Component {
     this.fetchQuestion(step);
   }
 
+  /*---  render  ---*/
+
 
   render () {
       return (
@@ -131,8 +136,6 @@ class App extends Component {
 
             onPickerValueChange = {this.onPickerValueChange}
             updateSelectedQuestionnaireId = {this.updateSelectedQuestionnaireId}
-            updateCurrentStep = {this.updateCurrentStep}
-
             fetchQuestionnaire = {this.fetchQuestionnaire}
           />
         }
