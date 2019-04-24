@@ -17,7 +17,7 @@ const SurveyResults = ({ resultsText, onExitButtonPress }) => (
 )
 
 SurveyResults.defaultProps = {
-  resultsText: "Thank you for fiishing the survey!"  
+  resultsText: "Thank you for finishing the survey!"  
 }
 
 SurveyResults.propTypes = {
