@@ -27,19 +27,34 @@ class App extends Component {
       questionnaires: [],
       currentStep: "index",
       selectedQuestionnaireId: null,
+      questionnaire: {},
       question: {},
       answers: [],
-      selectedAnswerId: null,
+      selectedAnswer: null,
 
     }
 
     this.onPickerValueChange = this.onPickerValueChange.bind(this);
     this.updateSelectedQuestionnaireId = this.updateSelectedQuestionnaireId.bind(this);
     this.updateCurrentStep = this.updateCurrentStep.bind(this);
-    this.fetchList = this.fetchList.bind(this);
 
     this.selectAnswer = this.selectAnswer.bind(this);
+    this.submitAnswer = this.submitAnswer.bind(this);
+
+    this.fetchList = this.fetchList.bind(this);
+
+    this.fetchQuestion = this.fetchQuestion.bind(this);
+    this.fetchQuestionnaire = this.fetchQuestionnaire.bind(this);
+    this.fetchFirstQuestion = this.fetchFirstQuestion.bind(this);
     
+  }
+
+  // fetches first question based on selected survey
+
+  fetchQuestionnaire = (id) => {
+    stateCopy = {...this.state};
+    stateCopy.questionnaire = questionnaires.filter(q => { return q.id === id });
+    this.setState(stateCopy);
   }
   
   // call back for setState in onPickerValueChange
@@ -70,14 +85,26 @@ class App extends Component {
 
   // methods for Question component
 
+  fetchFirstQuestion = () => {
+    stateCopy = {...this.state};
+    stateCopy.question = questions.filter(q => { return q.id === this.state.questionnaire.firstQuestionId });
+    this.setState(stateCopy);
+  }
+
+  fetchQuestion = () => {
+    let stateCopy = {...this.state};
+    stateCopy.question = questions.filter(q => { return q.id === this.state.selectedAnswer.childQuestion });
+    this.setState(stateCopy, () => { console.log(this.state) });
+  }
+
   selectAnswer = (id) => {
     stateCopy = {...this.state};
-    stateCopy.selectedAnswerId = answers.filter(a => { return q.id === id });
+    stateCopy.selectedAnswer = answers.filter(a => { return q.id === id });
     this.setState(stateCopy);
   }
 
   submitAnswer = () => {
-    
+    this.fetchQuestion();
   }
 
 
@@ -102,7 +129,10 @@ class App extends Component {
         {/* ---intro screen--- */}
         {
           this.state.currentStep === 'intro' && 
-          <Intro updateCurrentStep = {this.updateCurrentStep} />
+          <Intro 
+            updateCurrentStep = {this.updateCurrentStep} 
+            questionnaire = {this.state.questionnaire}
+          />
         }
 
         {/* ---question screen--- */}

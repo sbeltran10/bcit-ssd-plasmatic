@@ -8,7 +8,7 @@ class Intro extends Component {
   render() {
     return (
       <View style={{backgroundColor: 'green'}}>
-          <Text>Questionnaire Intro</Text>
+          <Text>Quesitonnaire Title</Text>
           <Text>questionnaire Description</Text>
           <Button title="Start" onPress={()=> {
             let step = 'question'
