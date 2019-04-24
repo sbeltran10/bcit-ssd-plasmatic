@@ -20,7 +20,7 @@
     "title": "Employee Benefits",
     "description": "This survey is about employee satisfaction with regards to company benefits.",
     "type": "survey",
-    "firstQuestionId": 1
+    "firstQuestionId": 10
   },
 
   {

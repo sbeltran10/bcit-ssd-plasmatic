@@ -160,5 +160,119 @@
     "content": "No",
     "parentQuestion": 9,
     "childQuestion": -1
+  },
+  {
+    "id": 28,
+    "content": "Extremely comfortable",
+    "parentQuestion": 10,
+    "childQuestion": 11
+  },
+  {
+    "id": 29,
+    "content": "Very comfortable",
+    "parentQuestion": 10,
+    "childQuestion": 11
+  },
+  {
+    "id": 30,
+    "content": "Somewhat comfortable",
+    "parentQuestion": 10,
+    "childQuestion": 11
+  },
+  {
+    "id": 31,
+    "content": "Not so comfortable",
+    "parentQuestion": 10,
+    "childQuestion": 11
+  },
+  {
+    "id": 32,
+    "content": "Not at all comfortable",
+    "parentQuestion": 10,
+    "childQuestion": 11
+  },
+  {
+    "id": 33,
+    "content": "Much better",
+    "parentQuestion": 11,
+    "childQuestion": 12
+  },
+  {
+    "id": 34,
+    "content": "Better",
+    "parentQuestion": 11,
+    "childQuestion": 12
+  },
+  {
+    "id": 35,
+    "content": "About the same",
+    "parentQuestion": 11,
+    "childQuestion": 12
+  },
+  {
+    "id": 36,
+    "content": "Worse",
+    "parentQuestion": 11,
+    "childQuestion": 12
+  },
+  {
+    "id": 37,
+    "content": "Much worse",
+    "parentQuestion": 11,
+    "childQuestion": 12
+  },
+  {
+    "id": 38,
+    "content": "Extremely fair",
+    "parentQuestion": 12,
+    "childQuestion": 13
+  },
+  {
+    "id": 39,
+    "content": "Very Fair",
+    "parentQuestion": 12,
+    "childQuestion": 13
+  },
+  {
+    "id": 40,
+    "content": "Somewhat fair",
+    "parentQuestion": 12,
+    "childQuestion": 13
+  },
+  {
+    "id": 41,
+    "content": "Not so fair",
+    "parentQuestion": 12,
+    "childQuestion": 13
+  },
+  {
+    "id": 42,
+    "content": "Not at all fair",
+    "parentQuestion": 13,
+    "childQuestion": -1
+  },
+  {
+    "id": 43,
+    "content": "Not at all fair",
+    "parentQuestion": 13,
+    "childQuestion": -1
+  },
+  {
+    "id": 44,
+    "content": "Not at all fair",
+    "parentQuestion": 13,
+    "childQuestion": -1
+  },
+  {
+    "id": 45,
+    "content": "Not at all fair",
+    "parentQuestion": 13,
+    "childQuestion": -1
+  },
+  {
+    "id": 46,
+    "content": "Not at all fair",
+    "parentQuestion": 13,
+    "childQuestion": -1
   }
 ]

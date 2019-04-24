@@ -34,5 +34,21 @@
   {
     "id": 9,
     "content":"Do you feel that there is adequate affordable/handicapped accessible housing in your area?"
+  },
+  {
+    "id": 10,
+    "content":"How comfortable is your employer's work environment?"
+  },
+  {
+    "id": 11,
+    "content":"Is your health insurance plan better or worse than those of other employers"
+  },
+  {
+    "id": 12,
+    "content":"How fair is your employer's sick day policy?"
+  },
+  {
+    "id": 13,
+    "content":"Are you satisfied with your employee benefits?"
   }
 ]
