@@ -70,5 +70,95 @@
     "content": "No",
     "parentQuestion": 4,
     "childQuestion": -1
+  },
+  {
+    "id": 13,
+    "content": "Apartment",
+    "parentQuestion": 5,
+    "childQuestion": 6
+  },
+  {
+    "id": 14,
+    "content": "Home",
+    "parentQuestion": 5,
+    "childQuestion": 6
+  },
+  {
+    "id": 15,
+    "content": "Duplex",
+    "parentQuestion": 5,
+    "childQuestion": 6
+  },
+  {
+    "id": 16,
+    "content": "Condominium",
+    "parentQuestion": 5,
+    "childQuestion": 6
+  },
+  {
+    "id": 17,
+    "content": "HomeOwner",
+    "parentQuestion": 6,
+    "childQuestion": 7
+  },
+  {
+    "id": 18,
+    "content": "Renter",
+    "parentQuestion": 6,
+    "childQuestion": 7
+  },
+  {
+    "id": 19,
+    "content": "Living with others but not paying rent or mortgage",
+    "parentQuestion": 6,
+    "childQuestion": 7
+  },
+  {
+    "id": 20,
+    "content": "Living with others and assisting with paying rent or mortgage",
+    "parentQuestion": 6,
+    "childQuestion": 7
+  },
+  {
+    "id": 21,    
+    "content": "Yes",
+    "parentQuestion": 7,
+    "childQuestion": 8
+  },
+  {
+    "id": 22,
+    "content": "No",
+    "parentQuestion": 7,
+    "childQuestion": 8
+  },
+  {
+    "id": 23,
+    "content": "Cost I can afford",
+    "parentQuestion": 8,
+    "childQuestion": 9
+  },
+  {
+    "id": 24,
+    "content": "Close to work/school",
+    "parentQuestion": 8,
+    "childQuestion": 9
+  },
+  {
+    "id": 25,
+    "content": "Close to shopping",
+    "parentQuestion": 8,
+    "childQuestion": 9
+  },
+  {
+    "id": 26,
+    "content": "Yes",
+    "parentQuestion": 9,
+    "childQuestion": -1
+  },
+  {
+    "id": 27,
+    "content": "No",
+    "parentQuestion": 9,
+    "childQuestion": -1
   }
 ]
