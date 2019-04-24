@@ -43,7 +43,6 @@ class App extends Component {
     this.submitAnswer = this.submitAnswer.bind(this);
 
     this.fetchList = this.fetchList.bind(this);
-
     this.fetchQuestionnaire = this.fetchQuestionnaire.bind(this);
     this.fetchFirstQuestion = this.fetchFirstQuestion.bind(this);
     this.fetchQuestion = this.fetchQuestion.bind(this);
@@ -72,6 +71,13 @@ class App extends Component {
     this.setState(stateCopy, () => { console.log(this.state) })
   }
 
+  // used as callback @ fetchQuestionnaire, fetchAnswers
+  updateCurrentStep = (step) => {
+    let stateCopy = {...this.state};
+    stateCopy.currentStep = step;
+    this.setState(stateCopy);
+  }
+
   // fetches first question based on selected survey
   fetchQuestionnaire = (step) => {
     stateCopy = {...this.state};
@@ -85,18 +91,11 @@ class App extends Component {
     this.setState(stateCopy, () => { this.fetchAnswers(step) });
   }
 
-  // used as callback for fetchAnswers to update currentStep property in state
-  updateCurrentStep = (step) => {
-    let stateCopy = {...this.state};
-    stateCopy.currentStep = step;
-    this.setState(stateCopy);
-  }
-
 
   /*-------------------------------methods for Question component----------------------------------------*/
 
 
-  // used as callback for fetchFirstQuestion/fetchQuestion, and updates current step via updateCurrentStep 
+  // used as callback @ fetchFirstQuestion, fetchQuestion 
   fetchAnswers = (step) => {
     let stateCopy = {...this.state};
     stateCopy.answers = answers.filter(a => { return a.parentQuestion === this.state.question[0].id });
