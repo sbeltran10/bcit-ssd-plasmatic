@@ -6,7 +6,6 @@
     "type": "survey",
     "firstQuestionId": 1
   },
-
   {
     "id": 2,
     "title": "Affordable Housing survey",
@@ -69,6 +68,12 @@
     "description": "The classic game zork on your mobile phone.",
     "type": "game",
     "firstQuestionId": 1
+  },
+  {
+    "id": 100,
+    "title": "Beaches of the world",
+    "description": "We want to know what you think about the beaches of the world",
+    "type": "survey",
+    "firstQuestionId": 100
   }
-
 ]

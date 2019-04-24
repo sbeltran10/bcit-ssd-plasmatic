@@ -1,15 +1,15 @@
 [
   {
     "id": 1,
-    "content":"How did you hear about our website?"
+    "content": "How did you hear about our website?"
   },
   {
     "id": 2,
-    "content":"How would you rate your experience with our website?"
+    "content": "How would you rate your experience with our website?"
   },
   {
     "id": 3,
-    "content":"For how many years have you been using websites similar to this one?"
+    "content": "For how many years have you been using websites similar to this one?"
   },
   {
     "id": 4,
@@ -50,5 +50,37 @@
   {
     "id": 13,
     "content":"Are you satisfied with your employee benefits?"
+  },
+  {
+    "id": 100,
+    "content": "What is your gender?"
+  },
+  {
+    "id": 101,
+    "content": "Which kind of beach do you prefer?"
+  },
+  {
+    "id": 102,
+    "content": "Please select one saltwater beach you have visited from the following list"
+  },
+  {
+    "id": 103,
+    "content": "Please select one freshwater beach you have visited from the following list"
+  },
+  {
+    "id": 104,
+    "content": "How would you describe the water in that place?"
+  },
+  {
+    "id": 105,
+    "content": "Would you travel there again?"
+  },
+  {
+    "id": 106,
+    "content": "Are you interested in a paid vacation to one of these locatins?"
+  },
+  {
+    "id": 107,
+    "content": "Which of the following months would you have available for traveling?"
   }
 ]
