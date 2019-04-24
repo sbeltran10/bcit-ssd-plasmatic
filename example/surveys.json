@@ -2,8 +2,71 @@
   {
     "id": 1,
     "title": "Website survey",
-    "description": "In the following survey we ask you questions about your experience with our website",
+    "description": "In the following survey we ask you questions about your experience with our website.",
     "type": "survey",
+    "firstQuestionId": 1
+  },
+  {
+    "id": 2,
+    "title": "Affordable Housing survey",
+    "description": "This survey is about housing and rental cost.",
+    "type": "survey",
+    "firstQuestionId": 5
+  },
+
+  {
+    "id": 3,
+    "title": "Employee Benefits",
+    "description": "This survey is about employee satisfaction with regards to company benefits.",
+    "type": "survey",
+    "firstQuestionId": 10
+  },
+
+  {
+    "id": 4,
+    "title": "General Information",
+    "description": "This is a quiz to test your knowledge on all things in general.",
+    "type": "quiz",
+    "firstQuestionId": 1
+  },
+
+  {
+    "id": 5,
+    "title": "Science Trivia",
+    "description": "This quiz is to test your knowledge on science.",
+    "type": "quiz",
+    "firstQuestionId": 1
+  },
+
+  {
+    "id": 6,
+    "title": "Financial Management",
+    "description": "Let's see how well you manage your finances.",
+    "type": "quiz",
+    "firstQuestionId": 1
+  },
+
+  {
+    "id": 7,
+    "title": "Zork",
+    "description": "The classic game zork on your mobile phone.",
+    "type": "game",
+    "firstQuestionId": 1
+  },
+
+  {
+    "id": 8,
+    "title": "Beyond Zork",
+    "description": "The classic game zork on your mobile phone.",
+    "type": "game",
+    "firstQuestionId": 1
+  },
+
+  {
+    "id": 9,
+    "title": "Return to Zork",
+    "description": "The classic game zork on your mobile phone.",
+    "type": "game",
     "firstQuestionId": 1
   },
   {

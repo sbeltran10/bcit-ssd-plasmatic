@@ -13,7 +13,43 @@
   },
   {
     "id": 4,
-    "content": "Would you recommend our website to your friends?"
+    "content":"Would you recommend our website to your friends?"
+  },
+  {
+    "id": 5,
+    "content":"In which type of housing do you currently live?"
+  },
+  {
+    "id": 6,
+    "content":"Which of the following best describes your current housing situation?"
+  },
+  {
+    "id": 7,
+    "content":"Are you satisfied with your current living arrangements?"
+  },
+  {
+    "id": 8,
+    "content":"What factors are most important to you when choosing your home or apartment?"
+  },
+  {
+    "id": 9,
+    "content":"Do you feel that there is adequate affordable/handicapped accessible housing in your area?"
+  },
+  {
+    "id": 10,
+    "content":"How comfortable is your employer's work environment?"
+  },
+  {
+    "id": 11,
+    "content":"Is your health insurance plan better or worse than those of other employers"
+  },
+  {
+    "id": 12,
+    "content":"How fair is your employer's sick day policy?"
+  },
+  {
+    "id": 13,
+    "content":"Are you satisfied with your employee benefits?"
   },
   {
     "id": 100,

@@ -72,6 +72,209 @@
     "childQuestion": -1
   },
   {
+
+    "id": 13,
+    "content": "Apartment",
+    "parentQuestion": 5,
+    "childQuestion": 6
+  },
+  {
+    "id": 14,
+    "content": "Home",
+    "parentQuestion": 5,
+    "childQuestion": 6
+  },
+  {
+    "id": 15,
+    "content": "Duplex",
+    "parentQuestion": 5,
+    "childQuestion": 6
+  },
+  {
+    "id": 16,
+    "content": "Condominium",
+    "parentQuestion": 5,
+    "childQuestion": 6
+  },
+  {
+    "id": 17,
+    "content": "HomeOwner",
+    "parentQuestion": 6,
+    "childQuestion": 7
+  },
+  {
+    "id": 18,
+    "content": "Renter",
+    "parentQuestion": 6,
+    "childQuestion": 7
+  },
+  {
+    "id": 19,
+    "content": "Living with others but not paying rent or mortgage",
+    "parentQuestion": 6,
+    "childQuestion": 7
+  },
+  {
+    "id": 20,
+    "content": "Living with others and assisting with paying rent or mortgage",
+    "parentQuestion": 6,
+    "childQuestion": 7
+  },
+  {
+    "id": 21,    
+    "content": "Yes",
+    "parentQuestion": 7,
+    "childQuestion": 8
+  },
+  {
+    "id": 22,
+    "content": "No",
+    "parentQuestion": 7,
+    "childQuestion": 8
+  },
+  {
+    "id": 23,
+    "content": "Cost I can afford",
+    "parentQuestion": 8,
+    "childQuestion": 9
+  },
+  {
+    "id": 24,
+    "content": "Close to work/school",
+    "parentQuestion": 8,
+    "childQuestion": 9
+  },
+  {
+    "id": 25,
+    "content": "Close to shopping",
+    "parentQuestion": 8,
+    "childQuestion": 9
+  },
+  {
+    "id": 26,
+    "content": "Yes",
+    "parentQuestion": 9,
+    "childQuestion": -1
+  },
+  {
+    "id": 27,
+    "content": "No",
+    "parentQuestion": 9,
+    "childQuestion": -1
+  },
+  {
+    "id": 28,
+    "content": "Extremely comfortable",
+    "parentQuestion": 10,
+    "childQuestion": 11
+  },
+  {
+    "id": 29,
+    "content": "Very comfortable",
+    "parentQuestion": 10,
+    "childQuestion": 11
+  },
+  {
+    "id": 30,
+    "content": "Somewhat comfortable",
+    "parentQuestion": 10,
+    "childQuestion": 11
+  },
+  {
+    "id": 31,
+    "content": "Not so comfortable",
+    "parentQuestion": 10,
+    "childQuestion": 11
+  },
+  {
+    "id": 32,
+    "content": "Not at all comfortable",
+    "parentQuestion": 10,
+    "childQuestion": 11
+  },
+  {
+    "id": 33,
+    "content": "Much better",
+    "parentQuestion": 11,
+    "childQuestion": 12
+  },
+  {
+    "id": 34,
+    "content": "Better",
+    "parentQuestion": 11,
+    "childQuestion": 12
+  },
+  {
+    "id": 35,
+    "content": "About the same",
+    "parentQuestion": 11,
+    "childQuestion": 12
+  },
+  {
+    "id": 36,
+    "content": "Worse",
+    "parentQuestion": 11,
+    "childQuestion": 12
+  },
+  {
+    "id": 37,
+    "content": "Much worse",
+    "parentQuestion": 11,
+    "childQuestion": 12
+  },
+  {
+    "id": 38,
+    "content": "Extremely fair",
+    "parentQuestion": 12,
+    "childQuestion": 13
+  },
+  {
+    "id": 39,
+    "content": "Very Fair",
+    "parentQuestion": 12,
+    "childQuestion": 13
+  },
+  {
+    "id": 40,
+    "content": "Somewhat fair",
+    "parentQuestion": 12,
+    "childQuestion": 13
+  },
+  {
+    "id": 41,
+    "content": "Not so fair",
+    "parentQuestion": 12,
+    "childQuestion": 13
+  },
+  {
+    "id": 42,
+    "content": "Not at all fair",
+    "parentQuestion": 13,
+    "childQuestion": -1
+  },
+  {
+    "id": 43,
+    "content": "Not at all fair",
+    "parentQuestion": 13,
+    "childQuestion": -1
+  },
+  {
+    "id": 44,
+    "content": "Not at all fair",
+    "parentQuestion": 13,
+    "childQuestion": -1
+  },
+  {
+    "id": 45,
+    "content": "Not at all fair",
+    "parentQuestion": 13,
+    "childQuestion": -1
+  },
+  {
+    "id": 46,
+    "content": "Not at all fair",
+    "parentQuestion": 13,
+
     "id": 200,
     "content": "Male",
     "parentQuestion": 100,
@@ -237,6 +440,7 @@
     "id": 227,
     "content": "January",
     "parentQuestion": 107,
+
     "childQuestion": -1
   }
 ]
