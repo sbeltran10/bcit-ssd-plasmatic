@@ -28,10 +28,11 @@ class App extends Component {
       currentStep: "index",
       selectedQuestionnaireId: null,
       questionnaire: [],
-      question: {},
+      question: [],
       answers: [],
-      selectedAnswer: null,
-
+      selectedAnswer: [],
+      modalVisible: false,
+      summary: []
     }
 
     this.onPickerValueChange = this.onPickerValueChange.bind(this);
@@ -46,13 +47,13 @@ class App extends Component {
     this.fetchQuestionnaire = this.fetchQuestionnaire.bind(this);
     this.fetchFirstQuestion = this.fetchFirstQuestion.bind(this);
     this.fetchQuestion = this.fetchQuestion.bind(this);
+    this.fetchAnswers = this.fetchAnswers.bind(this);
     
   }
 
   // fetches first question based on selected survey
 
   fetchQuestionnaire = (step) => {
-    console.log("fetchQuestionnaire Called");
     stateCopy = {...this.state};
     stateCopy.questionnaire = surveys.filter(q => { return q.id === stateCopy.selectedQuestionnaireId });
     this.setState(stateCopy, ()=>{this.updateCurrentStep(step)});
@@ -84,28 +85,34 @@ class App extends Component {
     this.setState(stateCopy);
   }
 
-  // methods for Question component
-
-  fetchFirstQuestion = () => {
-    stateCopy = {...this.state};
-    stateCopy.question = questions.filter(q => { return q.id === this.state.questionnaire.firstQuestionId });
-    this.setState(stateCopy);
+  // used as callback to fetch answers, and updates current step via updateCurrentStep 
+  fetchAnswers = (step) => {
+    let stateCopy = {...this.state};
+    stateCopy.answers = answers.filter(a => { return a.parentQuestion === this.state.question[0].id });
+    this.setState(stateCopy, () => {this.updateCurrentStep(step)});
   }
 
-  fetchQuestion = () => {
+  // methods for Question component
+  fetchFirstQuestion = (step) => {
+    stateCopy = {...this.state};
+    stateCopy.question = questions.filter(q => { return q.id === this.state.questionnaire[0].firstQuestionId });
+    this.setState(stateCopy, () => { this.fetchAnswers(step) });
+  }
+
+  fetchQuestion = (step) => {
     let stateCopy = {...this.state};
-    stateCopy.question = questions.filter(q => { return q.id === this.state.selectedAnswer.childQuestion });
-    this.setState(stateCopy, () => { console.log(this.state) });
+    stateCopy.question = questions.filter(q => { return q.id === this.state.selectedAnswer[0].childQuestion });
+    this.setState(stateCopy, () => { this.fetchAnswers(step) });
   }
 
   selectAnswer = (id) => {
     stateCopy = {...this.state};
-    stateCopy.selectedAnswer = answers.filter(a => { return q.id === id });
-    this.setState(stateCopy);
+    stateCopy.selectedAnswer = answers.filter(a => { return a.id === id });
+    this.setState(stateCopy, () => { console.log(this.state) });
   }
 
-  submitAnswer = () => {
-    this.fetchQuestion();
+  submitAnswer = (step) => {
+    this.fetchQuestion(step);
   }
 
 
@@ -135,6 +142,7 @@ class App extends Component {
           <Intro 
             updateCurrentStep = {this.updateCurrentStep} 
             questionnaire = {this.state.questionnaire}
+            fetchFirstQuestion = {this.fetchFirstQuestion}
           />
         }
 
@@ -147,6 +155,7 @@ class App extends Component {
             selectedAnswerId = {this.state.selectedAnswerId}
             selectAnswer = {this.selectAnswer}
             submitAnswer = {this.submitAnswer}
+            fetchQuestion = {this.fetchQuestion}
             modalVisible = {this.state.modalVisible}
           />
         }
