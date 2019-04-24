@@ -36,9 +36,8 @@ class App extends Component {
     
   }
   
-  //call back for setState in onPickerValueChange
+  // call back for setState in onPickerValueChange
   fetchList = () => {
-    console.dir(surveys);
     let stateCopy = {...this.state};
     stateCopy.questionnaires = surveys.filter(q => { return q.type === this.state.type });
     this.setState(stateCopy);
