@@ -5,7 +5,7 @@ import { Button } from 'react-native-elements';
 import QuestionnaireList from '../components/QuestionnaireList';
 import QuestionnairePicker from '../components/QuestionnaireType';
 
-class IndexScreen extends Component {
+class Index extends Component {
 
     render(){
 
@@ -17,7 +17,9 @@ class IndexScreen extends Component {
                     onSelect={(type)=> {
                         let picker = this.props.onPickerValueChange;
                         picker(type);
-                    }}/>
+                    }}
+                />
+                
                 {
                     this.props.type !== '' &&
                     <QuestionnaireList 
@@ -31,10 +33,14 @@ class IndexScreen extends Component {
   
                 <Button
                     title={"Start questionnaire " + this.props.selectedQuestionnaireId}
-                    onPress={() => this.props.navigation.navigate('List')}/>  
+                    onPress={() => {
+                        let step = 'intro';
+                        let updater = this.props.updateCurrentStep;
+                        updater(step);
+                    }}/>  
             </View>
         )
     }
 }
 
-export default IndexScreen;
+export default Index;
