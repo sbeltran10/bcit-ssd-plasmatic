@@ -34,8 +34,10 @@ class Index extends Component {
                     title={"Start questionnaire " + this.props.selectedQuestionnaireId}
                     onPress={() => {
                         let step = 'intro';
-                        let updater = this.props.updateCurrentStep;
-                        updater(step);
+                        // let updater = this.props.updateCurrentStep;
+                        let fetchQuestionnaire = this.props.fetchQuestionnaire;
+                        fetchQuestionnaire(step);
+                        // updater(step);
                     }}/>  
             </View>
         )

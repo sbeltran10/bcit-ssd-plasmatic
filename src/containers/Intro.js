@@ -8,8 +8,8 @@ class Intro extends Component {
   render() {
     return (
       <View style={{backgroundColor: 'green'}}>
-          <Text>Quesitonnaire Title</Text>
-          <Text>questionnaire Description</Text>
+          <Text>{this.props.questionnaire[0].title}</Text>
+          <Text>{this.props.questionnaire[0].description}</Text>
           <Button title="Start" onPress={()=> {
             let step = 'question'
             let updater = this.props.updateCurrentStep;

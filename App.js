@@ -27,7 +27,7 @@ class App extends Component {
       questionnaires: [],
       currentStep: "index",
       selectedQuestionnaireId: null,
-      questionnaire: {},
+      questionnaire: [],
       question: {},
       answers: [],
       selectedAnswer: null,
@@ -43,18 +43,19 @@ class App extends Component {
 
     this.fetchList = this.fetchList.bind(this);
 
-    this.fetchQuestion = this.fetchQuestion.bind(this);
     this.fetchQuestionnaire = this.fetchQuestionnaire.bind(this);
     this.fetchFirstQuestion = this.fetchFirstQuestion.bind(this);
+    this.fetchQuestion = this.fetchQuestion.bind(this);
     
   }
 
   // fetches first question based on selected survey
 
-  fetchQuestionnaire = (id) => {
+  fetchQuestionnaire = (step) => {
+    console.log("fetchQuestionnaire Called");
     stateCopy = {...this.state};
-    stateCopy.questionnaire = questionnaires.filter(q => { return q.id === id });
-    this.setState(stateCopy);
+    stateCopy.questionnaire = surveys.filter(q => { return q.id === stateCopy.selectedQuestionnaireId });
+    this.setState(stateCopy, ()=>{this.updateCurrentStep(step)});
   }
   
   // call back for setState in onPickerValueChange
@@ -123,6 +124,8 @@ class App extends Component {
             onPickerValueChange = {this.onPickerValueChange}
             updateSelectedQuestionnaireId = {this.updateSelectedQuestionnaireId}
             updateCurrentStep = {this.updateCurrentStep}
+
+            fetchQuestionnaire = {this.fetchQuestionnaire}
           />
         }
 
