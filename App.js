@@ -188,7 +188,7 @@ class App extends Component {
           <Question 
             question = {this.state.question}
             answers = {this.state.answers}
-            selectedAnswerId = {this.state.selectedAnswerId}
+            selectedAnswer = {this.state.selectedAnswer}
             selectAnswer = {this.selectAnswer}
             submitAnswer = {this.submitAnswer}
             fetchQuestion = {this.fetchQuestion}
