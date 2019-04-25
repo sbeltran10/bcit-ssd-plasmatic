@@ -16,6 +16,8 @@ const SurveyResults = ({ resultsText, onExitButtonPress }) => (
   </View>
 )
 
+
+
 SurveyResults.defaultProps = {
   resultsText: "Thank you for finishing the survey!"  
 }
