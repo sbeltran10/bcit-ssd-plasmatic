@@ -11,6 +11,7 @@ import { View, Text } from "react-native";
 import Index from './src/containers/Index';
 import Intro from './src/containers/Intro';
 import Question from './src/components/Question';
+import SurveyResults from './src/components/SurveyResults';
 import styles from './src/styles/main';
 
 //example data
@@ -41,6 +42,7 @@ class App extends Component {
 
     this.selectAnswer = this.selectAnswer.bind(this);
     this.submitAnswer = this.submitAnswer.bind(this);
+    this.saveToSummary = this.saveToSummary.bind(this);
 
     this.fetchList = this.fetchList.bind(this);
     this.fetchQuestionnaire = this.fetchQuestionnaire.bind(this);
@@ -80,13 +82,13 @@ class App extends Component {
 
   // fetches first question based on selected survey
   fetchQuestionnaire = (step) => {
-    stateCopy = {...this.state};
+    let stateCopy = {...this.state};
     stateCopy.questionnaire = surveys.filter(q => { return q.id === stateCopy.selectedQuestionnaireId });
     this.setState(stateCopy, ()=>{this.updateCurrentStep(step)});
   }
 
   fetchFirstQuestion = (step) => {
-    stateCopy = {...this.state};
+    let stateCopy = {...this.state};
     stateCopy.question = questions.filter(q => { return q.id === this.state.questionnaire[0].firstQuestionId });
     this.setState(stateCopy, () => { this.fetchAnswers(step) });
   }
@@ -104,8 +106,15 @@ class App extends Component {
 
   fetchQuestion = (step) => {
     let stateCopy = {...this.state};
-    stateCopy.question = questions.filter(q => { return q.id === this.state.selectedAnswer[0].childQuestion });
-    this.setState(stateCopy, () => { this.fetchAnswers(step) });
+    let newQuestion = questions.filter(q => { return q.id === this.state.selectedAnswer[0].childQuestion });
+    if (newQuestion.length === 0) {
+      stateCopy.question = [];
+      stateCopy.currentStep = 'results';
+      this.setState(stateCopy);
+    } else {
+      stateCopy.question = newQuestion;
+      this.setState(stateCopy, () => { this.fetchAnswers(step) });
+    }
   }
 
   selectAnswer = (id) => {
@@ -116,6 +125,12 @@ class App extends Component {
 
   submitAnswer = (step) => {
     this.fetchQuestion(step);
+  }
+
+  saveToSummary = (qa) => {
+    stateCopy = {...this.state};
+    stateCopy.summary.append(qa);
+    this.setState(stateCopy);
   }
 
   /*---  render  ---*/
@@ -151,7 +166,7 @@ class App extends Component {
 
         {/* ---question screen--- */}
         {
-          this.state.currentStep === 'question' &&
+          this.state.currentStep === 'question' && this.state.question.length !== 0 &&
           <Question 
             question = {this.state.question}
             answers = {this.state.answers}
@@ -160,6 +175,14 @@ class App extends Component {
             submitAnswer = {this.submitAnswer}
             fetchQuestion = {this.fetchQuestion}
             modalVisible = {this.state.modalVisible}
+          />
+        }
+
+        {/* ---result screen--- */}
+        {
+          this.state.currentStep === 'results' && this.state.question.length === 0 &&
+          <SurveyResults 
+            saveToSummary = {this.saveToSummary}
           />
         }
 
