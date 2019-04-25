@@ -43,6 +43,7 @@ class App extends Component {
     this.selectAnswer = this.selectAnswer.bind(this);
     this.submitAnswer = this.submitAnswer.bind(this);
     this.saveToSummary = this.saveToSummary.bind(this);
+    this.onExitButtonPress = this.onExitButtonPress.bind(this);
 
     this.fetchList = this.fetchList.bind(this);
     this.fetchQuestionnaire = this.fetchQuestionnaire.bind(this);
@@ -133,6 +134,13 @@ class App extends Component {
     this.setState(stateCopy);
   }
 
+  onExitButtonPress = () => {
+    let step = 'index'
+    let stateCopy = {...this.state};
+    stateCopy.type = '';
+    this.setState(stateCopy, () => { this.updateCurrentStep(step) })
+  }
+
   /*---  render  ---*/
 
 
@@ -183,6 +191,7 @@ class App extends Component {
           this.state.currentStep === 'results' && this.state.question.length === 0 &&
           <SurveyResults 
             saveToSummary = {this.saveToSummary}
+            onExitButtonPress = {this.onExitButtonPress}
           />
         }
 
