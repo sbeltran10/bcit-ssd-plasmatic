@@ -36,7 +36,7 @@ class Index extends Component {
                 
                 <View style={styles.buttonContainer}>
                     <Button 
-                        title={"Start questionnaire " + this.props.selectedQuestionnaireId}
+                        title={"Start " + this.props.title}
                         onPress={() => {
                             let step = 'intro';
                             let fetchQuestionnaire = this.props.fetchQuestionnaire;

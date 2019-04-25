@@ -28,6 +28,7 @@ class App extends Component {
       questionnaires: [],
       currentStep: "index",
       selectedQuestionnaireId: null,
+      title:'',
       questionnaire: [],
       question: [],
       answers: [],
@@ -38,6 +39,7 @@ class App extends Component {
 
     this.onPickerValueChange = this.onPickerValueChange.bind(this);
     this.updateSelectedQuestionnaireId = this.updateSelectedQuestionnaireId.bind(this);
+    // this.updateSelectedQuestionnaireTitle = this.updateSelectedQuestionnaireTitle.bind(this);
     this.updateCurrentStep = this.updateCurrentStep.bind(this);
 
     this.selectAnswer = this.selectAnswer.bind(this);
@@ -74,6 +76,12 @@ class App extends Component {
     this.setState(stateCopy, () => { console.log(this.state) })
   }
 
+  // updateSelectedQuestionnaireTitle = (title) => {
+  //   let stateCopy = {...this.state};
+  //   stateCopy.title = title;
+  //   this.setState(stateCopy, () => { console.log(this.state) })
+  // }
+
   // used as callback @ fetchQuestionnaire, fetchAnswers
   updateCurrentStep = (step) => {
     let stateCopy = {...this.state};
@@ -85,7 +93,7 @@ class App extends Component {
   fetchQuestionnaire = (step) => {
     let stateCopy = {...this.state};
     stateCopy.questionnaire = surveys.filter(q => { return q.id === stateCopy.selectedQuestionnaireId });
-    this.setState(stateCopy, ()=>{this.updateCurrentStep(step)});
+    this.setState(stateCopy, ()=>{ this.updateCurrentStep(step) });
   }
 
   fetchFirstQuestion = (step) => {
@@ -128,17 +136,18 @@ class App extends Component {
     this.fetchQuestion(step);
   }
 
-  saveToSummary = (qa) => {
+  // qa(question & answer pair)
+  saveToSummary = (qa, step) => {
     stateCopy = {...this.state};
-    stateCopy.summary.append(qa);
-    this.setState(stateCopy);
+    stateCopy.summary.push(qa);
+    this.setState(stateCopy, () => { console.log(this.state); this.submitAnswer(step) });
   }
 
   onExitButtonPress = () => {
     let step = 'index'
     let stateCopy = {...this.state};
     stateCopy.type = '';
-    this.setState(stateCopy, () => { this.updateCurrentStep(step) })
+    this.setState(stateCopy, () => { console.log(this.state); this.updateCurrentStep(step) })
   }
 
   /*---  render  ---*/
@@ -155,9 +164,11 @@ class App extends Component {
             questionnaires = {this.state.questionnaires}
             selectedQuestionnaireId = {this.state.selectedQuestionnaireId}
             type = {this.state.type}
+            title = {this.state.title}
 
             onPickerValueChange = {this.onPickerValueChange}
             updateSelectedQuestionnaireId = {this.updateSelectedQuestionnaireId}
+            updateSelectedQuestionnaireTitle = {this.updateSelectedQuestionnaireTitle}
             fetchQuestionnaire = {this.fetchQuestionnaire}
           />
         }
@@ -179,8 +190,9 @@ class App extends Component {
             question = {this.state.question}
             answers = {this.state.answers}
             selectedAnswerId = {this.state.selectedAnswerId}
+            selectedAnswer = {this.state.selectedAnswer}
             selectAnswer = {this.selectAnswer}
-            submitAnswer = {this.submitAnswer}
+            saveToSummary = {this.saveToSummary}
             fetchQuestion = {this.fetchQuestion}
             modalVisible = {this.state.modalVisible}
           />
