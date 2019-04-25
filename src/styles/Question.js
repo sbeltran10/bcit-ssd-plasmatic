@@ -4,15 +4,13 @@ export default StyleSheet.create({
   mainView: {
     flex:1,
     justifyContent: 'space-between',
-    backgroundColor: 'white',
-    backgroundColor: 'green',
   },
   questionView: {
-    padding: 10,
-    backgroundColor: 'yellow',
+    padding: 20,
+    borderBottomColor: '#84CFFF',
+    borderBottomWidth: 2
   },
   answersView: {
-    backgroundColor: 'red',
     flex: 1
   },
   scrollView: {
@@ -20,10 +18,10 @@ export default StyleSheet.create({
     justifyContent: 'center'
   },
   answerContainer: {
-    backgroundColor: 'white'
+    backgroundColor: '#F5FCFF'
   },
   answerContainerSelected: {
-    backgroundColor: '#d8d8ff'
+    backgroundColor: '#84CFFF'
   },
   submitButton: {
     height: 50,
