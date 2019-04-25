@@ -136,17 +136,18 @@ class App extends Component {
     this.fetchQuestion(step);
   }
 
-  saveToSummary = (qa) => {
+  // qa(question & answer pair)
+  saveToSummary = (qa, step) => {
     stateCopy = {...this.state};
-    stateCopy.summary.append(qa);
-    this.setState(stateCopy);
+    stateCopy.summary.push(qa);
+    this.setState(stateCopy, () => { console.log(this.state); this.submitAnswer(step) });
   }
 
   onExitButtonPress = () => {
     let step = 'index'
     let stateCopy = {...this.state};
     stateCopy.type = '';
-    this.setState(stateCopy, () => { this.updateCurrentStep(step) })
+    this.setState(stateCopy, () => { console.log(this.state); this.updateCurrentStep(step) })
   }
 
   /*---  render  ---*/
@@ -188,9 +189,10 @@ class App extends Component {
           <Question 
             question = {this.state.question}
             answers = {this.state.answers}
+            selectedAnswerId = {this.state.selectedAnswerId}
             selectedAnswer = {this.state.selectedAnswer}
             selectAnswer = {this.selectAnswer}
-            submitAnswer = {this.submitAnswer}
+            saveToSummary = {this.saveToSummary}
             fetchQuestion = {this.fetchQuestion}
             modalVisible = {this.state.modalVisible}
           />

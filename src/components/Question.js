@@ -5,7 +5,7 @@ import styles from '../styles/Question';
 import { ScrollView } from 'react-native-gesture-handler';
 import PropTypes from 'prop-types';
 
-const Question = ({ question, answers, selectAnswer, submitAnswer, modalVisible, selectedAnswer }) => (
+const Question = ({ question, answers, selectAnswer, selectedAnswer, saveToSummary, modalVisible, selectedAnswerId }) => (
   <View style={styles.mainView}>
     <View style={styles.questionView}>
       <Text h4>{question[0].content}</Text>
@@ -35,11 +35,12 @@ const Question = ({ question, answers, selectAnswer, submitAnswer, modalVisible,
     <Button
       buttonStyle={styles.submitButton}
       onPress={() => {
-        let step = "question";
-        submitAnswer(step);
-      }
-      }
-      title="Submit answer" />
+          let step = "question";
+          let qa = {q: question[0].content, a: selectedAnswer[0].content};
+          saveToSummary(qa, step);
+      }}
+      title="Submit answer" 
+    />
     <Overlay
       isVisible={modalVisible}
       windowBackgroundColor="rgba(255, 255, 255, .5)"
