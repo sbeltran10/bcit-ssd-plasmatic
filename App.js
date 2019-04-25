@@ -39,7 +39,7 @@ class App extends Component {
 
     this.onPickerValueChange = this.onPickerValueChange.bind(this);
     this.updateSelectedQuestionnaireId = this.updateSelectedQuestionnaireId.bind(this);
-    this.updateSelectedQuestionnaireTitle = this.updateSelectedQuestionnaireTitle.bind(this);
+    // this.updateSelectedQuestionnaireTitle = this.updateSelectedQuestionnaireTitle.bind(this);
     this.updateCurrentStep = this.updateCurrentStep.bind(this);
 
     this.selectAnswer = this.selectAnswer.bind(this);
