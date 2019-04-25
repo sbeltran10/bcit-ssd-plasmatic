@@ -28,6 +28,7 @@ class App extends Component {
       questionnaires: [],
       currentStep: "index",
       selectedQuestionnaireId: null,
+      title:'',
       questionnaire: [],
       question: [],
       answers: [],
@@ -38,6 +39,7 @@ class App extends Component {
 
     this.onPickerValueChange = this.onPickerValueChange.bind(this);
     this.updateSelectedQuestionnaireId = this.updateSelectedQuestionnaireId.bind(this);
+    this.updateSelectedQuestionnaireTitle = this.updateSelectedQuestionnaireTitle.bind(this);
     this.updateCurrentStep = this.updateCurrentStep.bind(this);
 
     this.selectAnswer = this.selectAnswer.bind(this);
@@ -71,6 +73,12 @@ class App extends Component {
   updateSelectedQuestionnaireId = (id) => {
     let stateCopy = {...this.state};
     stateCopy.selectedQuestionnaireId = id;
+    this.setState(stateCopy, () => { console.log(this.state) })
+  }
+
+  updateSelectedQuestionnaireTitle = (title) => {
+    let stateCopy = {...this.state};
+    stateCopy.title = title;
     this.setState(stateCopy, () => { console.log(this.state) })
   }
 
@@ -155,9 +163,11 @@ class App extends Component {
             questionnaires = {this.state.questionnaires}
             selectedQuestionnaireId = {this.state.selectedQuestionnaireId}
             type = {this.state.type}
+            title = {this.state.title}
 
             onPickerValueChange = {this.onPickerValueChange}
             updateSelectedQuestionnaireId = {this.updateSelectedQuestionnaireId}
+            updateSelectedQuestionnaireTitle = {this.updateSelectedQuestionnaireTitle}
             fetchQuestionnaire = {this.fetchQuestionnaire}
           />
         }
