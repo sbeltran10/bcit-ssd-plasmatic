@@ -1,16 +1,23 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 export default StyleSheet.create({
   mainView: {
-    flex: 1,
+    flex:1,
     justifyContent: 'space-between',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    backgroundColor: 'green',
   },
   questionView: {
-    padding: 10
+    padding: 10,
+    backgroundColor: 'yellow',
   },
   answersView: {
-    flex: 1,
+    backgroundColor: 'red',
+    flex: 1
+  },
+  scrollView: {
+    flexGrow: 1,
+    justifyContent: 'center'
   },
   answerContainer: {
     backgroundColor: 'white'

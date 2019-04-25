@@ -11,7 +11,7 @@ const Question = ({ question, answers, selectAnswer, submitAnswer, modalVisible,
       <Text h4>{question[0].content}</Text>
     </View>
     <View style={styles.answersView}>
-      <ScrollView>
+      <ScrollView contentContainerStyle={styles.scrollView}>
         {
           answers.map((answer, i) => (
             <ListItem
