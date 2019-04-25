@@ -4,7 +4,7 @@ import {Text, View, Picker} from 'react-native';
 
 export default (props) => (
     <View>
-        <Picker 
+        <Picker mode="dropdown"
             // style={styles.title} 
             selectedValue={props.selectedValue} 
             onValueChange={(value, index) => props.onSelect(value)}>

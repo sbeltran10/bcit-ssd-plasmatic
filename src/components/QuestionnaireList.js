@@ -3,13 +3,12 @@ import {Text, View} from 'react-native';
 import styles from '../styles/QuestionnaireList';
 
 export default (props) => (
-    <View>
+    <View style={styles.listContainer}>
         {props.questionnaires.map((item, key) => (
             <Text
-                // style={styles.listContainer}
+                style={styles.items}
                 key={key} 
-                onPress={()=>(props.onSelect(item.id))}>
-            
+                onPress={()=>(props.onSelect(item.id))}>          
             {item.title}
         
             </Text>
