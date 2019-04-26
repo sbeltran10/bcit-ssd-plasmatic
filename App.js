@@ -82,6 +82,7 @@ class App extends Component {
   onPickerValueChange = (type) => {
     let stateCopy = {...this.state};
     stateCopy.type = type;
+    if(type === '0') stateCopy.selectedQuestionnaireId = 0;
     this.setState(stateCopy, () => this.fetchList());
   }
 
