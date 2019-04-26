@@ -25,7 +25,8 @@ class Index extends Component {
                     />                  
                     {
                         this.props.type !== '' &&
-                        <QuestionnaireList 
+                        <QuestionnaireList
+                        selectedQuestionnaireId = {this.props.selectedQuestionnaireId} 
                         questionnaires={this.props.questionnaires} 
                         onSelect={(id)=> {
                             let updater = this.props.updateSelectedQuestionnaireId;
@@ -35,7 +36,7 @@ class Index extends Component {
                 </View>
                 
                 <View style={styles.buttonContainer}>
-                    <Button 
+                    <Button style={styles.button}
                         title={"Start"}
                         onPress={() => {
                             if(this.props.selectedQuestionnaireId > 0){
