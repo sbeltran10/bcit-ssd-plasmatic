@@ -19,6 +19,7 @@ import surveys from './example/surveys.json';
 import questions from './example/questions.json';
 import answers from './example/answers.json'
 import results from './example/results.json';
+import QuestionsAPI from './src/api/QuestionAPI';
 
 class App extends Component {
   constructor(props) {
@@ -213,3 +214,11 @@ class App extends Component {
 }
 
 export default App;
+
+
+// QuestionsAPI.readById(1, function(error, object){
+//   if(error) alert(error)
+//   else{
+//     this.setState({data:data})
+//   }
+// })
