@@ -19,5 +19,4 @@ QuestionnaireAPI.getByType = (type, cb) => {
         })
 }
 
-
 export default QuestionnaireAPI;
