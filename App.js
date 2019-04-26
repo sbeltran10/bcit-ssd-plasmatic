@@ -39,7 +39,7 @@ class App extends Component {
 
     this.onPickerValueChange = this.onPickerValueChange.bind(this);
     this.updateSelectedQuestionnaireId = this.updateSelectedQuestionnaireId.bind(this);
-    this.updateSelectedQuestionnaireTitle = this.updateSelectedQuestionnaireTitle.bind(this);
+    // this.updateSelectedQuestionnaireTitle = this.updateSelectedQuestionnaireTitle.bind(this);
     this.updateCurrentStep = this.updateCurrentStep.bind(this);
 
     this.selectAnswer = this.selectAnswer.bind(this);
@@ -76,11 +76,11 @@ class App extends Component {
     this.setState(stateCopy, () => { console.log(this.state) })
   }
 
-  updateSelectedQuestionnaireTitle = (title) => {
-    let stateCopy = {...this.state};
-    stateCopy.title = title;
-    this.setState(stateCopy, () => { console.log(this.state) })
-  }
+  // updateSelectedQuestionnaireTitle = (title) => {
+  //   let stateCopy = {...this.state};
+  //   stateCopy.title = title;
+  //   this.setState(stateCopy, () => { console.log(this.state) })
+  // }
 
   // used as callback @ fetchQuestionnaire, fetchAnswers
   updateCurrentStep = (step) => {
@@ -93,7 +93,7 @@ class App extends Component {
   fetchQuestionnaire = (step) => {
     let stateCopy = {...this.state};
     stateCopy.questionnaire = surveys.filter(q => { return q.id === stateCopy.selectedQuestionnaireId });
-    this.setState(stateCopy, ()=>{this.updateCurrentStep(step)});
+    this.setState(stateCopy, ()=>{ this.updateCurrentStep(step) });
   }
 
   fetchFirstQuestion = (step) => {

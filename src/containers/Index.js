@@ -27,11 +27,9 @@ class Index extends Component {
                         this.props.type !== '' &&
                         <QuestionnaireList 
                         questionnaires={this.props.questionnaires} 
-                        onSelect={(id, title)=> {
+                        onSelect={(id)=> {
                             let updater = this.props.updateSelectedQuestionnaireId;
-                            let updateTitle = this.props.updateSelectedQuestionnaireTitle;
                             updater(id);
-                            updateTitle(title);
                         }}/>        
                     }
                 </View>
