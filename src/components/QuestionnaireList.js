@@ -4,7 +4,7 @@ import {ListItem} from 'react-native-elements';
 import styles from '../styles/QuestionnaireList';
 
 export default (props) => (
-    <View>
+    <View style={styles.listContainer}>
         <ScrollView>
             {
              props.questionnaires.map((item) => (
