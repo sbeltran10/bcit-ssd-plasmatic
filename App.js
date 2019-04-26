@@ -15,6 +15,7 @@ import SurveyResults from './src/components/SurveyResults';
 import styles from './src/styles/main';
 
 import AnswerAPI from './src/api/AnswerAPI';
+import QuestionnaireAPI from './src/api/QuestionnaireAPI';
 
 //example data
 import surveys from './example/surveys.json';
@@ -57,9 +58,29 @@ class App extends Component {
     
   }
 
-  // componentDidMount() {
-  //   AnswerAPI.read();
-  // }
+  // cb = (err, data) => {
+  //     let stateCopy = {...this.state};
+  //     if(err) console.log(err);
+  //     stateCopy.answers = data;
+  //     this.setState(stateCopy, () => { console.log(this.state) })
+  //   };
+
+  componentDidMount() {
+    // AnswerAPI.getById(1, (err, data) => {
+    //   let stateCopy = {...this.state};
+    //   if(err) console.log(err);
+    //   stateCopy.answers = data;
+    //   this.setState(stateCopy, () => { console.log(this.state)});
+    // });
+
+    QuestionnaireAPI.getAll('survey', (err, data) => {
+      let stateCopy = {...this.state};
+      if(err) console.log(err);
+      stateCopy.questionnaires = data;
+      this.setState(stateCopy, () => { console.log(this.state) });
+    })
+
+  }
 
   
   // call back for setState in onPickerValueChange
