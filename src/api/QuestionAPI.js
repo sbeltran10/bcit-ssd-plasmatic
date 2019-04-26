@@ -7,7 +7,7 @@ QuestionsAPI.readById = (id, callback) => {
     .then((response) => {
       if (response.status !== 200) {
         // Handle error response
-        callback('error')
+        callback('An error occured getting the response from the server')
         return;
       }
 
