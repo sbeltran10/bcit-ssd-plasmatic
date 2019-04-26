@@ -4,6 +4,8 @@ import { Text, Button, ListItem, Overlay } from 'react-native-elements';
 import styles from '../styles/Question';
 import { ScrollView } from 'react-native-gesture-handler';
 import PropTypes from 'prop-types';
+import Video from 'react-native-video';
+
 
 const Question = ({ question, answers, selectAnswer, selectedAnswer, saveToSummary, modalVisible, selectedAnswerId }) => (
   <View style={styles.mainView}>
