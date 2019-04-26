@@ -14,6 +14,8 @@ import Question from './src/components/Question';
 import SurveyResults from './src/components/SurveyResults';
 import styles from './src/styles/main';
 
+import AnswerAPI from './src/api/AnswerAPI';
+
 //example data
 import surveys from './example/surveys.json';
 import questions from './example/questions.json';
@@ -54,6 +56,10 @@ class App extends Component {
     this.fetchAnswers = this.fetchAnswers.bind(this);
     
   }
+
+  // componentDidMount() {
+  //   AnswerAPI.read();
+  // }
 
   
   // call back for setState in onPickerValueChange
