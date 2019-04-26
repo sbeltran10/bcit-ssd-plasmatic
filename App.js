@@ -39,7 +39,6 @@ class App extends Component {
 
     this.onPickerValueChange = this.onPickerValueChange.bind(this);
     this.updateSelectedQuestionnaireId = this.updateSelectedQuestionnaireId.bind(this);
-    // this.updateSelectedQuestionnaireTitle = this.updateSelectedQuestionnaireTitle.bind(this);
     this.updateCurrentStep = this.updateCurrentStep.bind(this);
 
     this.selectAnswer = this.selectAnswer.bind(this);
@@ -75,12 +74,6 @@ class App extends Component {
     stateCopy.selectedQuestionnaireId = id;
     this.setState(stateCopy, () => { console.log(this.state) })
   }
-
-  // updateSelectedQuestionnaireTitle = (title) => {
-  //   let stateCopy = {...this.state};
-  //   stateCopy.title = title;
-  //   this.setState(stateCopy, () => { console.log(this.state) })
-  // }
 
   // used as callback @ fetchQuestionnaire, fetchAnswers
   updateCurrentStep = (step) => {
