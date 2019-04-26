@@ -9,7 +9,7 @@ export default (props) => (
                 <View key = {item.id} style = {styles.item}>
                     <Text
                         key={key} 
-                        onPress={()=>(props.onSelect(item.id, item.title))}>
+                        onPress={ ()=> props.onSelect(item.id) }>
                         {item.title}      
                     </Text>
                 </View>

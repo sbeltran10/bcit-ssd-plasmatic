@@ -14,6 +14,9 @@ import Question from './src/components/Question';
 import SurveyResults from './src/components/SurveyResults';
 import styles from './src/styles/main';
 
+import AnswerAPI from './src/api/AnswerAPI';
+import QuestionnaireAPI from './src/api/QuestionnaireAPI';
+
 //example data
 import surveys from './example/surveys.json';
 import questions from './example/questions.json';
@@ -55,12 +58,24 @@ class App extends Component {
     
   }
 
+  componentDidMount() {
+    // AnswerAPI.getById(1, (err, data) => {
+    //   let stateCopy = {...this.state};
+    //   if(err) console.log(err);
+    //   stateCopy.answers = data;
+    //   this.setState(stateCopy, () => { console.log(this.state)});
+    // });
+  }
+
   
   // call back for setState in onPickerValueChange
   fetchList = () => {
-    let stateCopy = {...this.state};
-    stateCopy.questionnaires = surveys.filter(q => { return q.type === this.state.type });
-    this.setState(stateCopy);
+    QuestionnaireAPI.getByType(this.state.type, (err, data) => {
+      let stateCopy = {...this.state};
+      if(err) console.log(err);
+      stateCopy.questionnaires = data.Items;
+      this.setState(stateCopy);
+    })
   }
 
   // updates type and populate questionnaire array with corresponding list of questionnaires
@@ -86,7 +101,7 @@ class App extends Component {
   // fetches first question based on selected survey
   fetchQuestionnaire = (step) => {
     let stateCopy = {...this.state};
-    stateCopy.questionnaire = surveys.filter(q => { return q.id === stateCopy.selectedQuestionnaireId });
+    stateCopy.questionnaire = stateCopy.questionnaires.filter(q => { return q.id === stateCopy.selectedQuestionnaireId });
     this.setState(stateCopy, ()=>{ this.updateCurrentStep(step) });
   }
 
