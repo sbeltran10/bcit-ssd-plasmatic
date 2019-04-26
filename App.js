@@ -58,13 +58,6 @@ class App extends Component {
     
   }
 
-  // cb = (err, data) => {
-  //     let stateCopy = {...this.state};
-  //     if(err) console.log(err);
-  //     stateCopy.answers = data;
-  //     this.setState(stateCopy, () => { console.log(this.state) })
-  //   };
-
   componentDidMount() {
     // AnswerAPI.getById(1, (err, data) => {
     //   let stateCopy = {...this.state};
@@ -72,22 +65,17 @@ class App extends Component {
     //   stateCopy.answers = data;
     //   this.setState(stateCopy, () => { console.log(this.state)});
     // });
-
-    QuestionnaireAPI.getAll('survey', (err, data) => {
-      let stateCopy = {...this.state};
-      if(err) console.log(err);
-      stateCopy.questionnaires = data;
-      this.setState(stateCopy, () => { console.log(this.state) });
-    })
-
   }
 
   
   // call back for setState in onPickerValueChange
   fetchList = () => {
-    let stateCopy = {...this.state};
-    stateCopy.questionnaires = surveys.filter(q => { return q.type === this.state.type });
-    this.setState(stateCopy);
+    QuestionnaireAPI.getByType(this.state.type, (err, data) => {
+      let stateCopy = {...this.state};
+      if(err) console.log(err);
+      stateCopy.questionnaires = data.Items;
+      this.setState(stateCopy);
+    })
   }
 
   // updates type and populate questionnaire array with corresponding list of questionnaires
