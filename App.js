@@ -107,7 +107,7 @@ class App extends Component {
   // fetches first question based on selected survey
   fetchQuestionnaire = (step) => {
     let stateCopy = {...this.state};
-    stateCopy.questionnaire = surveys.filter(q => { return q.id === stateCopy.selectedQuestionnaireId });
+    stateCopy.questionnaire = stateCopy.questionnaires.filter(q => { return q.id === stateCopy.selectedQuestionnaireId });
     this.setState(stateCopy, ()=>{ this.updateCurrentStep(step) });
   }
 
