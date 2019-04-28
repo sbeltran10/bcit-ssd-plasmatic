@@ -43,8 +43,6 @@ class Index extends Component {
                                 let step = 'intro';
                                 let fetchQuestionnaire = this.props.fetchQuestionnaire;
                                 fetchQuestionnaire(step);
-                            } else {
-                                alert('Please select a questionnaire');
                             }
                         }}/>  
                 </View>

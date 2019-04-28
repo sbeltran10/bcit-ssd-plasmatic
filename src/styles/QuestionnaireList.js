@@ -2,14 +2,17 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({  
       listContainer:{
-        marginTop: 30,
+        marginTop: 20,
         borderColor: 'grey',
-        borderWidth: 1
+        borderWidth: 1,
+        height: '70%',
+        borderRadius: 5
       },
       questionnaireContainer: {
-        backgroundColor: '#F5FCFF'
+        backgroundColor: '#F5FCFF',
      },
       questionnaireContainerSelected: {
-        backgroundColor: '#84CFFF'
+        backgroundColor: '#84CFFF',
+        borderColor: 'grey',
      }
     })
