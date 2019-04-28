@@ -5,8 +5,6 @@ export default StyleSheet.create({
         marginTop: 20,
         borderColor: 'grey',
         borderWidth: 1,
-        height: '70%',
-        borderRadius: 5
       },
       questionnaireContainer: {
         backgroundColor: '#F5FCFF',
