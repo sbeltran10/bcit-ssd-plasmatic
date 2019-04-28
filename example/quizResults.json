@@ -1,0 +1,22 @@
+{
+    "title": "Quiz About the Capitals of Canada",
+    "totalCountOfQuestions": 3,
+    "countCorrect": 2,
+    "quizResults": [
+      {
+        "questionId":1,
+        "letterAnswer": "A",
+        "isRightWrong": "Right"
+      },
+      {
+        "questionId":1,
+        "letterAnswer": "C",
+        "isRightWrong": "Right"
+      },
+      {
+        "questionId":1,
+        "letterAnswer": "D",
+        "isRightWrong": "Wrong"
+      }
+    ]
+  }

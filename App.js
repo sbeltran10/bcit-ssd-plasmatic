@@ -12,6 +12,7 @@ import Index from './src/containers/Index';
 import Intro from './src/containers/Intro';
 import Question from './src/components/Question';
 import SurveyResults from './src/components/SurveyResults';
+import QuizResults from './src/components/QuizResults';
 import styles from './src/styles/main';
 
 import AnswerAPI from './src/api/AnswerAPI';
@@ -22,6 +23,7 @@ import surveys from './example/surveys.json';
 import questions from './example/questions.json';
 import answers from './example/answers.json'
 import results from './example/results.json';
+import quizResults from './example/quizResults.json';
 import QuestionsAPI from './src/api/QuestionAPI';
 
 class App extends Component {
@@ -38,7 +40,8 @@ class App extends Component {
       answers: [],
       selectedAnswer: [],
       modalVisible: false,
-      summary: []
+      summary: [],
+      quizResults:[],
     }
 
     this.onPickerValueChange = this.onPickerValueChange.bind(this);
@@ -212,6 +215,14 @@ class App extends Component {
           this.state.currentStep === 'results' && this.state.question.length === 0 &&
           <SurveyResults 
             saveToSummary = {this.saveToSummary}
+            onExitButtonPress = {this.onExitButtonPress}
+          />
+        }
+        {/* ---quiz result screen--- */}
+        {
+          this.state.currentStep === 'quizResults' && this.state.question.length === 0 &&
+          <QuizResults 
+            
             onExitButtonPress = {this.onExitButtonPress}
           />
         }
