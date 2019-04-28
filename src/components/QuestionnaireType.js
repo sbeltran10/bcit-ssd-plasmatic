@@ -11,7 +11,7 @@ export default (props) => (
             style={styles.picker}
             selectedValue={props.selectedValue} 
             onValueChange={(value, index) => props.onSelect(value)}>
-            <Picker.Item label="Select" value="0"></Picker.Item>
+            {/* <Picker.Item label="Select" value="0"></Picker.Item> */}
             <Picker.Item label="Survey" value="survey"></Picker.Item>
             <Picker.Item label="Quiz" value="quiz"></Picker.Item>
             <Picker.Item label="Game" value="game"></Picker.Item>
