@@ -1,41 +1,64 @@
-import React from 'react';
 
-import { FlatList, Text, View, Button} from 'react-native';
+import React, { Component } from 'react';
+import { View,ScrollView } from 'react-native';
+import { Text, Button } from 'react-native-elements';
 import styles from '../styles/QuizResults';
-
 import PropTypes from 'prop-types';
 
-const QuizResults = ({ title, correctCount, totalCount, finalQuizResults, onExitButtonPress   }) => (
-  <View style={styles.mainView}>
-    <View style={styles.titleView}>
-      <Text h2>{title}</Text>
-    </View>
-    <View style={styles.titleView}>
-      <Text h3>Score: {correctCount}/{totalCount}</Text>
-    </View>
-    <FlatList style={styles.tableView}>
-        data=finalQuizResults
-        keyExtractor={(x , i) => i}
-        renderItem={({item}) => 
-        <Text style={styles.item}>{`${item.number} ${item.answer} ${item.result}`}
-        </Text>} 
-    </FlatList>
-    <Button
-      buttonStyle={styles.submitButton}
-      onPress={onExitButtonPress}
-      title="Exit" 
-    />
-    </View>
-)
+class QuizResults extends Component {
 
+  render() {
+    return (
+        <View>
+           <Text h2>{this.props.quizTitle}</Text>
+           <Text h3>Score: {this.props.countCorrect}/{this.props.totalCountOfQuestions}</Text>
+           <ScrollView>
+            {this.props.quizResults.map((item, key) => (
+                <View key = {item.questionNumber} style = {styles.item}>
+                    <Text key={key}>
+                        {item.questionNumber}.{item.questionText} 
+                        Your Answer: {item.answerText} 
+                        Is it correct?: {item.isRightWrong}   
+                        Correct Answer if was Wrong: {item.correctAnswer}    
+                    </Text>
+                </View>
+            ))}
+        </ScrollView>
+        <Button
+          containerStyle={styles.exitButton}
+          onPress={this.props.onExitButtonPress}
+        title="Exit" />
+            
+        </View>);
+}
+}
 QuizResults.propTypes = {
-  title: PropTypes.string,
-  correctCount: PropTypes.number,
-  totalCount: PropTypes.number,
-  finalQuizResults: PropTypes.array,
-  onExitButtonPress: PropTypes.func
   
+  onExitButtonPress: PropTypes.func
 };
-
 export default QuizResults;
 
+
+
+//const QuizResults = ({ title, onExitButtonPress, quizResults }) => (
+//  <View style={styles.mainView}>
+//    <View >
+//      <Text h2>{title}</Text>
+//    </View>
+    
+//    <Button
+//      containerStyle={styles.exitButton}
+//      onPress={onExitButtonPress}
+//      title="Exit"  
+//    />
+   
+//  </View>
+//)
+
+//QuizResults.propTypes = {
+//  quizResults: PropTypes.array,
+//  onExitButtonPress: PropTypes.func,
+//  title: PropTypes.string
+//};
+
+//export default QuizResults;

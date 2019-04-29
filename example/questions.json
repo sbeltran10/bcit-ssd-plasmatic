@@ -82,5 +82,20 @@
   {
     "id": 207,
     "content": "Which of the following months would you have available for traveling?"
+  },
+  {
+    "id": 1,
+    "content": "What is the capital of Alberta?",
+    "correctAnswerId": 701
+  },
+  {
+    "id": 2,
+    "content": "What is the capital of Ontario?",
+    "correctAnswerId": 704
+  },
+  {
+    "id": 3,
+    "content": "What is the capital of BC?",
+    "correctAnswerId": 9
   }
 ]

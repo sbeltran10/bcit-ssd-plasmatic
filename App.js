@@ -23,7 +23,7 @@ import surveys from './example/surveys.json';
 import questions from './example/questions.json';
 import answers from './example/answers.json'
 import results from './example/results.json';
-import quizResults from './example/quizResults.json';
+import testQuizResults from './example/quizResults.json';
 import QuestionsAPI from './src/api/QuestionAPI';
 
 class App extends Component {
@@ -41,7 +41,11 @@ class App extends Component {
       selectedAnswer: [],
       modalVisible: false,
       summary: [],
+      quizTitle: null,
       quizResults:[],
+      totalCountOfQuestions: null,
+      countCorrect: null
+
     }
 
     this.onPickerValueChange = this.onPickerValueChange.bind(this);
@@ -62,6 +66,14 @@ class App extends Component {
   }
 
   componentDidMount() {
+   
+    // Test Data for quiz results screen
+    //this.setState({quizTitle: testQuizResults.quizTitle});
+    //this.setState({countCorrect: testQuizResults.countCorrect});
+    //this.setState({totalCountOfQuestions: testQuizResults.totalCountOfQuestions});
+    //this.setState({quizResults: testQuizResults.quizResults});
+     
+               
     // AnswerAPI.getById(1, (err, data) => {
     //   let stateCopy = {...this.state};
     //   if(err) console.log(err);
@@ -210,6 +222,8 @@ class App extends Component {
           />
         }
 
+        {/* --- Need to add code to tell whether to go to results or quizResults screen---*/}
+
         {/* ---result screen--- */}
         {
           this.state.currentStep === 'results' && this.state.question.length === 0 &&
@@ -219,13 +233,16 @@ class App extends Component {
           />
         }
         {/* ---quiz result screen--- */}
-        {
-          this.state.currentStep === 'quizResults' && this.state.question.length === 0 &&
+        {/*
+          this.state.currentStep === 'results' && this.state.question.length === 0 &&
           <QuizResults 
-            
+            quizTitle = {this.state.quizTitle}
+            totalCountOfQuestions = {this.state.totalCountOfQuestions}
+            countCorrect = {this.state.countCorrect}
+            quizResults = {this.state.quizResults}
             onExitButtonPress = {this.onExitButtonPress}
           />
-        }
+        */}
 
       </View>
     );

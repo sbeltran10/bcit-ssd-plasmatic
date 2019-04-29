@@ -75,5 +75,12 @@
     "desc": "We want to know what you think about the beaches of the world",
     "type": "survey",
     "firstQuestionId": 200
+  },
+  {
+    "id": 1,
+    "title": "Provinces of Canada",
+    "desc": "A Quiz about the Provinces of Canada",
+    "type": "quiz",
+    "firstQuestionId": 3
   }
 ]
