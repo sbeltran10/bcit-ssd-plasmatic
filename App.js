@@ -17,14 +17,15 @@ import styles from './src/styles/main';
 
 import AnswerAPI from './src/api/AnswerAPI';
 import QuestionnaireAPI from './src/api/QuestionnaireAPI';
+import QuestionAPI from './src/api/QuestionAPI';
 
-//example data
-import surveys from './example/surveys.json';
+// example data
+// import surveys from './example/surveys.json';
 import questions from './example/questions.json';
 import answers from './example/answers.json'
 import results from './example/results.json';
+
 import testQuizResults from './example/quizResults.json';
-import QuestionsAPI from './src/api/QuestionAPI';
 
 class App extends Component {
   constructor(props) {
@@ -120,13 +121,24 @@ class App extends Component {
   fetchQuestionnaire = (step) => {
     let stateCopy = {...this.state};
     stateCopy.questionnaire = stateCopy.questionnaires.filter(q => { return q.id === stateCopy.selectedQuestionnaireId });
-    this.setState(stateCopy, ()=>{ this.updateCurrentStep(step) });
+    this.setState(stateCopy, ()=>{ console.log(this.state); this.updateCurrentStep(step) })
   }
 
   fetchFirstQuestion = (step) => {
-    let stateCopy = {...this.state};
-    stateCopy.question = questions.filter(q => { return q.id === this.state.questionnaire[0].firstQuestionId });
-    this.setState(stateCopy, () => { this.fetchAnswers(step) });
+    // let stateCopy = {...this.state};
+    // stateCopy.question = questions.filter(q => { return q.id === this.state.questionnaire[0].firstQuestionId });
+    // this.setState(stateCopy, () => { this.fetchAnswers(step) });
+    QuestionAPI.readById(this.state.questionnaire[0].firstQuestionId, (err, data) => {
+      if(err) console.log(err);
+      let stateCopy = {...this.state};
+      if(data.Items.length === 0) {
+        alert('no question found!');
+        stateCopy.currentStep = 'index';
+      }else {
+        stateCopy.question = data.Items;
+      }
+      this.setState(stateCopy, () => { this.fetchAnswers(step) });
+    })
   }
 
 
@@ -135,27 +147,42 @@ class App extends Component {
 
   // used as callback @ fetchFirstQuestion, fetchQuestion 
   fetchAnswers = (step) => {
-    let stateCopy = {...this.state};
-    stateCopy.answers = answers.filter(a => { return a.parentQuestion === this.state.question[0].id });
-    this.setState(stateCopy, () => {this.updateCurrentStep(step)});
+    AnswerAPI.getById((err, data) => {
+      if(err) console.log(err);
+      let stateCopy = {...this.state};
+      console.log(data);
+      stateCopy.answers = data.Items.filter(a => { return a.parentQuestion === this.state.question[0].id });
+      this.setState(stateCopy, () => {this.updateCurrentStep(step)})
+    })
   }
 
   fetchQuestion = (step) => {
-    let stateCopy = {...this.state};
-    let newQuestion = questions.filter(q => { return q.id === this.state.selectedAnswer[0].childQuestion });
-    if (newQuestion.length === 0) {
-      stateCopy.question = [];
-      stateCopy.currentStep = 'results';
-      this.setState(stateCopy);
-    } else {
-      stateCopy.question = newQuestion;
+    // let stateCopy = {...this.state};
+    // let newQuestion = questions.filter(q => { return q.id === this.state.selectedAnswer[0].childQuestion });
+    // if (newQuestion.length === 0) {
+    //   stateCopy.question = [];
+    //   stateCopy.currentStep = 'results';
+    //   this.setState(stateCopy);
+    // } else {
+    //   stateCopy.question = newQuestion;
+    //   this.setState(stateCopy, () => { this.fetchAnswers(step) });
+    // }
+    QuestionAPI.readById(this.state.selectedAnswer[0].childQuestion, (err, data) => {
+      if(err) console.log(err);
+      let stateCopy = {...this.state};
+      if(data.Items.length === 0) {
+        alert('no question found!')
+        stateCopy.currentStep = 'index';
+      }else {
+        stateCopy.question = data.Items;
+      }
       this.setState(stateCopy, () => { this.fetchAnswers(step) });
-    }
+    })
   }
 
   selectAnswer = (id) => {
     stateCopy = {...this.state};
-    stateCopy.selectedAnswer = answers.filter(a => { return a.id === id });
+    stateCopy.selectedAnswer = stateCopy.answers.filter(a => { return a.id === id });
     this.setState(stateCopy, () => { console.log(this.state) });
   }
 

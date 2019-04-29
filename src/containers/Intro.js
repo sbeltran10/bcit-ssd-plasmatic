@@ -19,7 +19,7 @@ class Intro extends Component {
 
       <Card title={this.props.questionnaire[0].title}>
         <Text style={{marginBottom: 10}}>
-          {this.props.questionnaire[0].description}
+          {this.props.questionnaire[0].desc}
         </Text>
         <Button
           icon={<Icon name='code' color='#ffffff' />}

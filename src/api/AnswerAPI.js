@@ -1,8 +1,8 @@
 let AnswerAPI = {};
 
-AnswerAPI.getById = (id, cb) => {
-  const baseUrl = 'https://p9q0yfl9o4.execute-api.us-east-2.amazonaws.com/prod';
-  fetch(`${baseUrl}?id=${id}`)
+AnswerAPI.getById = (cb) => {
+  const baseUrl = 'https://2d10mwnooe.execute-api.us-east-2.amazonaws.com/prod';
+  fetch(baseUrl)
     .then((r) => {
       if(r.status !== 200) {
         cb('error');
@@ -10,7 +10,7 @@ AnswerAPI.getById = (id, cb) => {
       }
       r.json()
       .then((rJson) => {
-        console.log(rJson);
+        // console.log(rJson);
         cb(null,rJson)
       })
       .catch((err) => {
