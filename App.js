@@ -65,6 +65,7 @@ class App extends Component {
     //   stateCopy.answers = data;
     //   this.setState(stateCopy, () => { console.log(this.state)});
     // });
+    this.onPickerValueChange('survey');
   }
 
   
@@ -82,6 +83,8 @@ class App extends Component {
   onPickerValueChange = (type) => {
     let stateCopy = {...this.state};
     stateCopy.type = type;
+    // reset selected questionnaire to none everytime a new category is selected
+    stateCopy.selectedQuestionnaireId = 0;
     this.setState(stateCopy, () => this.fetchList());
   }
 

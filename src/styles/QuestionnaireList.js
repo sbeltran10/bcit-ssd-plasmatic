@@ -2,19 +2,15 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({  
       listContainer:{
-        marginTop:30
+        marginTop: 20,
+        borderColor: 'grey',
+        borderWidth: 1,
       },
-      items: {
-        fontSize: 20,
-        textAlign: 'center'
-      },
-      item: {
-        fontSize: 20,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: 10,
-        margin: 2,
-        backgroundColor: '#84CFFF'
+      questionnaireContainer: {
+        backgroundColor: '#F5FCFF',
+     },
+      questionnaireContainerSelected: {
+        backgroundColor: '#84CFFF',
+        borderColor: 'grey',
      }
     })

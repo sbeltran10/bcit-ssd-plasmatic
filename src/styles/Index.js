@@ -9,14 +9,15 @@ export default StyleSheet.create({
     fontSize:30
   },
   contentContainer: {
-    flex:4, 
+    flex:10, 
   },
   content:{
     fontSize: 20,
   },
+  button:{
+    width:'100%'
+  },
   buttonContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
+    flex: 1
   }
 })
