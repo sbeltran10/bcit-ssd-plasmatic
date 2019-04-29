@@ -1,6 +1,6 @@
-let QuestionsAPI = {};
+let QuestionAPI = {};
 
-QuestionsAPI.readById = (id, callback) => {
+QuestionAPI.readById = (id, callback) => {
   // Do fetch call
   const baseUrl = 'https://rtwn92w64m.execute-api.us-east-2.amazonaws.com/prod'
   fetch(`${baseUrl}?id=${id}`)
@@ -23,4 +23,4 @@ QuestionsAPI.readById = (id, callback) => {
     });
 }
 
-export default QuestionsAPI;
+export default QuestionAPI;
