@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 
 export default StyleSheet.create({
   mainView: {
@@ -6,7 +6,7 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
   },
   questionView: {
-    padding: 20,
+    padding: Platform.OS === 'ios' ? 50 : 20,
     borderBottomColor: '#84CFFF',
     borderBottomWidth: 2
   },
@@ -25,6 +25,7 @@ export default StyleSheet.create({
   },
   submitButton: {
     height: 50,
-    borderRadius: 1
+    borderRadius: 1,
+    marginBottom: Platform.OS === 'ios' ? 30 : 0,
   }
 })
