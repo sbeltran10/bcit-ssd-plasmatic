@@ -37,9 +37,11 @@ const Question = ({ question, answers, selectAnswer, selectedAnswer, saveToSumma
     <Button
       buttonStyle={styles.submitButton}
       onPress={() => {
-          let step = "question";
-          let qa = {q: question[0].content, a: selectedAnswer[0].content};
-          saveToSummary(qa, step);
+          if(selectedAnswer.length > 0){
+            let step = "question";
+            let qa = {q: question[0].content, a: selectedAnswer[0].content};
+            saveToSummary(qa, step);
+          }
       }}
       title="Submit answer" 
     />

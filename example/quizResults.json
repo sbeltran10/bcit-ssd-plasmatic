@@ -1,0 +1,26 @@
+{
+    "quizTitle": "Capitals of Canada",
+    "totalCountOfQuestions": 3,
+    "countCorrect": 2,
+    "quizResults": [
+      {
+        "questionNumber":1,
+        "questionText": "What is the capital of BC?",
+        "answerText": "Vancouver",
+        "isRightWrong": "Right"
+      },
+      {
+        "questionNumber":2,
+        "questionText": "What is the capital of Alberta?",
+        "answerText": "Edmonton",
+        "isRightWrong": "Right"
+      },
+      {
+        "questionNumber":3,
+        "questionText": "What is the capital of Ontario?",
+        "answerText": "Windsor",
+        "isRightWrong": "Wrong",
+        "correctAnswer": "Toronto"
+      }
+    ]
+  }
