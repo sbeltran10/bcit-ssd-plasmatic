@@ -16,7 +16,7 @@ class QuizResults extends Component {
             {this.props.quizResults.map((item, key) => (
                 <View key = {item.questionNumber} style = {styles.item}>
                     <Text key={key}>
-                        {item.questionNumber}.{item.questionText} 
+                        {item.questionNumber}.{item.questionText}  
                         Your Answer: {item.answerText} 
                         Is it correct?: {item.isRightWrong}   
                         Correct Answer if was Wrong: {item.correctAnswer}    

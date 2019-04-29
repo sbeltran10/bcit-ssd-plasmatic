@@ -170,10 +170,13 @@ class App extends Component {
     QuestionAPI.readById(this.state.selectedAnswer[0].childQuestion, (err, data) => {
       if(err) console.log(err);
       let stateCopy = {...this.state};
-      if(data.Items.length === 0) {
+      if(data.Items.length === 0 && this.state.type === 'survey') {
         stateCopy.question = [];
         stateCopy.currentStep = 'results';
-      }else {
+      } else if(data.Items.length === 0 && this.state.type === 'quiz') {
+        stateCopy.question = [];
+        stateCopy.currentStep = 'quizResults';
+      } else {
         stateCopy.question = data.Items;
       }
       this.setState(stateCopy, () => { this.fetchAnswers(step) });
@@ -201,6 +204,7 @@ class App extends Component {
     let step = 'index'
     let stateCopy = {...this.state};
     stateCopy.type = '';
+    stateCopy.summary = [];
     this.setState(stateCopy, () => { console.log(this.state); this.updateCurrentStep(step) })
   }
 
@@ -263,16 +267,16 @@ class App extends Component {
           />
         }
         {/* ---quiz result screen--- */}
-        {/*
-          this.state.currentStep === 'results' && this.state.question.length === 0 &&
+        {
+          this.state.currentStep === 'quizResults' && this.state.question.length === 0 &&
           <QuizResults 
             quizTitle = {this.state.quizTitle}
             totalCountOfQuestions = {this.state.totalCountOfQuestions}
             countCorrect = {this.state.countCorrect}
-            quizResults = {this.state.quizResults}
+            quizResults = {this.state.summary}
             onExitButtonPress = {this.onExitButtonPress}
           />
-        */}
+        }
 
       </View>
     );
