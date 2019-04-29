@@ -2,14 +2,15 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   titleContainer: {
-      flex: 1,
-      marginTop:50
+    flex: 1,
+    marginTop:50
   },
   title: {
     fontSize:30
   },
   contentContainer: {
-    flex:10, 
+    flex:10,
+    paddingBottom:20
   },
   content:{
     fontSize: 20,
@@ -18,6 +19,7 @@ export default StyleSheet.create({
     width:'100%'
   },
   buttonContainer: {
+    marginTop:20,
     flex: 1
   }
 })
