@@ -35,23 +35,25 @@ class App extends Component {
       questionnaires: [],
       currentStep: "index",
       selectedQuestionnaireId: null,
-      title:'',
+      selectedQuestionnaireTitle:'',
       questionnaire: [],
       question: [],
       answers: [],
       selectedAnswer: [],
       modalVisible: false,
       summary: [],
-      quizTitle: null,
-      quizResults:[],
-      totalCountOfQuestions: null,
-      countCorrect: null
+      //quizTitle: null, - same as selectedQuestionnaireTitle
+      //quizResults:[], - same as summary
+      totalCountOfQuestions: 0,
+      countCorrect: 0
 
     }
 
     this.onPickerValueChange = this.onPickerValueChange.bind(this);
     this.updateSelectedQuestionnaireId = this.updateSelectedQuestionnaireId.bind(this);
     this.updateCurrentStep = this.updateCurrentStep.bind(this);
+    this.incrementCorrectAnswers = this.incrementCorrectAnswers.bind(this);
+    this.incrementTotalQuestions = this.incrementTotalQuestions.bind(this);
 
     this.selectAnswer = this.selectAnswer.bind(this);
     this.submitAnswer = this.submitAnswer.bind(this);
@@ -104,9 +106,17 @@ class App extends Component {
     this.setState(stateCopy, () => this.fetchList());
   }
 
-  updateSelectedQuestionnaireId = (id) => {
+  updateSelectedQuestionnaireId = (id, title) => {
     let stateCopy = {...this.state};
     stateCopy.selectedQuestionnaireId = id;
+    stateCopy.selectedQuestionnaireTitle = title;
+    this.setState(stateCopy, () => { console.log(this.state) })
+  }
+
+  incrementCorrectAnswers = () => {
+    let stateCopy = {...this.state};
+    alert("hello");
+    stateCopy.countCorrect = 2 //stateCopy.countCorrect + 1;
     this.setState(stateCopy, () => { console.log(this.state) })
   }
 
@@ -226,7 +236,6 @@ class App extends Component {
 
             onPickerValueChange = {this.onPickerValueChange}
             updateSelectedQuestionnaireId = {this.updateSelectedQuestionnaireId}
-            updateSelectedQuestionnaireTitle = {this.updateSelectedQuestionnaireTitle}
             fetchQuestionnaire = {this.fetchQuestionnaire}
           />
         }
@@ -253,6 +262,7 @@ class App extends Component {
             saveToSummary = {this.saveToSummary}
             fetchQuestion = {this.fetchQuestion}
             modalVisible = {this.state.modalVisible}
+            incrementCorrectAnswers = {this.incrementCorrectAnswers}
           />
         }
 
@@ -270,7 +280,7 @@ class App extends Component {
         {
           this.state.currentStep === 'quizResults' && this.state.question.length === 0 &&
           <QuizResults 
-            quizTitle = {this.state.quizTitle}
+            quizTitle = {this.state.selectedQuestionnaireTitle}
             totalCountOfQuestions = {this.state.totalCountOfQuestions}
             countCorrect = {this.state.countCorrect}
             quizResults = {this.state.summary}

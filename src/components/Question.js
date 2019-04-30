@@ -5,7 +5,7 @@ import styles from '../styles/Question';
 import { ScrollView } from 'react-native-gesture-handler';
 import PropTypes from 'prop-types';
 
-const Question = ({ question, answers, selectAnswer, selectedAnswer, saveToSummary, modalVisible, selectedAnswerId }) => (
+const Question = ({ question, answers, selectAnswer, selectedAnswer, saveToSummary, modalVisible, selectedAnswerId, incrementCorrectAnswers }) => (
   <View style={styles.mainView}>
     <View style={styles.questionView}>
       <Text h4>{question[0].content}</Text>
@@ -42,6 +42,7 @@ const Question = ({ question, answers, selectAnswer, selectedAnswer, saveToSumma
 
             if(selectedAnswer[0].id === question[0].correctAnswerId) {
               result = 'right';
+              
             } else {
               //find and store correct answer
               for (let i = 0; i < answers.length; i++){
@@ -51,13 +52,15 @@ const Question = ({ question, answers, selectAnswer, selectedAnswer, saveToSumma
               }
             }
 
-            let qa = {questionText: question[0].content, 
+            let qa = {
+              questionText: question[0].content, 
               answerText: selectedAnswer[0].content,
               isRightWrong: result, 
               correctAnswer: correctAnswer
             };
-
-            saveToSummary(qa, step);            
+            
+            saveToSummary(qa, step);
+            incrementCorrectAnswers();            
           }
       }}
       title="Submit answer" 
@@ -79,7 +82,8 @@ Question.propTypes = {
   selectAnswer: PropTypes.func,
   submitAnswer: PropTypes.func,
   modalVisible: PropTypes.bool,
-  selectedAnswerId: PropTypes.string
+  selectedAnswerId: PropTypes.string,
+  incrementCorrectAnswers: PropTypes.func
 };
 
 export default Question;
