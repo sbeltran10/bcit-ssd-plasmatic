@@ -66,21 +66,7 @@ class App extends Component {
     
   }
 
-  componentDidMount() {
-   
-    // Test Data for quiz results screen
-    //this.setState({quizTitle: testQuizResults.quizTitle});
-    //this.setState({countCorrect: testQuizResults.countCorrect});
-    //this.setState({totalCountOfQuestions: testQuizResults.totalCountOfQuestions});
-    //this.setState({quizResults: testQuizResults.quizResults});
-     
-               
-    // AnswerAPI.getById(1, (err, data) => {
-    //   let stateCopy = {...this.state};
-    //   if(err) console.log(err);
-    //   stateCopy.answers = data;
-    //   this.setState(stateCopy, () => { console.log(this.state)});
-    // });
+  componentWillMount() {
     this.onPickerValueChange('survey');
   }
 
@@ -125,9 +111,6 @@ class App extends Component {
   }
 
   fetchFirstQuestion = (step) => {
-    // let stateCopy = {...this.state};
-    // stateCopy.question = questions.filter(q => { return q.id === this.state.questionnaire[0].firstQuestionId });
-    // this.setState(stateCopy, () => { this.fetchAnswers(step) });
     QuestionAPI.readById(this.state.questionnaire[0].firstQuestionId, (err, data) => {
       if(err) console.log(err);
       let stateCopy = {...this.state};
@@ -270,11 +253,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-// QuestionsAPI.readById(1, function(error, object){
-//   if(error) alert(error)
-//   else{
-//     this.setState({data:data})
-//   }
-// })
