@@ -157,16 +157,6 @@ class App extends Component {
   }
 
   fetchQuestion = (step) => {
-    // let stateCopy = {...this.state};
-    // let newQuestion = questions.filter(q => { return q.id === this.state.selectedAnswer[0].childQuestion });
-    // if (newQuestion.length === 0) {
-    //   stateCopy.question = [];
-    //   stateCopy.currentStep = 'results';
-    //   this.setState(stateCopy);
-    // } else {
-    //   stateCopy.question = newQuestion;
-    //   this.setState(stateCopy, () => { this.fetchAnswers(step) });
-    // }
     QuestionAPI.readById(this.state.selectedAnswer[0].childQuestion, (err, data) => {
       if(err) console.log(err);
       let stateCopy = {...this.state};
