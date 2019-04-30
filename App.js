@@ -35,24 +35,24 @@ class App extends Component {
       questionnaires: [],
       currentStep: "index",
       selectedQuestionnaireId: null,
-      title:'',
+      selectedQuestionnaireTitle:'',
       questionnaire: [],
       question: [],
       answers: [],
       selectedAnswer: [],
       modalVisible: false,
       summary: [],
-      quizTitle: null,
-      quizResults:[],
-      totalCountOfQuestions: null,
-      countCorrect: null
+      //quizTitle: null, - same as selectedQuestionnaireTitle
+      //quizResults:[], - same as summary
+      totalCountOfQuestions: 0,
+      countCorrect: 0
 
     }
 
     this.onPickerValueChange = this.onPickerValueChange.bind(this);
     this.updateSelectedQuestionnaireId = this.updateSelectedQuestionnaireId.bind(this);
     this.updateCurrentStep = this.updateCurrentStep.bind(this);
-
+  
     this.selectAnswer = this.selectAnswer.bind(this);
     this.submitAnswer = this.submitAnswer.bind(this);
     this.saveToSummary = this.saveToSummary.bind(this);
@@ -104,10 +104,22 @@ class App extends Component {
     this.setState(stateCopy, () => this.fetchList());
   }
 
-  updateSelectedQuestionnaireId = (id) => {
+  updateSelectedQuestionnaireId = (id, title) => {
     let stateCopy = {...this.state};
     stateCopy.selectedQuestionnaireId = id;
+    //title needed for the results page
+    stateCopy.selectedQuestionnaireTitle = title;
     this.setState(stateCopy, () => { console.log(this.state) })
+  }
+
+  countCorrectAnswers(){
+   let correctAnswers = 0;
+    for(let i=0; i<this.state.summary.length; i++){
+      if (this.state.summary[i].isRightWrong === 'correct'){
+        correctAnswers += 1;       
+      }
+    }
+    return correctAnswers;
   }
 
   // used as callback @ fetchQuestionnaire, fetchAnswers
@@ -170,10 +182,15 @@ class App extends Component {
     QuestionAPI.readById(this.state.selectedAnswer[0].childQuestion, (err, data) => {
       if(err) console.log(err);
       let stateCopy = {...this.state};
-      if(data.Items.length === 0) {
+      if(data.Items.length === 0 && this.state.type === 'survey') {
         stateCopy.question = [];
         stateCopy.currentStep = 'results';
-      }else {
+      } else if(data.Items.length === 0 && this.state.type === 'quiz') {
+        stateCopy.question = [];
+        stateCopy.currentStep = 'quizResults';
+        stateCopy.totalCountOfQuestions = this.state.summary.length;
+        stateCopy.countCorrect = this.countCorrectAnswers();
+      } else {
         stateCopy.question = data.Items;
       }
       this.setState(stateCopy, () => { this.fetchAnswers(step) });
@@ -201,6 +218,7 @@ class App extends Component {
     let step = 'index'
     let stateCopy = {...this.state};
     stateCopy.type = '';
+    stateCopy.summary = [];
     this.setState(stateCopy, () => { console.log(this.state); this.updateCurrentStep(step) })
   }
 
@@ -222,7 +240,6 @@ class App extends Component {
 
             onPickerValueChange = {this.onPickerValueChange}
             updateSelectedQuestionnaireId = {this.updateSelectedQuestionnaireId}
-            updateSelectedQuestionnaireTitle = {this.updateSelectedQuestionnaireTitle}
             fetchQuestionnaire = {this.fetchQuestionnaire}
           />
         }
@@ -252,8 +269,6 @@ class App extends Component {
           />
         }
 
-        {/* --- Need to add code to tell whether to go to results or quizResults screen---*/}
-
         {/* ---result screen--- */}
         {
           this.state.currentStep === 'results' && this.state.question.length === 0 &&
@@ -263,16 +278,16 @@ class App extends Component {
           />
         }
         {/* ---quiz result screen--- */}
-        {/*
-          this.state.currentStep === 'results' && this.state.question.length === 0 &&
+        {
+          this.state.currentStep === 'quizResults' && this.state.question.length === 0 &&
           <QuizResults 
-            quizTitle = {this.state.quizTitle}
+            quizTitle = {this.state.selectedQuestionnaireTitle}
             totalCountOfQuestions = {this.state.totalCountOfQuestions}
             countCorrect = {this.state.countCorrect}
-            quizResults = {this.state.quizResults}
+            quizResults = {this.state.summary}
             onExitButtonPress = {this.onExitButtonPress}
           />
-        */}
+        }
 
       </View>
     );
@@ -280,11 +295,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-// QuestionsAPI.readById(1, function(error, object){
-//   if(error) alert(error)
-//   else{
-//     this.setState({data:data})
-//   }
-// })

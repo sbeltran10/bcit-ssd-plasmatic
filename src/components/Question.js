@@ -37,8 +37,28 @@ const Question = ({ question, answers, selectAnswer, selectedAnswer, saveToSumma
       onPress={() => {
           if(selectedAnswer.length > 0){
             let step = "question";
-            let qa = {q: question[0].content, a: selectedAnswer[0].content};
-            saveToSummary(qa, step);
+            let result = '';
+            let correctAnswer = '';
+
+            if(selectedAnswer[0].id === question[0].correctAnswerId) {
+              result = 'correct';
+            } else {
+              result = 'incorrect';             
+              //find and store correct answer
+              for (let i = 0; i < answers.length; i++){
+                if(question[0].correctAnswerId === answers[i].id){
+                  correctAnswer = answers[i].content;
+                }
+              }
+            }
+
+            let qa = {
+              questionText: question[0].content, 
+              answerText: selectedAnswer[0].content,
+              isRightWrong: result, 
+              correctAnswer: correctAnswer
+            };
+            saveToSummary(qa, step);        
           }
       }}
       title="Submit answer" 
@@ -60,7 +80,7 @@ Question.propTypes = {
   selectAnswer: PropTypes.func,
   submitAnswer: PropTypes.func,
   modalVisible: PropTypes.bool,
-  selectedAnswerId: PropTypes.string
+  selectedAnswerId: PropTypes.string  
 };
 
 export default Question;
