@@ -40,9 +40,9 @@ let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, 
     />
     <Overlay
       isVisible={modalVisible}
-      windowBackgroundColor="rgba(255, 255, 255, .5)"
-      width="auto"
-      height="auto"
+      windowBackgroundColor="rgba(0, 0, 0, .7)"
+      width='90%'
+      height='80%'
     >
       <AnswerCorrectIncorrect
         saveAnswerSelection={saveAnswerSelection}
