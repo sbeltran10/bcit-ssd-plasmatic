@@ -19,14 +19,6 @@ import AnswerAPI from './src/api/AnswerAPI';
 import QuestionnaireAPI from './src/api/QuestionnaireAPI';
 import QuestionAPI from './src/api/QuestionAPI';
 
-// example data
-// import surveys from './example/surveys.json';
-import questions from './example/questions.json';
-import answers from './example/answers.json'
-import results from './example/results.json';
-
-import testQuizResults from './example/quizResults.json';
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -48,39 +40,9 @@ class App extends Component {
       countCorrect: 0
 
     }
-
-    this.onPickerValueChange = this.onPickerValueChange.bind(this);
-    this.updateSelectedQuestionnaireId = this.updateSelectedQuestionnaireId.bind(this);
-    this.updateCurrentStep = this.updateCurrentStep.bind(this);
-  
-    this.selectAnswer = this.selectAnswer.bind(this);
-    this.submitAnswer = this.submitAnswer.bind(this);
-    this.saveToSummary = this.saveToSummary.bind(this);
-    this.onExitButtonPress = this.onExitButtonPress.bind(this);
-
-    this.fetchList = this.fetchList.bind(this);
-    this.fetchQuestionnaire = this.fetchQuestionnaire.bind(this);
-    this.fetchFirstQuestion = this.fetchFirstQuestion.bind(this);
-    this.fetchQuestion = this.fetchQuestion.bind(this);
-    this.fetchAnswers = this.fetchAnswers.bind(this);
-    
   }
 
-  componentDidMount() {
-   
-    // Test Data for quiz results screen
-    //this.setState({quizTitle: testQuizResults.quizTitle});
-    //this.setState({countCorrect: testQuizResults.countCorrect});
-    //this.setState({totalCountOfQuestions: testQuizResults.totalCountOfQuestions});
-    //this.setState({quizResults: testQuizResults.quizResults});
-     
-               
-    // AnswerAPI.getById(1, (err, data) => {
-    //   let stateCopy = {...this.state};
-    //   if(err) console.log(err);
-    //   stateCopy.answers = data;
-    //   this.setState(stateCopy, () => { console.log(this.state)});
-    // });
+  componentWillMount() {
     this.onPickerValueChange('survey');
   }
 
@@ -137,9 +99,6 @@ class App extends Component {
   }
 
   fetchFirstQuestion = (step) => {
-    // let stateCopy = {...this.state};
-    // stateCopy.question = questions.filter(q => { return q.id === this.state.questionnaire[0].firstQuestionId });
-    // this.setState(stateCopy, () => { this.fetchAnswers(step) });
     QuestionAPI.readById(this.state.questionnaire[0].firstQuestionId, (err, data) => {
       if(err) console.log(err);
       let stateCopy = {...this.state};
@@ -159,26 +118,16 @@ class App extends Component {
 
   // used as callback @ fetchFirstQuestion, fetchQuestion 
   fetchAnswers = (step) => {
-    AnswerAPI.getById((err, data) => {
+    AnswerAPI.getById(this.state.question[0].id, (err, data) => {
       if(err) console.log(err);
       let stateCopy = {...this.state};
       console.log(data);
-      stateCopy.answers = data.Items.filter(a => { return a.parentQuestion === this.state.question[0].id });
+      stateCopy.answers = data;
       this.setState(stateCopy, () => {this.updateCurrentStep(step)})
     })
   }
 
   fetchQuestion = (step) => {
-    // let stateCopy = {...this.state};
-    // let newQuestion = questions.filter(q => { return q.id === this.state.selectedAnswer[0].childQuestion });
-    // if (newQuestion.length === 0) {
-    //   stateCopy.question = [];
-    //   stateCopy.currentStep = 'results';
-    //   this.setState(stateCopy);
-    // } else {
-    //   stateCopy.question = newQuestion;
-    //   this.setState(stateCopy, () => { this.fetchAnswers(step) });
-    // }
     QuestionAPI.readById(this.state.selectedAnswer[0].childQuestion, (err, data) => {
       if(err) console.log(err);
       let stateCopy = {...this.state};
