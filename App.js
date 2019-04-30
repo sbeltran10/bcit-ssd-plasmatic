@@ -19,14 +19,6 @@ import AnswerAPI from './src/api/AnswerAPI';
 import QuestionnaireAPI from './src/api/QuestionnaireAPI';
 import QuestionAPI from './src/api/QuestionAPI';
 
-// example data
-// import surveys from './example/surveys.json';
-import questions from './example/questions.json';
-import answers from './example/answers.json'
-import results from './example/results.json';
-
-import testQuizResults from './example/quizResults.json';
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -48,22 +40,6 @@ class App extends Component {
       countCorrect: null
 
     }
-
-    this.onPickerValueChange = this.onPickerValueChange.bind(this);
-    this.updateSelectedQuestionnaireId = this.updateSelectedQuestionnaireId.bind(this);
-    this.updateCurrentStep = this.updateCurrentStep.bind(this);
-
-    this.selectAnswer = this.selectAnswer.bind(this);
-    this.submitAnswer = this.submitAnswer.bind(this);
-    this.saveToSummary = this.saveToSummary.bind(this);
-    this.onExitButtonPress = this.onExitButtonPress.bind(this);
-
-    this.fetchList = this.fetchList.bind(this);
-    this.fetchQuestionnaire = this.fetchQuestionnaire.bind(this);
-    this.fetchFirstQuestion = this.fetchFirstQuestion.bind(this);
-    this.fetchQuestion = this.fetchQuestion.bind(this);
-    this.fetchAnswers = this.fetchAnswers.bind(this);
-    
   }
 
   componentWillMount() {
