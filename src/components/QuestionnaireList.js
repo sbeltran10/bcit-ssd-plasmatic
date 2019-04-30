@@ -11,7 +11,7 @@ export default (props) => (
                 <ListItem 
                     key = {item.id} 
                     title={item.title}
-                    onPress={ ()=> props.onSelect(item.id) }
+                    onPress={ ()=> props.onSelect(item.id, item.title) }
                     containerStyle={props.selectedQuestionnaireId === item.id ?
                         styles.questionnaireContainerSelected
                         :
