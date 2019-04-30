@@ -52,9 +52,7 @@ class App extends Component {
     this.onPickerValueChange = this.onPickerValueChange.bind(this);
     this.updateSelectedQuestionnaireId = this.updateSelectedQuestionnaireId.bind(this);
     this.updateCurrentStep = this.updateCurrentStep.bind(this);
-    this.incrementCorrectAnswers = this.incrementCorrectAnswers.bind(this);
-    this.incrementTotalQuestions = this.incrementTotalQuestions.bind(this);
-
+  
     this.selectAnswer = this.selectAnswer.bind(this);
     this.submitAnswer = this.submitAnswer.bind(this);
     this.saveToSummary = this.saveToSummary.bind(this);
@@ -109,15 +107,19 @@ class App extends Component {
   updateSelectedQuestionnaireId = (id, title) => {
     let stateCopy = {...this.state};
     stateCopy.selectedQuestionnaireId = id;
+    //title needed for the results page
     stateCopy.selectedQuestionnaireTitle = title;
     this.setState(stateCopy, () => { console.log(this.state) })
   }
 
-  incrementCorrectAnswers = () => {
-    let stateCopy = {...this.state};
-    alert("hello");
-    stateCopy.countCorrect = 2 //stateCopy.countCorrect + 1;
-    this.setState(stateCopy, () => { console.log(this.state) })
+  countCorrectAnswers(){
+    var correctAnswers = 0;
+    for(let i=0; i<this.state.summary.length; i++){
+      if (this.state.summary[i].isRightWrong === 'right'){
+        correctAnswers += 1;       
+      }
+    }
+    return correctAnswers;
   }
 
   // used as callback @ fetchQuestionnaire, fetchAnswers
@@ -186,6 +188,8 @@ class App extends Component {
       } else if(data.Items.length === 0 && this.state.type === 'quiz') {
         stateCopy.question = [];
         stateCopy.currentStep = 'quizResults';
+        stateCopy.totalCountOfQuestions = this.state.summary.length;
+        stateCopy.countCorrect = this.countCorrectAnswers();
       } else {
         stateCopy.question = data.Items;
       }
@@ -262,11 +266,8 @@ class App extends Component {
             saveToSummary = {this.saveToSummary}
             fetchQuestion = {this.fetchQuestion}
             modalVisible = {this.state.modalVisible}
-            incrementCorrectAnswers = {this.incrementCorrectAnswers}
           />
         }
-
-        {/* --- Need to add code to tell whether to go to results or quizResults screen---*/}
 
         {/* ---result screen--- */}
         {
@@ -294,11 +295,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-// QuestionsAPI.readById(1, function(error, object){
-//   if(error) alert(error)
-//   else{
-//     this.setState({data:data})
-//   }
-// })
