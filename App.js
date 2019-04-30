@@ -134,16 +134,16 @@ class App extends Component {
       let stateCopy = { ...this.state };
       if (data.Items.length === 0 && this.state.type === 'survey') {
         stateCopy.question = [];
-        stateCopy.currentStep = 'results';
+        this.setState(stateCopy, () => { this.updateCurrentStep('results') });
       } else if (data.Items.length === 0 && this.state.type === 'quiz') {
         stateCopy.question = [];
-        stateCopy.currentStep = 'quizResults';
         stateCopy.totalCountOfQuestions = this.state.summary.length;
         stateCopy.countCorrect = this.countCorrectAnswers();
+        this.setState(stateCopy, () => { this.updateCurrentStep('quizResults') });
       } else {
         stateCopy.question = data.Items;
+        this.setState(stateCopy, () => { this.fetchAnswers(step) });
       }
-      this.setState(stateCopy, () => { this.fetchAnswers(step) });
     })
   }
 
@@ -212,6 +212,8 @@ class App extends Component {
     let stateCopy = { ...this.state };
     stateCopy.type = '';
     stateCopy.summary = [];
+    stateCopy.type = 'survey';
+    stateCopy.modalVisible = false;
     this.setState(stateCopy, () => { console.log(this.state); this.updateCurrentStep(step) })
   }
 
