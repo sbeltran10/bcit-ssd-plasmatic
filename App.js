@@ -113,9 +113,9 @@ class App extends Component {
   }
 
   countCorrectAnswers(){
-    var correctAnswers = 0;
+   let correctAnswers = 0;
     for(let i=0; i<this.state.summary.length; i++){
-      if (this.state.summary[i].isRightWrong === 'right'){
+      if (this.state.summary[i].isRightWrong === 'correct'){
         correctAnswers += 1;       
       }
     }

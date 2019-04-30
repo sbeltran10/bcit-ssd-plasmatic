@@ -41,9 +41,9 @@ const Question = ({ question, answers, selectAnswer, selectedAnswer, saveToSumma
             let correctAnswer = '';
 
             if(selectedAnswer[0].id === question[0].correctAnswerId) {
-              result = 'right';
+              result = 'correct';
             } else {
-              result = 'wrong';             
+              result = 'incorrect';             
               //find and store correct answer
               for (let i = 0; i < answers.length; i++){
                 if(question[0].correctAnswerId === answers[i].id){
