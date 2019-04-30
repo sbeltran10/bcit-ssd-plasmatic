@@ -130,11 +130,11 @@ class App extends Component {
 
   // used as callback @ fetchFirstQuestion, fetchQuestion 
   fetchAnswers = (step) => {
-    AnswerAPI.getById((err, data) => {
+    AnswerAPI.getById(this.state.question[0].id, (err, data) => {
       if(err) console.log(err);
       let stateCopy = {...this.state};
       console.log(data);
-      stateCopy.answers = data.Items.filter(a => { return a.parentQuestion === this.state.question[0].id });
+      stateCopy.answers = data;
       this.setState(stateCopy, () => {this.updateCurrentStep(step)})
     })
   }
