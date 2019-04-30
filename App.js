@@ -20,17 +20,18 @@ import QuestionnaireAPI from './src/api/QuestionnaireAPI';
 import QuestionAPI from './src/api/QuestionAPI';
 
 class App extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
-      type: '', 
+      type: '',
       questionnaires: [],
       currentStep: "index",
       selectedQuestionnaireId: null,
-      selectedQuestionnaireTitle:'',
+      selectedQuestionnaireTitle: '',
       questionnaire: [],
       question: [],
       answers: [],
+      correctAnswer: null,
       selectedAnswer: [],
       modalVisible: false,
       summary: [],
@@ -46,12 +47,12 @@ class App extends Component {
     this.onPickerValueChange('survey');
   }
 
-  
+
   // call back for setState in onPickerValueChange
   fetchList = () => {
     QuestionnaireAPI.getByType(this.state.type, (err, data) => {
-      let stateCopy = {...this.state};
-      if(err) console.log(err);
+      let stateCopy = { ...this.state };
+      if (err) console.log(err);
       stateCopy.questionnaires = data.Items;
       this.setState(stateCopy);
     })
@@ -59,7 +60,7 @@ class App extends Component {
 
   // updates type and populate questionnaire array with corresponding list of questionnaires
   onPickerValueChange = (type) => {
-    let stateCopy = {...this.state};
+    let stateCopy = { ...this.state };
     stateCopy.type = type;
     // reset selected questionnaire to none everytime a new category is selected
     stateCopy.selectedQuestionnaireId = 0;
@@ -67,18 +68,18 @@ class App extends Component {
   }
 
   updateSelectedQuestionnaireId = (id, title) => {
-    let stateCopy = {...this.state};
+    let stateCopy = { ...this.state };
     stateCopy.selectedQuestionnaireId = id;
     //title needed for the results page
     stateCopy.selectedQuestionnaireTitle = title;
     this.setState(stateCopy, () => { console.log(this.state) })
   }
 
-  countCorrectAnswers(){
-   let correctAnswers = 0;
-    for(let i=0; i<this.state.summary.length; i++){
-      if (this.state.summary[i].isRightWrong === 'correct'){
-        correctAnswers += 1;       
+  countCorrectAnswers () {
+    let correctAnswers = 0;
+    for (let i = 0; i < this.state.summary.length; i++) {
+      if (this.state.summary[i].isRightWrong === 'correct') {
+        correctAnswers += 1;
       }
     }
     return correctAnswers;
@@ -86,26 +87,26 @@ class App extends Component {
 
   // used as callback @ fetchQuestionnaire, fetchAnswers
   updateCurrentStep = (step) => {
-    let stateCopy = {...this.state};
+    let stateCopy = { ...this.state };
     stateCopy.currentStep = step;
     this.setState(stateCopy);
   }
 
   // fetches first question based on selected survey
   fetchQuestionnaire = (step) => {
-    let stateCopy = {...this.state};
+    let stateCopy = { ...this.state };
     stateCopy.questionnaire = stateCopy.questionnaires.filter(q => { return q.id === stateCopy.selectedQuestionnaireId });
-    this.setState(stateCopy, ()=>{ console.log(this.state); this.updateCurrentStep(step) })
+    this.setState(stateCopy, () => { console.log(this.state); this.updateCurrentStep(step) })
   }
 
   fetchFirstQuestion = (step) => {
     QuestionAPI.readById(this.state.questionnaire[0].firstQuestionId, (err, data) => {
-      if(err) console.log(err);
-      let stateCopy = {...this.state};
-      if(data.Items.length === 0) {
+      if (err) console.log(err);
+      let stateCopy = { ...this.state };
+      if (data.Items.length === 0) {
         alert('no question found!');
         stateCopy.currentStep = 'index';
-      }else {
+      } else {
         stateCopy.question = data.Items;
       }
       this.setState(stateCopy, () => { this.fetchAnswers(step) });
@@ -129,12 +130,12 @@ class App extends Component {
 
   fetchQuestion = (step) => {
     QuestionAPI.readById(this.state.selectedAnswer[0].childQuestion, (err, data) => {
-      if(err) console.log(err);
-      let stateCopy = {...this.state};
-      if(data.Items.length === 0 && this.state.type === 'survey') {
+      if (err) console.log(err);
+      let stateCopy = { ...this.state };
+      if (data.Items.length === 0 && this.state.type === 'survey') {
         stateCopy.question = [];
         stateCopy.currentStep = 'results';
-      } else if(data.Items.length === 0 && this.state.type === 'quiz') {
+      } else if (data.Items.length === 0 && this.state.type === 'quiz') {
         stateCopy.question = [];
         stateCopy.currentStep = 'quizResults';
         stateCopy.totalCountOfQuestions = this.state.summary.length;
@@ -147,7 +148,7 @@ class App extends Component {
   }
 
   selectAnswer = (id) => {
-    stateCopy = {...this.state};
+    stateCopy = { ...this.state };
     stateCopy.selectedAnswer = stateCopy.answers.filter(a => { return a.id === id });
     this.setState(stateCopy, () => { console.log(this.state) });
   }
@@ -156,16 +157,59 @@ class App extends Component {
     this.fetchQuestion(step);
   }
 
+  checkAnswer = () => {
+    if (this.state.selectedAnswer.length > 0) {
+      if (this.state.type === 'quiz') {
+        this.setState({
+          modalVisible: true,
+          correctAnswer: this.state.answers.find(a => {return this.state.question[0].correctAnswerId === a.id})
+        })
+      }
+      else {
+        this.saveAnswerSelection();
+      }
+    }
+  }
+
+  saveAnswerSelection = () => {
+
+    let step = "question";
+    let result = '';
+    let correctAnswer = '';
+
+    if (this.state.selectedAnswer[0].id === this.state.question[0].correctAnswerId) {
+      result = 'correct';
+    } else {
+      result = 'incorrect';
+      //find and store correct answer
+      for (let i = 0; i < this.state.answers.length; i++) {
+        if (this.state.question[0].correctAnswerId === this.state.answers[i].id) {
+          correctAnswer = this.state.answers[i].content;
+        }
+      }
+    }
+
+    let qa = {
+      questionText: this.state.question[0].content,
+      answerText: this.state.selectedAnswer[0].content,
+      isRightWrong: result,
+      correctAnswer: correctAnswer
+    };
+    this.saveToSummary(qa, step);
+
+  }
+
   // qa(question & answer pair)
   saveToSummary = (qa, step) => {
-    stateCopy = {...this.state};
+    stateCopy = { ...this.state };
     stateCopy.summary.push(qa);
+    stateCopy.modalVisible = false;
     this.setState(stateCopy, () => { console.log(this.state); this.submitAnswer(step) });
   }
 
   onExitButtonPress = () => {
     let step = 'index'
-    let stateCopy = {...this.state};
+    let stateCopy = { ...this.state };
     stateCopy.type = '';
     stateCopy.summary = [];
     this.setState(stateCopy, () => { console.log(this.state); this.updateCurrentStep(step) })
@@ -175,66 +219,68 @@ class App extends Component {
 
 
   render () {
-      return (
+    return (
       <View style={styles.container}>
 
         {/* ---index screen--- */}
         {
-          this.state.currentStep === 'index'  &&
-          <Index 
-            questionnaires = {this.state.questionnaires}
-            selectedQuestionnaireId = {this.state.selectedQuestionnaireId}
-            type = {this.state.type}
-            title = {this.state.title}
+          this.state.currentStep === 'index' &&
+          <Index
+            questionnaires={this.state.questionnaires}
+            selectedQuestionnaireId={this.state.selectedQuestionnaireId}
+            type={this.state.type}
+            title={this.state.title}
 
-            onPickerValueChange = {this.onPickerValueChange}
-            updateSelectedQuestionnaireId = {this.updateSelectedQuestionnaireId}
-            fetchQuestionnaire = {this.fetchQuestionnaire}
+            onPickerValueChange={this.onPickerValueChange}
+            updateSelectedQuestionnaireId={this.updateSelectedQuestionnaireId}
+            fetchQuestionnaire={this.fetchQuestionnaire}
           />
         }
 
         {/* ---intro screen--- */}
         {
-          this.state.currentStep === 'intro' && 
-          <Intro 
-            updateCurrentStep = {this.updateCurrentStep} 
-            questionnaire = {this.state.questionnaire}
-            fetchFirstQuestion = {this.fetchFirstQuestion}
+          this.state.currentStep === 'intro' &&
+          <Intro
+            updateCurrentStep={this.updateCurrentStep}
+            questionnaire={this.state.questionnaire}
+            fetchFirstQuestion={this.fetchFirstQuestion}
           />
         }
 
         {/* ---question screen--- */}
         {
           this.state.currentStep === 'question' && this.state.question.length !== 0 &&
-          <Question 
-            question = {this.state.question}
-            answers = {this.state.answers}
-            selectedAnswerId = {this.state.selectedAnswerId}
-            selectedAnswer = {this.state.selectedAnswer}
-            selectAnswer = {this.selectAnswer}
-            saveToSummary = {this.saveToSummary}
-            fetchQuestion = {this.fetchQuestion}
-            modalVisible = {this.state.modalVisible}
+          <Question
+            question={this.state.question}
+            answers={this.state.answers}
+            selectedAnswerId={this.state.selectedAnswerId}
+            selectedAnswer={this.state.selectedAnswer}
+            selectAnswer={this.selectAnswer}
+            checkAnswer={this.checkAnswer}
+            saveAnswerSelection={this.saveAnswerSelection}
+            fetchQuestion={this.fetchQuestion}
+            modalVisible={this.state.modalVisible}
+            correctAnswer={this.state.correctAnswer}
           />
         }
 
         {/* ---result screen--- */}
         {
           this.state.currentStep === 'results' && this.state.question.length === 0 &&
-          <SurveyResults 
-            saveToSummary = {this.saveToSummary}
-            onExitButtonPress = {this.onExitButtonPress}
+          <SurveyResults
+            saveToSummary={this.saveToSummary}
+            onExitButtonPress={this.onExitButtonPress}
           />
         }
         {/* ---quiz result screen--- */}
         {
           this.state.currentStep === 'quizResults' && this.state.question.length === 0 &&
-          <QuizResults 
-            quizTitle = {this.state.selectedQuestionnaireTitle}
-            totalCountOfQuestions = {this.state.totalCountOfQuestions}
-            countCorrect = {this.state.countCorrect}
-            quizResults = {this.state.summary}
-            onExitButtonPress = {this.onExitButtonPress}
+          <QuizResults
+            quizTitle={this.state.selectedQuestionnaireTitle}
+            totalCountOfQuestions={this.state.totalCountOfQuestions}
+            countCorrect={this.state.countCorrect}
+            quizResults={this.state.summary}
+            onExitButtonPress={this.onExitButtonPress}
           />
         }
 

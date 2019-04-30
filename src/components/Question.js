@@ -3,9 +3,10 @@ import { View } from 'react-native';
 import { Text, Button, ListItem, Overlay } from 'react-native-elements';
 import styles from '../styles/Question';
 import { ScrollView } from 'react-native-gesture-handler';
+import AnswerCorrectIncorrect from './AnswerCorrectIncorrect';
 import PropTypes from 'prop-types';
 
-const Question = ({ question, answers, selectAnswer, selectedAnswer, saveToSummary, modalVisible, selectedAnswerId }) => (
+let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, saveAnswerSelection, modalVisible, correctAnswer }) => (
   <View style={styles.mainView}>
     <View style={styles.questionView}>
       <Text h4>{question[0].content}</Text>
@@ -34,34 +35,8 @@ const Question = ({ question, answers, selectAnswer, selectedAnswer, saveToSumma
     </View>
     <Button
       buttonStyle={styles.submitButton}
-      onPress={() => {
-          if(selectedAnswer.length > 0){
-            let step = "question";
-            let result = '';
-            let correctAnswer = '';
-
-            if(selectedAnswer[0].id === question[0].correctAnswerId) {
-              result = 'correct';
-            } else {
-              result = 'incorrect';             
-              //find and store correct answer
-              for (let i = 0; i < answers.length; i++){
-                if(question[0].correctAnswerId === answers[i].id){
-                  correctAnswer = answers[i].content;
-                }
-              }
-            }
-
-            let qa = {
-              questionText: question[0].content, 
-              answerText: selectedAnswer[0].content,
-              isRightWrong: result, 
-              correctAnswer: correctAnswer
-            };
-            saveToSummary(qa, step);        
-          }
-      }}
-      title="Submit answer" 
+      onPress={checkAnswer}
+      title="Submit answer"
     />
     <Overlay
       isVisible={modalVisible}
@@ -69,7 +44,12 @@ const Question = ({ question, answers, selectAnswer, selectedAnswer, saveToSumma
       width="auto"
       height="auto"
     >
-      <View></View>
+      <AnswerCorrectIncorrect
+        saveAnswerSelection={saveAnswerSelection}
+        question={question}
+        selectedAnswer={selectedAnswer}
+        correctAnswer={correctAnswer}
+      />
     </Overlay>
   </View>
 )
@@ -78,9 +58,9 @@ Question.propTypes = {
   question: PropTypes.array,
   answers: PropTypes.array,
   selectAnswer: PropTypes.func,
-  submitAnswer: PropTypes.func,
+  saveAnswerSelection: PropTypes.func,
   modalVisible: PropTypes.bool,
-  selectedAnswerId: PropTypes.string  
+  selectedAnswerId: PropTypes.string
 };
 
 export default Question;
