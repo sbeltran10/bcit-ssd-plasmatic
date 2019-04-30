@@ -1,6 +1,6 @@
 let AnswerAPI = {};
 
-AnswerAPI.getById = (cb) => {
+AnswerAPI.getById = (id, cb) => {
   const baseUrl = 'https://2d10mwnooe.execute-api.us-east-2.amazonaws.com/prod';
   fetch(baseUrl)
     .then((r) => {
@@ -11,7 +11,8 @@ AnswerAPI.getById = (cb) => {
       r.json()
       .then((rJson) => {
         // console.log(rJson);
-        cb(null,rJson)
+        filteredData = rJson.Items.filter(a => { return a.parentQuestion === id });
+        cb(null,filteredData);
       })
       .catch((err) => {
         console.log(err);
