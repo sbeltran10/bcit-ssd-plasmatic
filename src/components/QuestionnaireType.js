@@ -26,9 +26,9 @@ let QuestionnaireType = ({selectedValue, onSelect}) => (
 
 QuestionnaireType.propTypes = {
     /** String containing the type of questionnaire. */
-    selectedValue: PropTypes.number,
+    selectedValue: PropTypes.string,
     /** callback to update the category state. */
     onSelect : PropTypes.func
-}
+};
 
 export default QuestionnaireType;
