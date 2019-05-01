@@ -141,6 +141,7 @@ Questionnaire JSON example:
     firstQuestionId: 2
 
 }
+```
 
   
   
@@ -150,7 +151,7 @@ Question JSON example:
   
 
 Survey
-
+```javascript
 {
 
     id: 1,
@@ -158,11 +159,11 @@ Survey
     content: "Question content"
 
 }
-
+```
   
 
 Quiz
-
+```javascript
 {
 
     id: 1,
@@ -172,11 +173,11 @@ Quiz
     correctAnswerId: 2
 
 }
-
+```
   
 
 Answer JSON example:
-
+```javascript
 {
 
     id: 1,
@@ -187,4 +188,5 @@ Answer JSON example:
 
     childQuestion: 3
 
-}```
+}
+```
