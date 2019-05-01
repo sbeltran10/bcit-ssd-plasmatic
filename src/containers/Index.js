@@ -5,51 +5,44 @@ import styles from '../styles/Index';
 import QuestionnaireList from '../components/QuestionnaireList';
 import QuestionnairePicker from '../components/QuestionnaireType';
 
-class Index extends Component {
+/**
+ * This component is the initial page containing the sub components
+ * which select the questionnaire category and questionnaires associated to it
+ */
 
-    render(){
+let Index = ({questionnaires, selectedQuestionnaireId, type, title, onPickerValueChange, updateSelectedQuestionnaireId, fetchQuestionnaire}) => (
+    <View >
+        <View style={styles.titleContainer}>
+            <Text style={styles.title}>Questionnaire Selection</Text>
+        </View>
 
-        return (
-            <View >
-                <View style={styles.titleContainer}>
-                    <Text style={styles.title}>Questionnaire Selection</Text>
-                </View>
-
-                <View style={styles.contentContainer}>
-                    <QuestionnairePicker
-                        selectedValue={this.props.type}
-                        onSelect={(type)=> {
-                            let picker = this.props.onPickerValueChange;
-                            picker(type);
-                        }}
-                    />                  
-                    {
-                        this.props.type !== '' &&
-                        <QuestionnaireList
-                        selectedQuestionnaireId = {this.props.selectedQuestionnaireId}
-                        selectedQuestionnaireTitle = {this.props.selectedQuestionnaireTitle} 
-                        questionnaires={this.props.questionnaires} 
-                        onSelect={(id, title)=> {
-                            let updater = this.props.updateSelectedQuestionnaireId;  
-                            updater(id, title);
-                        }}/>        
+        <View style={styles.contentContainer}>
+            <QuestionnairePicker
+                selectedValue={type}
+                onSelect={(type)=> { onPickerValueChange(type) }}
+            />                  
+            {
+                type !== '' &&
+                <QuestionnaireList
+                    selectedQuestionnaireId = {selectedQuestionnaireId}
+                    questionnaires={questionnaires} 
+                    onSelect={(id, title)=> { updateSelectedQuestionnaireId(id, title) }}
+                />        
+            }
+        </View>
+        
+        <View style={styles.buttonContainer}>
+            <Button style={styles.button}
+                title={"Start"}
+                onPress={() => {
+                    if(selectedQuestionnaireId > 0){
+                        let step = 'intro';
+                        fetchQuestionnaire(step);
                     }
-                </View>
-                
-                <View style={styles.buttonContainer}>
-                    <Button style={styles.button}
-                        title={"Start"}
-                        onPress={() => {
-                            if(this.props.selectedQuestionnaireId > 0){
-                                let step = 'intro';
-                                let fetchQuestionnaire = this.props.fetchQuestionnaire;
-                                fetchQuestionnaire(step);
-                            }
-                        }}/>  
-                </View>
-            </View>
-        )
-    }
-}
-
+                }}
+            />  
+        </View>
+    </View>
+)       
+       
 export default Index;
