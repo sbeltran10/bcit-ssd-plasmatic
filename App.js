@@ -8,8 +8,8 @@
 
 import React, { Component } from 'react';
 import { View, Text } from "react-native";
-import Index from './src/containers/Index';
-import Intro from './src/containers/Intro';
+import Index from './src/components/Index';
+import Intro from './src/components/Intro';
 import Question from './src/components/Question';
 import SurveyResults from './src/components/SurveyResults';
 import QuizResults from './src/components/QuizResults';
