@@ -74,7 +74,7 @@ Question.propTypes = {
   // Controls whenever the modal containing the correct/incorrect selection is visible
   modalVisible: PropTypes.bool,
   // Currently selected answer
-  selectedAnswer: PropTypes.arrayOf,
+  selectedAnswer: PropTypes.array,
   // Correct answer in case the type of questionnaire is a quiz
   correctAnswer: PropTypes.object
 };

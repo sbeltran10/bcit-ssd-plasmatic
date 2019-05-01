@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import { Card, ListItem, Button, Icon } from 'react-native-elements';
-// import styles from '../styles/main';
+import { View } from 'react-native';
+import { Text, Card, ListItem, Button, Icon } from 'react-native-elements';
+import styles from '../styles/Intro';
 
 
 class Intro extends Component {
 
-  render() {
+  render () {
     return (
-      <View style={{backgroundColor: 'green'}}>
-          {/* <Text>{this.props.questionnaire[0].title}</Text>
+      <View style={styles.mainView}>
+        {/* <Text>{this.props.questionnaire[0].title}</Text>
           <Text>{this.props.questionnaire[0].description}</Text>
           <Button title="Start" onPress={()=> {
             let step = 'question'
@@ -17,23 +17,27 @@ class Intro extends Component {
             fetchFirstQuestion(step);
           }} /> */}
 
-      <Card title={this.props.questionnaire[0].title}>
-        <Text style={{marginBottom: 10}}>
-          {this.props.questionnaire[0].desc}
-        </Text>
+        <View style={styles.titleDescView}>
+          <Text h3 style={styles.title}>
+            {this.props.questionnaire[0].title}
+          </Text>
+          <Text style={styles.desc} >
+            {this.props.questionnaire[0].desc}
+          </Text>
+        </View>
         <Button
           icon={<Icon name='code' color='#ffffff' />}
           backgroundColor='#03A9F4'
-          buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-          title="Start" onPress={()=> {
+          buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
+          title="Start"
+          onPress={() => {
             let step = 'question'
             let fetchFirstQuestion = this.props.fetchFirstQuestion;
             fetchFirstQuestion(step);
-            }
+          }
           }
         />
-      </Card>
-      </View>
+      </View >
     )
   }
 }
