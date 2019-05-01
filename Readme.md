@@ -57,3 +57,51 @@ If “Material Icon” error (“Unrecognized front family ‘Material Icons”)
 *OR*
 
 2. Delete Items inside of build folder ( iOS > build ), rebuild project $react-native run-ios or $react-native run-android
+
+
+
+API:
+
+This React Native Component utilizes 3 different API methods to fetch the appropriate Questionnaire(Survey, Quiz) or Choose Your Own Adventure game.
+
+QuestionnaireAPI
+
+QuestionAPI
+
+AnswerAPI
+
+
+Questionnaire JSON example: 
+
+{
+    id: 1,
+    title: "Questionnaire Title",
+    desc: "Questionnaire Description",
+    questionnaireType: "survey"
+    firstQuestionId: 2
+}
+
+
+Question JSON example:
+
+Survey
+{
+    id: 1,
+    content: "Question content"
+}
+
+Quiz
+{
+    id: 1,
+    content: "Question content",
+    correctAnswerId: 2
+}
+
+
+Answer JSON example:
+{
+    id: 1,
+    content: "Answer content",
+    parentQuestion: 2,
+    childQuestion: 3
+}
