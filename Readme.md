@@ -7,9 +7,9 @@ We have the need for a very simple “game” like function in our app.  It woul
 Instructions
 To test Application in Emulator, set up Xcode / Android studio per specified in React Native Instruction (https://facebook.github.io/react-native/docs/getting-started)
 
-/****************************************/
-/* Creating a Host Application          */
-/****************************************/
+<!---
+   Creating a Host Application          
+-->
 To create new React-Native App: $react-native init <projectName>
 
 Folders & Files needed:
