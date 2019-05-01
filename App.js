@@ -35,8 +35,6 @@ class App extends Component {
       selectedAnswer: [],
       modalVisible: false,
       summary: [],
-      //quizTitle: null, - same as selectedQuestionnaireTitle
-      //quizResults:[], - same as summary
       totalCountOfQuestions: 0,
       countCorrect: 0
 
