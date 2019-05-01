@@ -3,6 +3,10 @@ import {Text, View, ScrollView} from 'react-native';
 import {ListItem} from 'react-native-elements';
 import styles from '../styles/QuestionnaireList';
 
+/**
+ * Renders the list of questionnaires of a given type
+ */
+
 export default (props) => (
     <View style={styles.listContainer}>
         <ScrollView>
