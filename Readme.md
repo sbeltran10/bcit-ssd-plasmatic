@@ -126,17 +126,18 @@ Questionnaire JSON example:
 
   
 
-```javascript{
+```javascript
+{
 
-id: 1,
+    id: 1,
 
-title: "Questionnaire Title",
+    title: "Questionnaire Title",
 
-desc: "Questionnaire Description",
+    desc: "Questionnaire Description",
 
-questionnaireType: "survey"
+    questionnaireType: "survey"
 
-firstQuestionId: 2
+    firstQuestionId: 2
 
 }
 
@@ -151,9 +152,9 @@ Survey
 
 {
 
-id: 1,
+    id: 1,
 
-content: "Question content"
+    content: "Question content"
 
 }
 
@@ -163,11 +164,11 @@ Quiz
 
 {
 
-id: 1,
+    id: 1,
 
-content: "Question content",
+    content: "Question content",
 
-correctAnswerId: 2
+    correctAnswerId: 2
 
 }
 
@@ -177,12 +178,12 @@ Answer JSON example:
 
 {
 
-id: 1,
+    id: 1,
 
-content: "Answer content",
+    content: "Answer content",
 
-parentQuestion: 2,
+    parentQuestion: 2,
 
-childQuestion: 3
+    childQuestion: 3
 
 }```
