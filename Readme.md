@@ -98,10 +98,11 @@ If “Material Icon” error (“Unrecognized front family ‘Material Icons”)
 2. Delete Items inside of build folder ( iOS > build ), rebuild project $react-native run-ios or $react-native run-android
 
   
-  
-  
 
-API:
+******
+
+
+### API:
 
   
 
