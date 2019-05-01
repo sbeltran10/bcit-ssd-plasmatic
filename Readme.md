@@ -17,9 +17,15 @@ Folders & Files needed:
 - package.json
 - App.js
 
-To run the application in Android, create a local.properties file in the android folder. Then add a path to the Android sdk. You can find this path when navigating in Android studio to Tools | SDK Manager | System Settings | Android SDK:
+To run the application in Android, create a local.properties file in the android folder. Then add a path to the Android sdk. You can find this path when navigating in Android studio to Tools | SDK Manager | System Settings | Android SDK. On a Mac the path looks like:
 
     sdk.dir=/Users/pm/Library/Android/sdk
+    
+On Windows the path looks like:
+
+    sdk.dir=C:\\Users\\XX\\AppData\\Local\\Android\\Sdk
+
+Be sure to save your local.properties file after making this change.
 
 ##  Embedding the Child Application     
 1. Run $npm install (at project root)
