@@ -4,26 +4,25 @@ import { Text, Button } from 'react-native-elements';
 import styles from '../styles/SurveyResults';
 import PropTypes from 'prop-types';
 
-const SurveyResults = ({ resultsText, onExitButtonPress }) => (
+/**
+ * Simple component that displays a message when the last answer is submited on a questionnaire of the type survey
+ */
+let SurveyResults = ({ resultsText = "Thank you for finishing the survey!", onExitButtonPress }) => (
   <View style={styles.mainView}>
     <Text h3>
       {resultsText}
     </Text>
     <Button
-        containerStyle={styles.exitButton}
-        onPress={onExitButtonPress}
-        title="Exit" />
+      containerStyle={styles.exitButton}
+      onPress={onExitButtonPress}
+      title="Exit" />
   </View>
 )
 
-
-
-SurveyResults.defaultProps = {
-  resultsText: "Thank you for finishing the survey!"  
-}
-
 SurveyResults.propTypes = {
+  // Text to display
   resultsText: PropTypes.string,
+  // Function to be called when the exit button is pressed
   onExitButtonPress: PropTypes.func
 };
 

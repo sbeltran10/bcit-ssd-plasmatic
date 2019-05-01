@@ -2,7 +2,11 @@ import React from 'react';
 import { View } from 'react-native';
 import { Text, Button } from 'react-native-elements';
 import styles from '../styles/AnswerCorrectIncorrect';
+import PropTypes from 'prop-types';
 
+/**
+ * This component shows whenever a right or wrong answer was selected when the questionnaire type is quiz
+ */
 let AnswerCorrectIncorrect = ({ saveAnswerSelection, selectedAnswer, correctAnswer = { content: 'There is no correct answer' } }) => (
   <View style={styles.mainView}>
     {correctAnswer.id === selectedAnswer[0].id ?
@@ -21,7 +25,7 @@ let AnswerCorrectIncorrect = ({ saveAnswerSelection, selectedAnswer, correctAnsw
       <Text style={[styles.choiceText, styles.textMarginBottom]}>
         {selectedAnswer[0].content}
       </Text>
-
+      {/* Display the correct answer in addition to the selected answer if the selected answer is wrong */}
       {correctAnswer.id !== selectedAnswer[0].id ?
         <>
           <Text style={styles.choiceText}>
@@ -43,5 +47,14 @@ let AnswerCorrectIncorrect = ({ saveAnswerSelection, selectedAnswer, correctAnsw
     />
   </View>
 )
+
+AnswerCorrectIncorrect.propTypes = {
+  // Function called to save the answer selection, triggered when the next button is pressed
+  saveAnswerSelection: PropTypes.func,
+  // Currently selected answer
+  selectedAnswer: PropTypes.array,
+  // Correct answer associated with the currently active question
+  correctAnswer: PropTypes.object
+}
 
 export default AnswerCorrectIncorrect;
