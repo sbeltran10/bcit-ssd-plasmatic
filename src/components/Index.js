@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { View, Text } from "react-native";
-import { Button } from 'react-native-elements';
+import { View, Text, ActivityIndicator } from "react-native";
+import { Button , Overlay} from 'react-native-elements';
 import styles from '../styles/Index';
 import QuestionnaireList from '../components/QuestionnaireList';
 import QuestionnairePicker from '../components/QuestionnaireType';
@@ -11,7 +11,13 @@ import PropTypes from 'prop-types';
  * which allows selection of the questionnaire category and questionnaires associated to it
  */
  
-let Index = ({questionnaires = [], selectedQuestionnaireId, type, onPickerValueChange, updateSelectedQuestionnaireId, fetchQuestionnaire}) => (
+let Index = ({ questionnaires = [], 
+               selectedQuestionnaireId, 
+               type, 
+               onPickerValueChange, 
+               updateSelectedQuestionnaireId, 
+               fetchQuestionnaire
+            }) => (
     <View >
         <View style={styles.titleContainer}>
             <Text style={styles.title}>Questionnaire Selection</Text>
@@ -43,6 +49,7 @@ let Index = ({questionnaires = [], selectedQuestionnaireId, type, onPickerValueC
                 }}
             />  
         </View>
+
     </View>
 )
 
@@ -58,7 +65,7 @@ Index.propTypes = {
     /** callback to update the chosen questionnaire id. */ 
     updateSelectedQuestionnaireId: PropTypes.func,
     /** callback to retrieve the filtered questionnaires. */ 
-    fetchQuestionnaire: PropTypes.func
+    fetchQuestionnaire: PropTypes.func,
 };
 
 export default Index;
