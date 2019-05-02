@@ -28,7 +28,7 @@ class Intro extends Component {
         <Button
           icon={<Icon name='code' color='#ffffff' />}
           backgroundColor='#03A9F4'
-          buttonStyle={styles.submitButton}
+          buttonStyle={styles.button}
           title="Start"
           onPress={() => {
             let step = 'question'
