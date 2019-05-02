@@ -13,11 +13,12 @@ import Intro from './src/components/Intro';
 import Question from './src/components/Question';
 import SurveyResults from './src/components/SurveyResults';
 import QuizResults from './src/components/QuizResults';
-import styles from './src/styles/main';
 
 import AnswerAPI from './src/api/AnswerAPI';
 import QuestionnaireAPI from './src/api/QuestionnaireAPI';
 import QuestionAPI from './src/api/QuestionAPI';
+
+import styles from './src/styles/App'
 
 class App extends Component {
   constructor (props) {

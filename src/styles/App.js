@@ -6,13 +6,5 @@ export default StyleSheet.create({
     backgroundColor: '#F5FCFF',
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  title: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  button: {
-    width: 200,
   }
 })
