@@ -103,12 +103,12 @@ class App extends Component {
       if (err) console.log(err);
       let stateCopy = { ...this.state };
       if (data.Items.length === 0) {
-        alert('no question found!');
-        stateCopy.currentStep = 'index';
+        alert('No Questions Found! \n Please Select Again.');
+        this.setState(stateCopy, () => { this.updateCurrentStep('index') })
       } else {
         stateCopy.question = data.Items;
+        this.setState(stateCopy, () => { this.fetchAnswers(step) });
       }
-      this.setState(stateCopy, () => { this.fetchAnswers(step) });
     })
   }
 
