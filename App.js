@@ -113,6 +113,7 @@ class App extends Component {
         this.setState(stateCopy, () => { this.updateCurrentStep('index') })
       } else {
         stateCopy.question = data.Items;
+        stateCopy.isLoading = false;
         this.setState(stateCopy, () => { this.fetchAnswers(step) });
       }
     })
