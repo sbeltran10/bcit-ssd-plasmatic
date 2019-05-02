@@ -37,8 +37,8 @@ class App extends Component {
       modalVisible: false,
       summary: [],
       totalCountOfQuestions: 0,
-      countCorrect: 0
-
+      countCorrect: 0,
+      isLoading: false
     }
   }
 
@@ -88,6 +88,7 @@ class App extends Component {
   updateCurrentStep = (step) => {
     let stateCopy = { ...this.state };
     stateCopy.currentStep = step;
+    stateCopy.isLoading = false;
     this.setState(stateCopy);
   }
 
@@ -96,6 +97,12 @@ class App extends Component {
     let stateCopy = { ...this.state };
     stateCopy.questionnaire = stateCopy.questionnaires.filter(q => { return q.id === stateCopy.selectedQuestionnaireId });
     this.setState(stateCopy, () => { console.log(this.state); this.updateCurrentStep(step) })
+  }
+
+  updateLoadingFFQ = (step) => {
+    let stateCopy = {...this.state};
+    stateCopy.isLoading = true;
+    this.setState(stateCopy, () => { this.fetchFirstQuestion(step) })
   }
 
   fetchFirstQuestion = (step) => {
@@ -121,7 +128,6 @@ class App extends Component {
     AnswerAPI.getById(this.state.question[0].id, (err, data) => {
       if(err) console.log(err);
       let stateCopy = {...this.state};
-      console.log(data);
       stateCopy.answers = data;
       this.setState(stateCopy, () => {this.updateCurrentStep(step)})
     })
@@ -171,7 +177,6 @@ class App extends Component {
   }
 
   saveAnswerSelection = () => {
-
     let step = "question";
     let result = '';
     let correctAnswer = '';
@@ -194,8 +199,9 @@ class App extends Component {
       isRightWrong: result,
       correctAnswer: correctAnswer
     };
-    this.saveToSummary(qa, step);
-
+    let stateCopy = {...this.state};
+    stateCopy.isLoading = true;
+    this.setState(stateCopy, () => { this.saveToSummary(qa, step) })
   }
 
   // qa(question & answer pair)
@@ -235,6 +241,7 @@ class App extends Component {
             onPickerValueChange={this.onPickerValueChange}
             updateSelectedQuestionnaireId={this.updateSelectedQuestionnaireId}
             fetchQuestionnaire={this.fetchQuestionnaire}
+            question={this.state.question}
           />
         }
 
@@ -245,6 +252,8 @@ class App extends Component {
             updateCurrentStep={this.updateCurrentStep}
             questionnaire={this.state.questionnaire}
             fetchFirstQuestion={this.fetchFirstQuestion}
+            updateLoadingFFQ={this.updateLoadingFFQ}
+            isLoading={this.state.isLoading}
           />
         }
 
@@ -262,6 +271,7 @@ class App extends Component {
             fetchQuestion={this.fetchQuestion}
             modalVisible={this.state.modalVisible}
             correctAnswer={this.state.correctAnswer}
+            isLoading={this.state.isLoading}
           />
         }
 
