@@ -88,6 +88,7 @@ class App extends Component {
   updateCurrentStep = (step) => {
     let stateCopy = { ...this.state };
     stateCopy.currentStep = step;
+    stateCopy.isLoading = false;
     this.setState(stateCopy);
   }
 
@@ -113,7 +114,6 @@ class App extends Component {
         this.setState(stateCopy, () => { this.updateCurrentStep('index') })
       } else {
         stateCopy.question = data.Items;
-        stateCopy.isLoading = false;
         this.setState(stateCopy, () => { this.fetchAnswers(step) });
       }
     })
@@ -128,7 +128,6 @@ class App extends Component {
     AnswerAPI.getById(this.state.question[0].id, (err, data) => {
       if(err) console.log(err);
       let stateCopy = {...this.state};
-      console.log(data);
       stateCopy.answers = data;
       this.setState(stateCopy, () => {this.updateCurrentStep(step)})
     })
@@ -147,7 +146,6 @@ class App extends Component {
         stateCopy.countCorrect = this.countCorrectAnswers();
         this.setState(stateCopy, () => { this.updateCurrentStep('quizResults') });
       } else {
-        stateCopy.isLoading = false;
         stateCopy.question = data.Items;
         this.setState(stateCopy, () => { this.fetchAnswers(step) });
       }
