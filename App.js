@@ -52,7 +52,7 @@ class App extends Component {
     QuestionnaireAPI.getByType(this.state.type, (err, data) => {
       let stateCopy = { ...this.state };
       if (err) console.log(err);
-      stateCopy.questionnaires = data.Items;
+      stateCopy.questionnaires = data;
       this.setState(stateCopy);
     })
   }
@@ -109,11 +109,11 @@ class App extends Component {
     QuestionAPI.readById(this.state.questionnaire[0].firstQuestionId, (err, data) => {
       if (err) console.log(err);
       let stateCopy = { ...this.state };
-      if (data.Items.length === 0) {
+      if (data.length === 0) {
         alert('No Questions Found! \n Please Select Again.');
         this.setState(stateCopy, () => { this.updateCurrentStep('index') })
       } else {
-        stateCopy.question = data.Items;
+        stateCopy.question = data;
         this.setState(stateCopy, () => { this.fetchAnswers(step) });
       }
     })
@@ -125,7 +125,7 @@ class App extends Component {
 
   // used as callback @ fetchFirstQuestion, fetchQuestion 
   fetchAnswers = (step) => {
-    AnswerAPI.getById(this.state.question[0].id, (err, data) => {
+    AnswerAPI.getByParentId(this.state.question[0].id, (err, data) => {
       if(err) console.log(err);
       let stateCopy = {...this.state};
       stateCopy.answers = data;
@@ -137,16 +137,16 @@ class App extends Component {
     QuestionAPI.readById(this.state.selectedAnswer[0].childQuestion, (err, data) => {
       if (err) console.log(err);
       let stateCopy = { ...this.state };
-      if (data.Items.length === 0 && this.state.type === 'survey') {
+      if (data.length === 0 && this.state.type === 'survey') {
         stateCopy.question = [];
         this.setState(stateCopy, () => { this.updateCurrentStep('results') });
-      } else if (data.Items.length === 0 && this.state.type === 'quiz') {
+      } else if (data.length === 0 && this.state.type === 'quiz') {
         stateCopy.question = [];
         stateCopy.totalCountOfQuestions = this.state.summary.length;
         stateCopy.countCorrect = this.countCorrectAnswers();
         this.setState(stateCopy, () => { this.updateCurrentStep('quizResults') });
       } else {
-        stateCopy.question = data.Items;
+        stateCopy.question = data;
         this.setState(stateCopy, () => { this.fetchAnswers(step) });
       }
     })
