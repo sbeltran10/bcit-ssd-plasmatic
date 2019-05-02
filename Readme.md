@@ -46,3 +46,54 @@ If “Material Icon” error or if styling library does not implement :
 OR
 
 2. Delete Items inside of build folder ( iOS > build ), rebuild project $react-native run-ios or $react-native run-android
+
+
+#### Question PropTypes
+
+Name | Type | Description
+### | ### | ###
+question | array | Currently active question
+answers | array | Answers associated with the currently active question
+selectAnswer | func | Function called when an answer is picked from the list
+checkAnswer | func | Function called when an answer is submitted using the the button
+saveAnswerSelection | func | Function used to submit the answer selection, updating the currently active question and answers
+modalVisible | bool | Controls whenever the modal containing the correct/incorrect selection is visible
+selectedAnswer | array | Currently selected answer
+correctAnswer | object | Correct answer in case the type of questionnaire is a quiz
+
+#### QuestionairreList PropTypes
+
+Name | Type | Description
+### | ### | ###
+questionnaires | array | Array containing the queried questionnaires
+onSelect | func | Callback to update the category state
+selectedQuestionnaireId | number | Primary key of the selected questionnaire
+
+#### QuestionairreType PropTypes
+
+Name | Type | Description
+### | ### | ###
+onExitButtonPress | func | Called when the exit button is pressed
+
+#### SurveyResults PropTypes
+
+Name | Type | Description
+### | ### | ###
+
+#### State Variables
+
+Name | Type | Description
+### | ### | ###
+answers | array | List of all the answers from the database
+countCorrect | int | Total number of correct answers
+currentStep | string | The name of the page to be rendered
+modalVisible | bool | Will determine if the question/answer result is displayed after an answer is submitted
+question | array | List of the questions
+questionnaire | array | Filtered list of questionnaires based on the type
+questionnaires | array | List of all questionnaires from the database
+selectedAnswer | int | Index of the selected answer
+selectedQuestionaireTitle | string | Title of currently selected questionnaire
+selectedQuestionnaireID | int | Index of currently selected questionnaire
+summary | array | Survey/quiz questions, result and correct answer
+totalCountOfQuestions | int | Number of questions in a questionnaire
+type | string | Questionnaire category
