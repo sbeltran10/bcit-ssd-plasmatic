@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
  * This functinal component renders a question along with its associated answers and the elments required to submit
  * the answer and display the result of selecting a specific answer
  */
-let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, saveAnswerSelection, modalVisible, correctAnswer }) => (
+let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, saveAnswerSelection, modalVisible, correctAnswer, isLoading }) => (
   <View style={styles.mainView}>
     <View style={styles.questionView}>
       <Text h4>{question[0].content}</Text>
@@ -55,6 +55,7 @@ let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, 
         question={question}
         selectedAnswer={selectedAnswer}
         correctAnswer={correctAnswer}
+        isLoading={isLoading}
       />
     </Overlay>
   </View>

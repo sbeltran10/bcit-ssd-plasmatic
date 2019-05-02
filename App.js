@@ -37,8 +37,8 @@ class App extends Component {
       modalVisible: false,
       summary: [],
       totalCountOfQuestions: 0,
-      countCorrect: 0
-
+      countCorrect: 0,
+      isLoading: false
     }
   }
 
@@ -140,6 +140,7 @@ class App extends Component {
         stateCopy.countCorrect = this.countCorrectAnswers();
         this.setState(stateCopy, () => { this.updateCurrentStep('quizResults') });
       } else {
+        stateCopy.isLoading = false;
         stateCopy.question = data.Items;
         this.setState(stateCopy, () => { this.fetchAnswers(step) });
       }
@@ -171,7 +172,6 @@ class App extends Component {
   }
 
   saveAnswerSelection = () => {
-
     let step = "question";
     let result = '';
     let correctAnswer = '';
@@ -194,8 +194,9 @@ class App extends Component {
       isRightWrong: result,
       correctAnswer: correctAnswer
     };
-    this.saveToSummary(qa, step);
-
+    let stateCopy = {...this.state};
+    stateCopy.isLoading = true;
+    this.setState(stateCopy, () => { this.saveToSummary(qa, step) })
   }
 
   // qa(question & answer pair)
@@ -235,6 +236,7 @@ class App extends Component {
             onPickerValueChange={this.onPickerValueChange}
             updateSelectedQuestionnaireId={this.updateSelectedQuestionnaireId}
             fetchQuestionnaire={this.fetchQuestionnaire}
+            question={this.state.question}
           />
         }
 
@@ -262,6 +264,7 @@ class App extends Component {
             fetchQuestion={this.fetchQuestion}
             modalVisible={this.state.modalVisible}
             correctAnswer={this.state.correctAnswer}
+            isLoading={this.state.isLoading}
           />
         }
 
