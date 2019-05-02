@@ -36,7 +36,7 @@ let AnswerCorrectIncorrect = ({ saveAnswerSelection, selectedAnswer, correctAnsw
           </Text>
         </>
         :
-        <Text styles={[styles.choiceText, styles.choiceText]}>
+        <Text style={[styles.choiceText]}>
           Good job!
         </Text>
       }
