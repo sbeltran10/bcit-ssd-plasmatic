@@ -17,6 +17,9 @@ export default StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'center'
   },
+  mediaContainer: {
+    flex:1
+  },
   answerContainer: {
     backgroundColor: '#F5FCFF'
   },
