@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
  * Renders the list of questionnaires of a given type
  */
 
-//export default (props) => (
 let QuestionnaireList = ({questionnaires, onSelect, selectedQuestionnaireId}) => (
     <View style={styles.listContainer}>
         <ScrollView>

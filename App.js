@@ -1,6 +1,7 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
+ * Plasmatic Game App
+ * The application is a branching survey game designed in React-Native.
+ * https://github.com/sbeltran10/bcit-ssd-plasmatic.git
  *
  * @format
  * @flow
