@@ -25,14 +25,15 @@ class Intro extends Component {
             {this.props.questionnaire[0].desc}
           </Text>
         </View>
-
-        <View>
-            <ActivityIndicator 
-                animating={this.props.isLoading} size="small" 
-                color="#00ff00" 
+        {this.props.isLoading &&
+          <View>
+            <ActivityIndicator
+              animating={true}
+              size="small"
+              color="#00ff00"
             />
-        </View>
-
+          </View>
+        }
         <Button
           icon={<Icon name='code' color='#ffffff' />}
           backgroundColor='#03A9F4'
