@@ -5,6 +5,9 @@ import styles from '../styles/Question';
 import { ScrollView } from 'react-native-gesture-handler';
 import AnswerCorrectIncorrect from './AnswerCorrectIncorrect';
 import PropTypes from 'prop-types';
+import { WebView } from 'react-native-webview';
+
+
 
 /**
  * This functinal component renders a question along with its associated answers and the elments required to submit
@@ -15,6 +18,12 @@ let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, 
     <View style={styles.questionView}>
       <Text h4>{question[0].content}</Text>
     </View>
+    {
+      question[0].mediaLink &&
+      <View style={styles.mediaContainer}>
+        <WebView source={{ uri: question[0].mediaLink }} />
+      </View>
+    }
     <View style={styles.answersView}>
       {/* A Scrollview is used in case the amount or length of th answers is greater than the screen's height */}
       <ScrollView contentContainerStyle={styles.scrollView}>
