@@ -13,9 +13,7 @@ AnswerAPI.getByParentId = (parentId, cb) => {
       r.json()
         .then((rJson) => {
           let answers = rJson.Items;
-          sortAnswers(answers)
-          console.log(answers)
-          cb(null, answers);
+          cb(null, sortAnswers(answers));
         })
         .catch((err) => {
           console.log(err);
@@ -25,21 +23,22 @@ AnswerAPI.getByParentId = (parentId, cb) => {
 }
 
 const sortAnswers = (answers) => {
-  _.orderBy(answers, ['content'], ['desc']);
+  let sortedAnswers = _.sortBy(answers, ['content']);
   const answerRegex = RegExp(/^.*of.*the.*above.*/);
   const answersToMove = [];
 
-  for (let i = 0; i < answers.length; i++) {
-    const regexTest = answerRegex.test(answers[i].content);
+  for (let i = 0; i < sortedAnswers.length; i++) {
+    const regexTest = answerRegex.test(sortedAnswers[i].content);
     if (regexTest) {
-      answersToMove.push(answers.splice(i, 1)[0])
+      answersToMove.push(sortedAnswers.splice(i, 1)[0])
       i--;
     }
   }
 
   for (const answer of answersToMove) {
-    answers.push(answer);
+    sortedAnswers.push(answer);
   }
+  return sortedAnswers;
 }
 
 export default AnswerAPI;
