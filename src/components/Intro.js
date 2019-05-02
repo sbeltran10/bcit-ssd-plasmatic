@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, ActivityIndicator } from 'react-native';
 import { Text, Card, ListItem, Button, Icon } from 'react-native-elements';
 import styles from '../styles/Intro';
 
@@ -25,6 +25,14 @@ class Intro extends Component {
             {this.props.questionnaire[0].desc}
           </Text>
         </View>
+
+        <View>
+            <ActivityIndicator 
+                animating={this.props.isLoading} size="small" 
+                color="#00ff00" 
+            />
+        </View>
+
         <Button
           icon={<Icon name='code' color='#ffffff' />}
           backgroundColor='#03A9F4'
@@ -32,8 +40,10 @@ class Intro extends Component {
           title="Start"
           onPress={() => {
             let step = 'question'
-            let fetchFirstQuestion = this.props.fetchFirstQuestion;
-            fetchFirstQuestion(step);
+            // let fetchFirstQuestion = this.props.fetchFirstQuestion;
+            // fetchFirstQuestion(step);
+            let updateLoadingFFQ = this.props.updateLoadingFFQ;
+            updateLoadingFFQ(step);
           }
           }
         />

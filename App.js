@@ -98,6 +98,12 @@ class App extends Component {
     this.setState(stateCopy, () => { console.log(this.state); this.updateCurrentStep(step) })
   }
 
+  updateLoadingFFQ = (step) => {
+    let stateCopy = {...this.state};
+    stateCopy.isLoading = true;
+    this.setState(stateCopy, () => { this.fetchFirstQuestion(step) })
+  }
+
   fetchFirstQuestion = (step) => {
     QuestionAPI.readById(this.state.questionnaire[0].firstQuestionId, (err, data) => {
       if (err) console.log(err);
@@ -247,6 +253,8 @@ class App extends Component {
             updateCurrentStep={this.updateCurrentStep}
             questionnaire={this.state.questionnaire}
             fetchFirstQuestion={this.fetchFirstQuestion}
+            updateLoadingFFQ={this.updateLoadingFFQ}
+            isLoading={this.state.isLoading}
           />
         }
 
