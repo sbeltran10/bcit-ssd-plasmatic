@@ -47,12 +47,15 @@ let AnswerCorrectIncorrect = ({ saveAnswerSelection, selectedAnswer, correctAnsw
       title="Next"
     />
 
-    <View>
-     <ActivityIndicator 
-        animating={isLoading} size="small" 
-        color="#00ff00" 
-      />
-    </View>
+    {isLoading &&
+      <View>
+        <ActivityIndicator
+          animating={true}
+          size="small"
+          color="#00ff00"
+        />
+      </View>
+    }
   </View>
 )
 
