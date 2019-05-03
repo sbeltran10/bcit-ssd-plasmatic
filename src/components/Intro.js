@@ -29,8 +29,8 @@ class Intro extends Component {
           <View>
             <ActivityIndicator
               animating={true}
-              size="small"
-              color="#00ff00"
+              size="large"
+              color="#0000ff"
             />
           </View>
         }
@@ -41,8 +41,6 @@ class Intro extends Component {
           title="Start"
           onPress={() => {
             let step = 'question'
-            // let fetchFirstQuestion = this.props.fetchFirstQuestion;
-            // fetchFirstQuestion(step);
             let updateLoadingFFQ = this.props.updateLoadingFFQ;
             updateLoadingFFQ(step);
           }

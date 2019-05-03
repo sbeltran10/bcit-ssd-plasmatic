@@ -52,7 +52,7 @@ let AnswerCorrectIncorrect = ({ saveAnswerSelection, selectedAnswer, correctAnsw
         <ActivityIndicator
           animating={true}
           size="small"
-          color="#00ff00"
+          color="#0000ff"
         />
       </View>
     }
