@@ -78,7 +78,7 @@ If “Material Icon” error (“Unrecognized front family ‘Material Icons”)
 
 #### Question PropTypes
 
- |Name | Type | Description|
+|Name | Type | Description|
 |:---|---|:---|
 question | array | Currently active question
 answers | array | Answers associated with the currently active question
@@ -91,7 +91,7 @@ correctAnswer | object | Correct answer in case the type of questionnaire is a q
 
   
 #### QuestionairreList PropTypes
- |Name | Type | Description|
+|Name | Type | Description|
 |:---|---|:---|
 questionnaires | array | Array containing the queried questionnaires
 onSelect | func | Callback to update the category state
@@ -99,20 +99,20 @@ selectedQuestionnaireId | number | Primary key of the selected questionnaire
   
 
 #### QuestionairreType PropTypes
- |Name | Type | Description|
+|Name | Type | Description|
 |:---|---|:---|
 onExitButtonPress | func | Called when the exit button is pressed
 
  
 #### **SurveyResults PropTypes**
- |Name | Type | Description|
+|Name | Type | Description|
 |:---|---|:---|
 resultsText | string | Text to display
 onExitButtonPress | func | Function to be called when the exit button is pressed
 
 
 #### State Variables
- |Name | Type | Description|
+|Name | Type | Description|
 |:---|---|:---|
 | answers | array | List of all the answers from the database |
 |countCorrect | int | Total number of correct answers|
@@ -132,9 +132,18 @@ onExitButtonPress | func | Function to be called when the exit button is pressed
 
 ## 4. API Guide:
 
-This React Native Component utilizes 3 different API function containers to fetch the appropriate Questionnaire(Survey, Quiz) or Choose Your Own Adventure game. The files are inside the 
+This React Native Component utilizes 3 different API function containers to fetch the appropriate Questionnaire(Survey, Quiz) or Choose Your Own Adventure game. The files for each container are located inside the `src/api` folder. For the components to work correctly, the API functions should return JavaScript objects of the following type to the main `app.js` container via callbacks. 
 
 ### QuestionnaireAPI
+
+|Property | Type | Description|
+|:---|---|:---|
+|id|Number|Id of the questionnaire|
+|title|String|Title text that appears on the intro screen|
+|desc|String|Detailed description of the questionnaire|
+|questionnaireType|String|Can be one of the following: "survey", "quiz", "game"|
+|firstQuestionId|Number|Id of the first question to fetch when starting the questionnaire|
+|endText|String (optional)|Text that appears after the last question has been answered|
 
 Questionnaire JSON example:
   
@@ -149,6 +158,12 @@ Questionnaire JSON example:
 ```
 
 ### QuestionAPI
+
+|Property | Type | Description|
+|:---|---|:---|
+|id|Number|Id of the questionnaire|
+|content|String|Title text that appears on the intro screen|
+|desc|String|Detailed description of the questionnaire|
 
 Question JSON example:  
 
