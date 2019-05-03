@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 /**
  * This component populates a dropdown list containing the types of
- * surveys.
+ * questionnaires.
  */
 
 let QuestionnaireType = ({selectedValue, onSelect}) => (
