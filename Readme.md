@@ -43,13 +43,13 @@ Be sure to save your local.properties file after making this change.
 
 ## Embedding the Child Application
 
-1. Run **$npm install** (at project root)
+1. **$ npm install**
 
-2. Run **$react-native link react-native-gesture-handler** (at project root)
+2. **$ react-native link react-native-gesture-handler** (at project root)
   
-3. Run **$react-native link react-native-vector-icons** (at project root)
+3. **$ react-native link react-native-vector-icons** (at project root)
 
-4. Run **$react-native run-ios** OR **react-native run-android** (builds app)
+4. **$ react-native run-ios** OR **react-native run-android** (builds app)
 
 
 ******
