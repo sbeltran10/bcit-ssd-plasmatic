@@ -61,7 +61,7 @@ Be sure to save your local.properties file after making this change.
 
 4. Run **$react-native run-ios** OR **react-native run-android** (builds app)
   
-#### Common Errors at Initial Setup:
+### Common Errors at Initial Setup:
 
 If “Material Icon” error (“Unrecognized front family ‘Material Icons”) in IOS or if styling library does not implement in Android : :
 
