@@ -14,7 +14,7 @@ We have the need for a very simple “game” like function in our app. It would
 ### Initial Setup & Installation
   
 
-To test Application in Emulator, set up Xcode / Android studio per specified in [React Native Instruction](https://facebook.github.io/react-native/docs/getting-started  "React Native Getting Started")
+To test Application in Emulator, set up Xcode / Android studio per specified in [React Native Instruction](https://facebook.github.io/react-native/docs/getting-started  "React Native Getting Started").
 
   
 ## Creating a Host Application
@@ -89,36 +89,36 @@ AnswerAPI
 #### Questionnaire JSON example:
 ```javascript
 {
-id: 1,
-title: "Questionnaire Title",
-desc: "Questionnaire Description",
-questionnaireType: "survey",
-firstQuestionId: 2
+    id: 1,
+    title: "Questionnaire Title",
+    desc: "Questionnaire Description",
+    questionnaireType: "survey",
+    firstQuestionId: 2
 }
 ```
 #### Question JSON example:
 Survey
 ```javascript
 {
-id: 1,
-content: "Question content"
+    id: 1,
+    content: "Question content"
 }
 ```
 Quiz
 ```javascript
 {
-id: 1,
-content: "Question content",
-correctAnswerId: 2
+    id: 1,
+    content: "Question content",
+    correctAnswerId: 2
 }
 ```
 #### Answer JSON example:
 ```javascript
 {
-id: 1,
-content: "Answer content",
-parentQuestion: 2,
-childQuestion: 3
+    id: 1,
+    content: "Answer content",
+    parentQuestion: 2,
+    childQuestion: 3
 }
 ```
 
