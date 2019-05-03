@@ -187,7 +187,7 @@ This React Native Component utilizes 3 different API function containers to fetc
 |id|Number|Id of the question|
 |content|String|Text of the answer|
 |correctAnswerId|Number (optional)|Id of the correct answer if the questionnaire type is "quiz"|
-|mediaLink|String (optional)|Link pointing to any multimedia the questionn is associated with. Can be a video, image or audio|
+|mediaLink|String (optional)|Link pointing to any multimedia the question is associated with. Can be a video, image or audio|
 
 #### Question JSON example:
 
@@ -218,7 +218,7 @@ Quiz Question:
 |id|Number|Id of the answer|
 |content|String|Text of the answer|
 |parentQuestion|Number|Id of the question this answers belongs to|
-|childQuestion|Number|Id of the questions this answers leads to. If the value is -1 this menas that the answer is the last of the questionnaire|
+|childQuestion|Number|Id of the questions this answers leads to. If the value is -1 this means that the answer is the last of the questionnaire|
 |outcome|String (optional)|Text that explains what happens when selecting this answer. Used if the questionnaire type is "game"|
 
 #### Answer JSON example:
