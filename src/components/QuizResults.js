@@ -14,12 +14,12 @@ class QuizResults extends Component {
            <Text h3>Score: {this.props.countCorrect}/{this.props.totalCountOfQuestions}</Text>
            <ScrollView>
             {this.props.quizResults.map((item, key) => (
-                <View key = {item.questionNumber} style = {styles.item}>
+                <View key = {key} style = {styles.item}>
                     <Text key={key}>
-                        {item.questionNumber}.{item.questionText}  
-                        Your Answer: {item.answerText} 
-                        Is it correct?: {item.isRightWrong}   
-                        Correct Answer if was Wrong: {item.correctAnswer}    
+                        {item.questionText} {"\n"}
+                        Your Answer: {item.answerText} {"\n"}
+                        Is it correct?: {item.isRightWrong} {"\n"}
+                        Correct Answer if was Wrong: {item.correctAnswer}
                     </Text>
                 </View>
             ))}

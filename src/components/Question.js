@@ -5,13 +5,27 @@ import styles from '../styles/Question';
 import { ScrollView } from 'react-native-gesture-handler';
 import AnswerCorrectIncorrect from './AnswerCorrectIncorrect';
 import PropTypes from 'prop-types';
+import { WebView } from 'react-native-webview';
 
-let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, saveAnswerSelection, modalVisible, correctAnswer }) => (
+
+
+/**
+ * This functinal component renders a question along with its associated answers and the elments required to submit
+ * the answer and display the result of selecting a specific answer
+ */
+let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, saveAnswerSelection, modalVisible, correctAnswer, isLoading }) => (
   <View style={styles.mainView}>
     <View style={styles.questionView}>
       <Text h4>{question[0].content}</Text>
     </View>
+    {
+      question[0].mediaLink &&
+      <View style={styles.mediaContainer}>
+        <WebView source={{ uri: question[0].mediaLink }} />
+      </View>
+    }
     <View style={styles.answersView}>
+      {/* A Scrollview is used in case the amount or length of th answers is greater than the screen's height */}
       <ScrollView contentContainerStyle={styles.scrollView}>
         {
           answers.map((answer, i) => (
@@ -38,6 +52,7 @@ let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, 
       onPress={checkAnswer}
       title="Submit answer"
     />
+    {/* The overlay can show additional information about the question and/or answers if necessary */}
     <Overlay
       isVisible={modalVisible}
       windowBackgroundColor="rgba(0, 0, 0, .7)"
@@ -49,18 +64,29 @@ let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, 
         question={question}
         selectedAnswer={selectedAnswer}
         correctAnswer={correctAnswer}
+        isLoading={isLoading}
       />
     </Overlay>
   </View>
 )
 
 Question.propTypes = {
+  // Currently active question
   question: PropTypes.array,
+  // Answers associated to the currently active question
   answers: PropTypes.array,
+  // Function called when an answer is picked from the list
   selectAnswer: PropTypes.func,
+  // Function called when an answer is submitted using the button
+  checkAnswer: PropTypes.func,
+  // Function used to submit the answer selection, updating the currently active question and answers
   saveAnswerSelection: PropTypes.func,
+  // Controls whenever the modal containing the correct/incorrect selection is visible
   modalVisible: PropTypes.bool,
-  selectedAnswerId: PropTypes.string
+  // Currently selected answer
+  selectedAnswer: PropTypes.array,
+  // Correct answer in case the type of questionnaire is a quiz
+  correctAnswer: PropTypes.object
 };
 
 export default Question;
