@@ -16,8 +16,8 @@ We have the need for a very simple “game” like function in our app. It would
 
 To test Application in Emulator, set up Xcode / Android studio per specified in [React Native Instruction](https://facebook.github.io/react-native/docs/getting-started  "React Native Getting Started").
 
-*note*
-Ensure to toggle to desired OS/Platforms options to view the corresponding setup instructions.
+*note*:
+*Ensure to toggle to desired OS/Platforms options to view the corresponding setup instructions.*
 
   
 ## Creating a Host Application
