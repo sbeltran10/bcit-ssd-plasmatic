@@ -142,11 +142,11 @@ This React Native Component utilizes 3 different API function containers to fetc
 |Property |Type | Description|
 |:---|---|:---|
 |id|Number|Id of the questionnaire|
-|title|String|Title text that appears on the intro screen|
-|desc|String|Detailed description of the questionnaire|
-|questionnaireType|String|Can be one of the following: "survey", "quiz", "game"|
-|firstQuestionId|Number|Id of the first question to fetch when starting the questionnaire|
-|endText|String (optional)|Text that appears after the last question has been answered|
+|title|string|Title text that appears on the intro screen|
+|desc|string|Detailed description of the questionnaire|
+|questionnaireType|string|Can be one of the following: "survey", "quiz", "game"|
+|firstQuestionId|number|Id of the first question to fetch when starting the questionnaire|
+|endText|string (optional)|Text that appears after the last question has been answered|
 
 #### Questionnaire JSON example:
 
@@ -185,9 +185,9 @@ This React Native Component utilizes 3 different API function containers to fetc
 |Property |Type | Description|
 |:---|---|:---|
 |id|Number|Id of the question|
-|content|String|Text of the answer|
-|correctAnswerId|Number (optional)|Id of the correct answer if the questionnaire type is "quiz"|
-|mediaLink|String (optional)|Link pointing to any multimedia the question is associated with. Can be a video, image or audio|
+|content|string|Text of the answer|
+|correctAnswerId|number (optional)|Id of the correct answer if the questionnaire type is "quiz"|
+|mediaLink|string (optional)|Link pointing to any multimedia the question is associated with. Can be a video, image or audio|
 
 #### Question JSON example:
 
