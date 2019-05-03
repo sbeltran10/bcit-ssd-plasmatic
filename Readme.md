@@ -43,11 +43,11 @@ Folders & Files needed:
 
 To run the application in Android, create a local.properties file in the android folder. Then add a path to the Android sdk. You can find this path when navigating in Android studio to Tools | SDK Manager | System Settings | Android SDK. On a Mac the path looks like:
 
-sdk.dir=/Users/pm/Library/Android/sdk
+`sdk.dir=/Users/pm/Library/Android/sdk`
 
 On Windows the path looks like:  
 
-sdk.dir=C:\\Users\\XX\\AppData\\Local\\Android\\Sdk
+`sdk.dir=C:\\Users\\XX\\AppData\\Local\\Android\\Sdk`
 
 Be sure to save your local.properties file after making this change.
 
@@ -104,7 +104,7 @@ selectedQuestionnaireId | number | Primary key of the selected questionnaire
 onExitButtonPress | func | Called when the exit button is pressed
 
  
-  #### **SurveyResults PropTypes**
+#### **SurveyResults PropTypes**
  |Name | Type | Description|
 |:---|---|:---|
 resultsText | string | Text to display
@@ -132,76 +132,53 @@ onExitButtonPress | func | Function to be called when the exit button is pressed
 
 ## 4. API Guide:
 
+This React Native Component utilizes 3 different API function containers to fetch the appropriate Questionnaire(Survey, Quiz) or Choose Your Own Adventure game. The files are inside the 
 
-This React Native Component utilizes 3 different API methods to fetch the appropriate Questionnaire(Survey, Quiz) or Choose Your Own Adventure game.
-  
-
-QuestionnaireAPI
-  
-
-QuestionAPI
-  
-
-AnswerAPI
-
+### QuestionnaireAPI
 
 Questionnaire JSON example:
   
-
 ```javascript
 {
-
     id: 1,
-
     title: "Questionnaire Title",
-
     desc: "Questionnaire Description",
-
     questionnaireType: "survey"
-
     firstQuestionId: 2
-
 }
 ```
+
+### QuestionAPI
 
 Question JSON example:  
 
 Survey
 ```javascript
 {
-
     id: 1,
-
     content: "Question content"
-
 }
 ```
 
 Quiz
 ```javascript
 {
-
     id: 1,
-
     content: "Question content",
-
     correctAnswerId: 2
-
 }
 ```
 
+### AnswerAPI
+
 Answer JSON example:
+
 ```javascript
 {
-
     id: 1,
-
     content: "Answer content",
-
     parentQuestion: 2,
-
     childQuestion: 3
-
 }
 ```
 <a name="styling"/>
