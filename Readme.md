@@ -24,7 +24,10 @@ We have the need for a very simple “game” like function in our app. It would
 ## 2. Initial Setup & Installation
   
 
-To test Application in Emulator, set up Xcode / Android studio per specified in React Native Instruction (https://facebook.github.io/react-native/docs/getting-started)
+To test Application in Emulator, set up Xcode / Android studio per specified in [React Native Instruction](https://facebook.github.io/react-native/docs/getting-started  "React Native Getting Started").
+
+*note*:
+*Ensure to toggle to desired OS/Platforms options to view the corresponding setup instructions.*
 
   
 ### Creating a Host Application
@@ -53,13 +56,13 @@ Be sure to save your local.properties file after making this change.
 
 ### Embedding the Child Application
 
-1. Run **$npm install** (at project root)
+1. $ **npm install**
 
-2. Run **$react-native link react-native-gesture-handler** (at project root)
+2. $ **react-native link react-native-gesture-handler** (at project root)
   
-3. Run **$react-native link react-native-vector-icons** (at project root)
+3. $ **react-native link react-native-vector-icons** (at project root)
 
-4. Run **$react-native run-ios** OR **react-native run-android** (builds app)
+4. $ **react-native run-ios** OR **react-native run-android** (builds app)
   
 ### Common Errors at Initial Setup:
 
@@ -145,15 +148,35 @@ This React Native Component utilizes 3 different API function containers to fetc
 |firstQuestionId|Number|Id of the first question to fetch when starting the questionnaire|
 |endText|String (optional)|Text that appears after the last question has been answered|
 
-Questionnaire JSON example:
-  
+#### Questionnaire JSON example:
+
 ```javascript
 {
     id: 1,
-    title: "Questionnaire Title",
-    desc: "Questionnaire Description",
-    questionnaireType: "survey"
+    title: "Survey Title",
+    desc: "Survey Description",
+    questionnaireType: "survey",
+    firstQuestionId: 1
+}
+```
+
+```javascript
+{
+    id: 2,
+    title: "Quiz Title",
+    desc: "Quiz Description",
+    questionnaireType: "quiz",
     firstQuestionId: 2
+}
+```
+
+```javascript
+{
+    id: 3,
+    title: "Game Title",
+    desc: "Game Description",
+    questionnaireType: "game",
+    firstQuestionId: 3
 }
 ```
 
@@ -166,25 +189,27 @@ Questionnaire JSON example:
 |correctAnswerId|Number (optional)|Id of the correct answer if the questionnaire type is "quiz"|
 |mediaLink|String (optional)|Link pointing to any multimedia the questionn is associated with. Can be a video, image or audio|
 
-Question JSON example:  
+#### Question JSON example:
 
-Survey
+Survey Question:
+
 ```javascript
 {
     id: 1,
-    content: "Question content",
-    mediaLink: "https://en.wikipedia.org/wiki/Flag_of_Canada#/media/File:Flag_of_Canada_(Pantone).svg"
+    content: "Question content"
 }
 ```
 
-Quiz
+Quiz Question:
+
 ```javascript
 {
-    id: 1,
+    id: 2,
     content: "Question content",
     correctAnswerId: 2
 }
 ```
+<<<<<<< HEAD
 
 ### AnswerAPI
 
@@ -197,14 +222,14 @@ Quiz
 |childQuestion|Number|Id of the questions this answers leads to. If the value is -1 this menas that the answer is the last of the questionnaire|
 |outcome|String (optional)|Text that explains what happens when selecting this answer. Used if the questionnaire type is "game"|
 
-Answer JSON example:
+#### Answer JSON example:
 
 ```javascript
 {
-    id: 1,
+    id: 2,
     content: "Answer content",
     parentQuestion: 2,
-    childQuestion: 3,
+    childQuestion: 3
 }
 ```
 <a name="styling"/>
