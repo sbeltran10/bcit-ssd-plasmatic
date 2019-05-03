@@ -209,7 +209,6 @@ Quiz Question:
     correctAnswerId: 2
 }
 ```
-<<<<<<< HEAD
 
 ### AnswerAPI
 
