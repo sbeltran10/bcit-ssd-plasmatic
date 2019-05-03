@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, ActivityIndicator } from 'react-native';
 import { Text, Button } from 'react-native-elements';
 import styles from '../styles/AnswerCorrectIncorrect';
 import PropTypes from 'prop-types';
@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 /**
  * This component shows whenever a right or wrong answer was selected when the questionnaire type is quiz
  */
-let AnswerCorrectIncorrect = ({ saveAnswerSelection, selectedAnswer, correctAnswer = { content: 'There is no correct answer' } }) => (
+let AnswerCorrectIncorrect = ({ saveAnswerSelection, selectedAnswer, correctAnswer = { content: 'There is no correct answer' }, isLoading }) => (
   <View style={styles.mainView}>
     {correctAnswer.id === selectedAnswer[0].id ?
       <Text h4 styles={styles.correctHeaderText}>
@@ -36,15 +36,26 @@ let AnswerCorrectIncorrect = ({ saveAnswerSelection, selectedAnswer, correctAnsw
           </Text>
         </>
         :
-        <Text styles={[styles.choiceText, styles.choiceText]}>
+        <Text style={[styles.choiceText]}>
           Good job!
         </Text>
       }
     </View>
+
     <Button
       onPress={saveAnswerSelection}
       title="Next"
     />
+
+    {isLoading &&
+      <View>
+        <ActivityIndicator
+          animating={true}
+          size="small"
+          color="#0000ff"
+        />
+      </View>
+    }
   </View>
 )
 
