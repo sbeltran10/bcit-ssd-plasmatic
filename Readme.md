@@ -136,7 +136,7 @@ This React Native Component utilizes 3 different API function containers to fetc
 
 ### QuestionnaireAPI
 
-|Property | Type | Description|
+|Property |Type | Description|
 |:---|---|:---|
 |id|Number|Id of the questionnaire|
 |title|String|Title text that appears on the intro screen|
@@ -159,11 +159,12 @@ Questionnaire JSON example:
 
 ### QuestionAPI
 
-|Property | Type | Description|
+|Property |Type | Description|
 |:---|---|:---|
-|id|Number|Id of the questionnaire|
-|content|String|Title text that appears on the intro screen|
-|desc|String|Detailed description of the questionnaire|
+|id|Number|Id of the question|
+|content|String|Text of the answer|
+|correctAnswerId|Number (optional)|Id of the correct answer if the questionnaire type is "quiz"|
+|mediaLink|String (optional)|Link pointing to any multimedia the questionn is associated with. Can be a video, image or audio|
 
 Question JSON example:  
 
@@ -171,7 +172,8 @@ Survey
 ```javascript
 {
     id: 1,
-    content: "Question content"
+    content: "Question content",
+    mediaLink: "https://en.wikipedia.org/wiki/Flag_of_Canada#/media/File:Flag_of_Canada_(Pantone).svg"
 }
 ```
 
@@ -186,6 +188,15 @@ Quiz
 
 ### AnswerAPI
 
+
+|Property |Type | Description|
+|:---|---|:---|
+|id|Number|Id of the answer|
+|content|String|Text of the answer|
+|parentQuestion|Number|Id of the question this answers belongs to|
+|childQuestion|Number|Id of the questions this answers leads to. If the value is -1 this menas that the answer is the last of the questionnaire|
+|outcome|String (optional)|Text that explains what happens when selecting this answer. Used if the questionnaire type is "game"|
+
 Answer JSON example:
 
 ```javascript
@@ -193,7 +204,7 @@ Answer JSON example:
     id: 1,
     content: "Answer content",
     parentQuestion: 2,
-    childQuestion: 3
+    childQuestion: 3,
 }
 ```
 <a name="styling"/>
