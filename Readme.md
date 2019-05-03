@@ -78,10 +78,8 @@ This React Native Component utilizes 3 different API methods to fetch the approp
   
 
 QuestionnaireAPI
-  
 
 QuestionAPI
-  
 
 AnswerAPI
 
@@ -90,24 +88,45 @@ AnswerAPI
 ```javascript
 {
     id: 1,
-    title: "Questionnaire Title",
-    desc: "Questionnaire Description",
+    title: "Survey Title",
+    desc: "Survey Description",
     questionnaireType: "survey",
+    firstQuestionId: 1
+}
+```
+
+```javascript
+{
+    id: 2,
+    title: "Quiz Title",
+    desc: "Quiz Description",
+    questionnaireType: "quiz",
     firstQuestionId: 2
 }
 ```
+
+```javascript
+{
+    id: 3,
+    title: "Game Title",
+    desc: "Game Description",
+    questionnaireType: "game",
+    firstQuestionId: 3
+}
+```
+
 #### Question JSON example:
-Survey
+Survey Question:
 ```javascript
 {
     id: 1,
     content: "Question content"
 }
 ```
-Quiz
+Quiz Question:
 ```javascript
 {
-    id: 1,
+    id: 2,
     content: "Question content",
     correctAnswerId: 2
 }
@@ -115,7 +134,7 @@ Quiz
 #### Answer JSON example:
 ```javascript
 {
-    id: 1,
+    id: 2,
     content: "Answer content",
     parentQuestion: 2,
     childQuestion: 3
