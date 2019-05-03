@@ -77,7 +77,7 @@ Question.propTypes = {
   answers: PropTypes.array,
   // Function called when an answer is picked from the list
   selectAnswer: PropTypes.func,
-  // Function called when an answer is submited using the button
+  // Function called when an answer is submitted using the button
   checkAnswer: PropTypes.func,
   // Function used to submit the answer selection, updating the currently active question and answers
   saveAnswerSelection: PropTypes.func,
