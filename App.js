@@ -138,10 +138,10 @@ class App extends Component {
     QuestionAPI.readById(this.state.selectedAnswer[0].childQuestion, (err, data) => {
       if (err) console.log(err);
       let stateCopy = { ...this.state };
-      if (data.length === 0 && this.state.type === 'survey') {
+      if (!data && this.state.type === 'survey') {
         stateCopy.question = [];
         this.setState(stateCopy, () => { this.updateCurrentStep('results') });
-      } else if (data.length === 0 && this.state.type === 'quiz') {
+      } else if (!data && this.state.type === 'quiz') {
         stateCopy.question = [];
         stateCopy.totalCountOfQuestions = this.state.summary.length;
         stateCopy.countCorrect = this.countCorrectAnswers();
