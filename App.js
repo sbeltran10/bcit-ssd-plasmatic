@@ -147,6 +147,9 @@ class App extends Component {
         stateCopy.totalCountOfQuestions = this.state.summary.length;
         stateCopy.countCorrect = this.countCorrectAnswers();
         this.setState(stateCopy, () => { this.updateCurrentStep('quizResults') });
+      } else if (!data && this.state.type === 'game') {
+        stateCopy.question = [];
+        this.setState(stateCopy, () => { this.updateCurrentStep('gameResults') });
       } else {
         stateCopy.question = data;
         this.setState(stateCopy, () => { this.fetchAnswers(step) });
@@ -282,7 +285,7 @@ class App extends Component {
         {
           this.state.currentStep === 'results' && this.state.question.length === 0 &&
           <SurveyResults
-            saveToSummary={this.saveToSummary}
+            // saveToSummary={this.saveToSummary}
             onExitButtonPress={this.onExitButtonPress}
           />
         }
@@ -295,6 +298,14 @@ class App extends Component {
             countCorrect={this.state.countCorrect}
             quizResults={this.state.summary}
             onExitButtonPress={this.onExitButtonPress}
+          />
+        }
+
+        {
+          this.state.currentStep === 'gameResults' && this.state.question.length === 0 &&
+          <GameResults
+            questionnaire={this.state.questionnaire}
+            onExitButtonPress={this.state.onExitButtonPress}
           />
         }
 
