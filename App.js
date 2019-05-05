@@ -19,7 +19,8 @@ import AnswerAPI from './src/api/AnswerAPI';
 import QuestionnaireAPI from './src/api/QuestionnaireAPI';
 import QuestionAPI from './src/api/QuestionAPI';
 
-import styles from './src/styles/App'
+import styles from './src/styles/App';
+
 
 class App extends Component {
   constructor (props) {
@@ -273,6 +274,7 @@ class App extends Component {
             modalVisible={this.state.modalVisible}
             correctAnswer={this.state.correctAnswer}
             isLoading={this.state.isLoading}
+            type={this.state.type}
           />
         }
 

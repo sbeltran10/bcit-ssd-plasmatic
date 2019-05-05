@@ -4,6 +4,7 @@ import { Text, Button, ListItem, Overlay } from 'react-native-elements';
 import styles from '../styles/Question';
 import { ScrollView } from 'react-native-gesture-handler';
 import AnswerCorrectIncorrect from './AnswerCorrectIncorrect';
+import Outcome from './Outcome';
 import PropTypes from 'prop-types';
 import { WebView } from 'react-native-webview';
 
@@ -13,7 +14,7 @@ import { WebView } from 'react-native-webview';
  * This functinal component renders a question along with its associated answers and the elments required to submit
  * the answer and display the result of selecting a specific answer
  */
-let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, saveAnswerSelection, modalVisible, correctAnswer, isLoading }) => (
+let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, saveAnswerSelection, modalVisible, correctAnswer, isLoading, type }) => (
   <View style={styles.mainView}>
     <View style={styles.questionView}>
       <Text h4>{question[0].content}</Text>
@@ -53,20 +54,34 @@ let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, 
       title="Submit answer"
     />
     {/* The overlay can show additional information about the question and/or answers if necessary */}
-    <Overlay
+    {
+      type === 'quiz' &&
+      <Overlay
       isVisible={modalVisible}
       windowBackgroundColor="rgba(0, 0, 0, .7)"
       width='90%'
       height='80%'
-    >
-      <AnswerCorrectIncorrect
-        saveAnswerSelection={saveAnswerSelection}
-        question={question}
-        selectedAnswer={selectedAnswer}
-        correctAnswer={correctAnswer}
-        isLoading={isLoading}
-      />
-    </Overlay>
+      >
+        <AnswerCorrectIncorrect
+          saveAnswerSelection={saveAnswerSelection}
+          question={question}
+          selectedAnswer={selectedAnswer}
+          correctAnswer={correctAnswer}
+          isLoading={isLoading}
+        />
+      </Overlay> 
+    }
+    
+    {
+      type === 'game' &&
+      <Overlay>
+          <Outcome
+          saveAnswerSelection={saveAnswerSelection}
+          selectedAnswer= {selectedAnswer}
+          isLoading={isLoading}
+          />
+      </Overlay>
+    }
   </View>
 )
 

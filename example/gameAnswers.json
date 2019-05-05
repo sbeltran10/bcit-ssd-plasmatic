@@ -1,0 +1,46 @@
+[
+    {
+        "id": 221,
+        "content": "Red",
+        "parentQuestion": 121,
+        "childQuestion": 122
+    },
+    {
+        "id": 222,
+        "content": "Green",
+        "parentQuestion": 121,
+        "childQuestion": 123
+    },
+    {
+        "id": 223,
+        "content": "Blue",
+        "parentQuestion": 121,
+        "childQuestion": 121,
+        "outcome": "This door is locked, and you have tried every option you could've think of."
+    },
+    {
+        "id": 224,
+        "content": "Yes, you walk over next to the elderly woman and reached out your hand to help her up.",
+        "parentQuestion": 122,
+        "childQuestion": 122,
+        "outcome": "The elderly woman pull off her disguise, and turned out to be a man-eating monster, you've been eaten alive."
+    },
+    {
+        "id": 225,
+        "content": "No, you decide to move on",
+        "parentQuestion": 122,
+        "childQuestion": 124
+    },
+    {
+        "id": 226,
+        "content": "you pick up the clear liquid bottle to drink it",
+        "parentQuestion": 123, 
+        "childQuestion": 4
+    },
+    {
+        "id": 227,
+        "content": "you pick up the black liquid bottle to drink it",
+        "parentQuestion": 123, 
+        "childQuestion": 123
+    }
+]
