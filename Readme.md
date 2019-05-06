@@ -399,6 +399,6 @@ childQuestion: 3
 <a href="https://github.com/ajadversalo" target="_blank">**@ajadversalo**</a>
 <a href="https://github.com/sbeltran10" target="_blank">**@sbeltran10**</a>
 <a href="https://github.com/Hollychin" target="_blank">**@Hollychin**</a>
-<a href="https://github.com/GailConcalves" target="_blank">**@GailGoncalves**</a>
+<a href="https://github.com/GailGoncalves" target="_blank">**@GailGoncalves**</a>
 
 [Back to top](#top) 
