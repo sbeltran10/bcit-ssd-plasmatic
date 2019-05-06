@@ -19,7 +19,8 @@ import AnswerAPI from './src/api/AnswerAPI';
 import QuestionnaireAPI from './src/api/QuestionnaireAPI';
 import QuestionAPI from './src/api/QuestionAPI';
 
-import styles from './src/styles/App'
+import styles from './src/styles/App';
+
 
 class App extends Component {
   constructor (props) {
@@ -146,6 +147,9 @@ class App extends Component {
         stateCopy.totalCountOfQuestions = this.state.summary.length;
         stateCopy.countCorrect = this.countCorrectAnswers();
         this.setState(stateCopy, () => { this.updateCurrentStep('quizResults') });
+      } else if (!data && this.state.type === 'game') {
+        stateCopy.question = [];
+        this.setState(stateCopy, () => { this.updateCurrentStep('gameResults') });
       } else {
         stateCopy.question = data;
         this.setState(stateCopy, () => { this.fetchAnswers(step) });
@@ -170,8 +174,7 @@ class App extends Component {
           modalVisible: true,
           correctAnswer: this.state.answers.find(a => {return this.state.question[0].correctAnswerId === a.id})
         })
-      }
-      else {
+      } else {
         this.saveAnswerSelection();
       }
     }
@@ -273,6 +276,7 @@ class App extends Component {
             modalVisible={this.state.modalVisible}
             correctAnswer={this.state.correctAnswer}
             isLoading={this.state.isLoading}
+            type={this.state.type}
           />
         }
 
@@ -280,7 +284,7 @@ class App extends Component {
         {
           this.state.currentStep === 'results' && this.state.question.length === 0 &&
           <SurveyResults
-            saveToSummary={this.saveToSummary}
+            // saveToSummary={this.saveToSummary}
             onExitButtonPress={this.onExitButtonPress}
           />
         }
@@ -293,6 +297,14 @@ class App extends Component {
             countCorrect={this.state.countCorrect}
             quizResults={this.state.summary}
             onExitButtonPress={this.onExitButtonPress}
+          />
+        }
+
+        {
+          this.state.currentStep === 'gameResults' && this.state.question.length === 0 &&
+          <GameResults
+            questionnaire={this.state.questionnaire}
+            onExitButtonPress={this.state.onExitButtonPress}
           />
         }
 

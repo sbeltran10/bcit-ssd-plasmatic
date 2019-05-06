@@ -34,7 +34,8 @@ class Intro extends Component {
             />
           </View>
         }
-        <Button
+        {!this.props.isLoading &&
+          <Button
           icon={<Icon name='code' color='#ffffff' />}
           backgroundColor='#03A9F4'
           buttonStyle={styles.button}
@@ -45,7 +46,9 @@ class Intro extends Component {
             updateLoadingFFQ(step);
           }
           }
-        />
+          />
+        }
+
       </View >
     )
   }
