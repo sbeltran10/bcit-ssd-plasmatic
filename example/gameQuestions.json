@@ -1,18 +1,18 @@
 [
     {
-        "id": 121,
+        "id": 111111,
         "content": "There are 3 doors, Red, Green, Blue. Please choose your first Door!"
     },
     {
-        "id": 122,
+        "id": 111112,
         "content": "You see an elderly woman on the floor, she seems to be injured, will you help her?"
     },
     {
-        "id": 123,
+        "id": 111113,
         "content": "There are 2 bottles of liquid, black, and clear, you must drink one!"
     },
     {
-        "id": 124,
+        "id": 111114,
         "content": "You see the exit to this haunted house!"
     }
 ]
