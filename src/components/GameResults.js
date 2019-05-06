@@ -4,16 +4,16 @@ import { Text, Button } from 'react-native-elements';
 import styles from '../styles/SurveyResults';
 import PropTypes from 'prop-types';
 
-let GameResults = (questionnaire, onExitButtonPress) => {
+let GameResults = ({questionnaire, onExitButtonPress}) => (
     <View style={styles.mainView}>
-        <Text>{questionnaire.endText}</Text>
+        <Text>{questionnaire[0].endText}</Text>
         <Button
             containerStyle={styles.exitButton}
             onPress={onExitButtonPress}
             title="Exit" 
         />
     </View>
-};
+);
 
 GameResults.propTypes = {
     questionnaire: PropTypes.array,

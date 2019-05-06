@@ -14,6 +14,7 @@ import Intro from './src/components/Intro';
 import Question from './src/components/Question';
 import SurveyResults from './src/components/SurveyResults';
 import QuizResults from './src/components/QuizResults';
+import GameResults from './src/components/GameResults';
 
 import AnswerAPI from './src/api/AnswerAPI';
 import QuestionnaireAPI from './src/api/QuestionnaireAPI';
@@ -308,7 +309,7 @@ class App extends Component {
           this.state.currentStep === 'gameResults' && this.state.question.length === 0 &&
           <GameResults
             questionnaire={this.state.questionnaire}
-            onExitButtonPress={this.state.onExitButtonPress}
+            onExitButtonPress={this.onExitButtonPress}
           />
         }
 
