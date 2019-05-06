@@ -102,7 +102,7 @@ Be sure to save your local.properties file after making this change.
   
 
 ### Embedding the Child Application
-
+(*** Please provide more detail here -- thank you Pat)
   
 
 1. $ **npm install**
