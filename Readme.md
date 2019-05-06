@@ -14,6 +14,7 @@
 [6. Team](#team)
 
 
+
 <a  name="plasmatic"/>
 
   
@@ -223,7 +224,7 @@ This React Native Component utilizes 3 different API function containers to fetc
 
 |Property |Type | Description|
 |:---|---|:---|
-|id|Number|Id of the questionnaire|
+|id|number|Id of the questionnaire|
 |title|string|Title text that appears on the intro screen|
 |desc|string|Detailed description of the questionnaire|
 |questionnaireType|string|Can be one of the following: "survey", "quiz", "game"|
@@ -302,7 +303,7 @@ firstQuestionId: 3
 
 |Property |Type | Description|
 |:---|---|:---|
-|id|Number|Id of the question|
+|id|number|Id of the question|
 |content|string|Text of the answer|
 |correctAnswerId|number (optional)|Id of the correct answer if the questionnaire type is "quiz"|
 |mediaLink|string (optional)|Link pointing to any multimedia the question is associated with. Can be a video, image or audio|
@@ -354,11 +355,11 @@ correctAnswerId: 2
 
 |Property |Type | Description|
 |:---|---|:---|
-|id|Number|Id of the answer|
-|content|String|Text of the answer|
-|parentQuestion|Number|Id of the question this answers belongs to|
-|childQuestion|Number|Id of the questions this answers leads to. If the value is -1 this means that the answer is the last of the questionnaire|
-|outcome|String (optional)|Text that explains what happens when selecting this answer. Used if the questionnaire type is "game"|
+|id|number|Id of the answer|
+|content|string|Text of the answer|
+|parentQuestion|number|Id of the question this answers belongs to|
+|childQuestion|number|Id of the questions this answers leads to. If the value is -1 this means that the answer is the last of the questionnaire|
+|outcome|string (optional)|Text that explains what happens when selecting this answer. Used if the questionnaire type is "game"|
 
   
 
@@ -390,12 +391,14 @@ childQuestion: 3
 
 [Back to top](#top) 
 
+<a name="team"/>
+
 ## 6. Team
 
-@c-wyj
-@ajadversalo
-@sbeltran10
-@Hollychin
-@GailConcalves
+<a href="https://github.com/c-ywj" target="_blank">**@c-wyj**</a>
+<a href="https://github.com/ajadversalo" target="_blank">**@ajadversalo**</a>
+<a href="https://github.com/sbeltran10" target="_blank">**@sbeltran10**</a>
+<a href="https://github.com/Hollychin" target="_blank">**@Hollychin**</a>
+<a href="https://github.com/GailConcalves" target="_blank">**@GailConcalves**</a>
 
-
+[Back to top](#top) 
