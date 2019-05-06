@@ -4,6 +4,7 @@ export default StyleSheet.create({
   mainView: {
     flex:1,
     justifyContent: 'space-between',
+    width: '100%'
   },
   questionView: {
     padding: Platform.OS === 'ios' ? 50 : 20,
