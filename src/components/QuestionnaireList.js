@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Text, View, ScrollView} from 'react-native';
+import React from 'react';
+import {View, ScrollView} from 'react-native';
 import {ListItem} from 'react-native-elements';
 import styles from '../styles/QuestionnaireList';
 import PropTypes from 'prop-types';

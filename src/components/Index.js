@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { View, Text, ActivityIndicator } from "react-native";
-import { Button , Overlay} from 'react-native-elements';
+import React from "react";
+import { View, Text } from "react-native";
+import { Button } from 'react-native-elements';
 import styles from '../styles/Index';
 import QuestionnaireList from '../components/QuestionnaireList';
 import QuestionnairePicker from '../components/QuestionnaireType';
