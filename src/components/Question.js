@@ -87,7 +87,12 @@ let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, 
     
     {
       type === 'game' &&
-      <Overlay>
+      <Overlay 
+        isVisible={modalVisible}
+        windowBackgroundColor="rgba(0, 0, 0, .7)"
+        width='90%'
+        height='80%'
+      >
           <Outcome
           saveAnswerSelection={saveAnswerSelection}
           selectedAnswer= {selectedAnswer}

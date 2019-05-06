@@ -174,7 +174,11 @@ class App extends Component {
           modalVisible: true,
           correctAnswer: this.state.answers.find(a => {return this.state.question[0].correctAnswerId === a.id})
         })
-      } else {
+      }else if (this.state.type === 'game' && this.state.selectedAnswer[0].outcome) {
+          this.setState({
+            modalVisible: true
+          });
+      }else {
         this.saveAnswerSelection();
       }
     }
