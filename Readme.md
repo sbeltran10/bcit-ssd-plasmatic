@@ -9,9 +9,11 @@
 
 [4. Api Guide](#api)
 
-[5. Styling Guide](#styling)
+[5. Lambdas: Question Generation Code
 
-[6. Team](#team)
+[6. Styling Guide](#styling)
+
+[7. Team](#team)
 
 
 
