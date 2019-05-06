@@ -221,6 +221,13 @@ class App extends Component {
     this.setState(stateCopy, () => { console.log(this.state); this.submitAnswer(step) });
   }
 
+  resetPicker(step) {
+    let stateCopy = { ...this.state };
+    stateCopy.currentStep = step;
+    stateCopy.isLoading = false;
+    this.setState(stateCopy, this.fetchList(this.state.type));
+  }
+
   onExitButtonPress = () => {
     let step = 'index'
     let stateCopy = { ...this.state };
@@ -228,7 +235,7 @@ class App extends Component {
     stateCopy.summary = [];
     stateCopy.type = 'survey';
     stateCopy.modalVisible = false;
-    this.setState(stateCopy, () => { console.log(this.state); this.updateCurrentStep(step) })
+    this.setState(stateCopy, () => { console.log(this.state); this.resetPicker(step) })
   }
 
   /*---  render  ---*/
