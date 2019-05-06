@@ -391,6 +391,7 @@ childQuestion: 3
 (Please put the lambda code here. Thank you Pat)
 
 ## 6. Styling Guide
+(I am curious to know more about this. Is the style for code and comment syntax? Please be clear. Tony did say he had his own styling for CSS which he will apply later.)
 
 [Back to top](#top) 
 
