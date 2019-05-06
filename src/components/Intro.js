@@ -9,14 +9,6 @@ class Intro extends Component {
   render () {
     return (
       <View style={styles.mainView}>
-        {/* <Text>{this.props.questionnaire[0].title}</Text>
-          <Text>{this.props.questionnaire[0].description}</Text>
-          <Button title="Start" onPress={()=> {
-            let step = 'question'
-            let fetchFirstQuestion = this.props.fetchFirstQuestion;
-            fetchFirstQuestion(step);
-          }} /> */}
-
         <View style={styles.titleDescView}>
           <Text h3 style={styles.title}>
             {this.props.questionnaire[0].title}
@@ -26,7 +18,7 @@ class Intro extends Component {
           </Text>
         </View>
         {this.props.isLoading &&
-          <View>
+          <View style={styles.activityIndicator}>
             <ActivityIndicator
               animating={true}
               size="large"
@@ -36,16 +28,16 @@ class Intro extends Component {
         }
         {!this.props.isLoading &&
           <Button
-          icon={<Icon name='code' color='#ffffff' />}
-          backgroundColor='#03A9F4'
-          buttonStyle={styles.button}
-          title="Start"
-          onPress={() => {
-            let step = 'question'
-            let updateLoadingFFQ = this.props.updateLoadingFFQ;
-            updateLoadingFFQ(step);
-          }
-          }
+            icon={<Icon name='code' color='#ffffff' />}
+            backgroundColor='#03A9F4'
+            buttonStyle={styles.button}
+            title="Start"
+            onPress={() => {
+              let step = 'question'
+              let updateLoadingFFQ = this.props.updateLoadingFFQ;
+              updateLoadingFFQ(step);
+            }
+            }
           />
         }
 

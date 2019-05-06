@@ -31,5 +31,8 @@ export default StyleSheet.create({
     height: 50,
     borderRadius: 1,
     marginBottom: Platform.OS === 'ios' ? 30 : 0,
+  },
+  activityIndicator: {
+    marginBottom: Platform.OS === 'ios' ? 27 : 5,
   }
 })

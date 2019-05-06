@@ -42,11 +42,12 @@ let AnswerCorrectIncorrect = ({ saveAnswerSelection, selectedAnswer, correctAnsw
       }
     </View>
 
-    <Button
-      onPress={saveAnswerSelection}
-      title="Next"
-    />
-
+    {!isLoading &&
+      <Button
+        onPress={saveAnswerSelection}
+        title="Next"
+      />
+    }
     {isLoading &&
       <View>
         <ActivityIndicator
