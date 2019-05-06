@@ -1,8 +1,5 @@
-hi
-
-  
-
 ## Content
+<a name="top"/>
 
 [1. Plasmatic Game App](#plasmatic)
 
@@ -14,7 +11,7 @@ hi
 
 [5. Styling Guide](#styling)
 
-  
+[Back to top](#top)  
 
 <a  name="plasmatic"/>
 
@@ -41,6 +38,7 @@ We have the need for a very simple “game” like function in our app. It would
 <a  name="install"/>
 
   
+[Back to top](#top)
 
 ## 2. Initial Setup & Installation
 
@@ -140,7 +138,7 @@ If “Material Icon” error (“Unrecognized front family ‘Material Icons”)
 
 <a  name="components"/>
 
-  
+[Back to top](#top)  
 
 ## 3. Components
 
@@ -204,10 +202,11 @@ onExitButtonPress | func | Function to be called when the exit button is pressed
 |totalCountOfQuestions | int | Number of questions in a questionnaire
 |type | string | Questionnaire category
 
-  
+[Back to top](#top)  
+
 <a  name="api"/>
 
-  
+
 
 ## 4. API Guide:
 
@@ -384,6 +383,6 @@ childQuestion: 3
 
 <a  name="styling"/>
 
-  
+[Back to top](#top)  
 
 ## 5. Styling Guide
