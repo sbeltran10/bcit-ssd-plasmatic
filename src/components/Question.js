@@ -50,7 +50,7 @@ let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, 
     </View>
 
     {isLoading &&
-      <View>
+      <View style={styles.activityIndicator}>
         <ActivityIndicator
           animating={true}
           size="large"
@@ -60,20 +60,20 @@ let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, 
     }
 
     {!isLoading &&
-    <Button
-      buttonStyle={styles.submitButton}
-      onPress={checkAnswer}
-      title="Submit answer"
-    />
+      <Button
+        buttonStyle={styles.submitButton}
+        onPress={checkAnswer}
+        title="Submit answer"
+      />
     }
     {/* The overlay can show additional information about the question and/or answers if necessary */}
     {
       type === 'quiz' &&
       <Overlay
-      isVisible={modalVisible}
-      windowBackgroundColor="rgba(0, 0, 0, .7)"
-      width='90%'
-      height='80%'
+        isVisible={modalVisible}
+        windowBackgroundColor="rgba(0, 0, 0, .7)"
+        width='90%'
+        height='80%'
       >
         <AnswerCorrectIncorrect
           saveAnswerSelection={saveAnswerSelection}
@@ -82,22 +82,22 @@ let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, 
           correctAnswer={correctAnswer}
           isLoading={isLoading}
         />
-      </Overlay> 
+      </Overlay>
     }
-    
+
     {
       type === 'game' &&
-      <Overlay 
+      <Overlay
         isVisible={modalVisible}
         windowBackgroundColor="rgba(0, 0, 0, .7)"
         width='90%'
         height='80%'
       >
-          <Outcome
+        <Outcome
           saveAnswerSelection={saveAnswerSelection}
-          selectedAnswer= {selectedAnswer}
+          selectedAnswer={selectedAnswer}
           isLoading={isLoading}
-          />
+        />
       </Overlay>
     }
   </View>

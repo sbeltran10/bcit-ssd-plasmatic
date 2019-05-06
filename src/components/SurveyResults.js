@@ -9,11 +9,11 @@ import PropTypes from 'prop-types';
  */
 let SurveyResults = ({ resultsText = "Thank you for finishing the survey!", onExitButtonPress }) => (
   <View style={styles.mainView}>
-    <Text h3>
+    <Text h3 style={styles.text}>
       {resultsText}
     </Text>
     <Button
-      containerStyle={styles.exitButton}
+      buttonStyle={styles.exitButton}
       onPress={onExitButtonPress}
       title="Exit" />
   </View>

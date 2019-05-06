@@ -21,5 +21,8 @@ export default StyleSheet.create({
   desc: {
     paddingHorizontal: 20,
     fontSize: 16
+  },
+  activityIndicator: {
+    marginBottom: Platform.OS === 'ios' ? 27 : 5,
   }
 })

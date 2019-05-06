@@ -19,11 +19,12 @@ let Outcome = ({ saveAnswerSelection, selectedAnswer, isLoading }) => (
       </Text>
     </View>
 
-    <Button
-      onPress={saveAnswerSelection}
-      title="Next"
-    />
-
+    {!isLoading &&
+      <Button
+        onPress={saveAnswerSelection}
+        title="Next"
+      />
+    }
     {isLoading &&
       <View>
         <ActivityIndicator
