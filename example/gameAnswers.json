@@ -35,7 +35,8 @@
         "id": 226,
         "content": "you pick up the clear liquid bottle to drink it",
         "parentQuestion": 123, 
-        "childQuestion": 4
+        "childQuestion": 4,
+        "outcome": "it turned out to be odorless bleach.. you died!"
     },
     {
         "id": 227,
