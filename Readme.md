@@ -11,6 +11,8 @@
 
 [5. Styling Guide](#styling)
 
+[6. Team](#team)
+
 
 <a  name="plasmatic"/>
 
@@ -385,3 +387,15 @@ childQuestion: 3
 [Back to top](#top)  
 
 ## 5. Styling Guide
+
+[Back to top](#top) 
+
+## 6. Team
+
+@c-wyj
+@ajadversalo
+@sbeltran10
+@Hollychin
+@GailConcalves
+
+
