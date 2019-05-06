@@ -11,7 +11,6 @@
 
 [5. Styling Guide](#styling)
 
-[Back to top](#top)  
 
 <a  name="plasmatic"/>
 
