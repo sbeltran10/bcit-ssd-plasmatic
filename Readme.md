@@ -387,8 +387,794 @@ childQuestion: 3
 
 [Back to top](#top)  
 
-## 5. Backend Question Lambda Code
-(Please put the lambda code here. Thank you Pat)
+## 5. Lambdas for Backend Question Generation
+a) 
+DynamoDB_Answers_Read
+
+```javascript
+
+const AWS       = require('aws-sdk');
+const docClient = new AWS.DynamoDB.DocumentClient({region: 'us-east-2'});
+exports.handler  = function(e, ctx, callback) 
+{
+	let scanningParameters = 
+	{
+		TableName: 'Answers',
+		Limit: 100
+	}
+	docClient.scan(scanningParameters, function(err, data) 
+	{
+		if(err) 
+		{
+			callback(err,null);
+		}
+		else 
+		{
+			callback(null, data);
+		}
+	});   
+}
+
+```
+
+b) 
+DynamoDB_Answers_Read_ById
+```javascript
+
+const AWS = require('aws-sdk');
+const docClient = new AWS.DynamoDB.DocumentClient({region: 'us-east-2'});
+const table = "Answers";
+var error = null;
+exports.handler  = function(e, ctx, callback) 
+{
+	if ( !e.id || e.id == undefined || e.id == "" || e.id == 0 || e.id <= 0 )
+	{
+		error = new Error("You must supply a number > 0 for the id of the answers");
+		callback(error);
+	}
+	else
+	{
+		if ( e.id > 0)
+		{
+			let newid = parseInt(e.id);
+			let scanningParameters = 
+			{
+				TableName: table,
+				FilterExpression : 'id = :this_id',
+				ExpressionAttributeValues : {':this_id' : newid}
+			}
+			docClient.scan(scanningParameters, function(err, data) 
+			{
+				if(err) 
+				{
+					callback(err,null);
+				}
+				else 
+				{
+					callback(null, data);
+				}
+			}); 
+		}
+		else
+		{
+			error = new Error("You must supply a number > 0 for the id of the answers");
+			callback(error);
+		}
+	}
+}
+
+```
+
+c) 
+Dynamo_Answers_Read_ByParentId
+```javascript
+
+const AWS       = require('aws-sdk');
+const docClient = new AWS.DynamoDB.DocumentClient({region: 'us-east-2'});
+const table = "Answers";
+var error = null;
+
+exports.handler  = function(e, ctx, callback) 
+{
+    if ( !e.parentQuestion || e.parentQuestion == undefined || e.parentQuestion == "" || e.parentQuestion == 0 || e.parentQuestion <= 0 )
+    {
+        error = new Error("You must supply a number > 0 for the parentQuestion of the answer");
+        callback(error);
+    }
+    else
+    {
+        if ( e.parentQuestion > 0)
+        {
+            let newid = parseInt(e.parentQuestion);
+            let scanningParameters = 
+            {
+                TableName: table,
+                FilterExpression : 'parentQuestion = :this_id',
+                ExpressionAttributeValues : {':this_id' : newid}
+            }
+            docClient.scan(scanningParameters, function(err, data) 
+            {
+                if(err) 
+                {
+                    callback(err,null);
+                }
+                else 
+                {
+                    callback(null, data);
+                }
+            }); 
+        }
+        else
+        {
+            error = new Error("You must supply a number > 0 for the parentQuestion of the answer");
+            callback(error);
+        }
+    }
+}
+
+```
+
+d) 
+DynamoDB_Answers_write
+```javascript
+
+const AWS       = require('aws-sdk');
+const docClient = new AWS.DynamoDB.DocumentClient({region: 'us-east-2'});
+var error = null;
+var table = "Answers";
+exports.handler  = function(e, ctx, callback) 
+{
+    if ( !e.id || e.id == undefined || e.id == "" || e.id == 0 || e.id <= 0 )
+    {
+        error = new Error("You must supply a number > 0 for the id of the answer");
+        callback(error);
+    }
+    else if (!e.content || e.content == undefined || e.content == "" || e.content.length <  1)
+    {
+        error = new Error("You must supply content with minimum of 1 letters");
+        callback(error);
+    }
+    else if (!e.parentQuestion || e.parentQuestion == undefined || e.parentQuestion == "" || e.parentQuestion == 0 || e.parentQuestion <= 0)
+    {
+        error = new Error("You must supply a number > 0 for the parentQuestion of the answer");
+        callback(error);
+    }
+    else if (!e.childQuestion || e.childQuestion == undefined || e.childQuestion == "" || e.childQuestion == 0 || e.childQuestion < -1)
+    {
+        error = new Error("You must supply a number > 0 for the childQuestion of the answer");
+        callback(error);
+    }
+    else
+    {
+        if ( e.id > 0)
+        {
+            if ( e.parentQuestion > 0)
+            {
+                if ( e.childQuestion >= -1)
+                {
+                    var params = 
+                    {
+                        Item: 
+                        {
+                            id: e.id,
+                            content: e.content,
+                            parentQuestion: e.parentQuestion,
+                            childQuestion: e.childQuestion,
+                            outcome: e.outcome
+                        },
+                        TableName: table,
+                        ConditionExpression: "attribute_not_exists(id)",
+                        required: ["id"],
+                        required: ["content"],
+                        required: ["parentQuestion"],
+                        required: ["childQuestion"]
+
+                    };
+   
+                    docClient.put(params, function(err, data) 
+                    {
+                        if(err) 
+                        {
+                            callback(err,null);
+                        }
+                        else 
+                        {
+                            callback(null, params);
+                        }
+                    });   
+                }
+                else
+                {
+                    error = new Error("You must supply a number > 0 for the childQuestion of the answer");
+                    callback(error);
+                }
+            }
+            else
+            {
+                error = new Error("You must supply a number > 0 for the parentQuestion of the answer");
+                callback(error);
+            }
+        }
+        else
+        {
+            error = new Error("You must supply a number > 0 for the id of the answer");
+            callback(error);
+        }
+    }
+}
+
+```
+
+e) 
+DynamoDB_Questionnaire_Read
+```javascript
+
+const AWS       = require('aws-sdk');
+const docClient = new AWS.DynamoDB.DocumentClient({region: 'us-east-2'});
+
+exports.handler  = function(e, ctx, callback) 
+{
+    let scanningParameters = 
+	{
+        TableName: 'Questionnaire',
+        Limit: 100
+    }
+    
+    docClient.scan(scanningParameters, function(err, data) 
+	{
+        if(err) 
+		{
+            callback(err,null);
+        }
+        else 
+		{
+            callback(null, data);
+        }
+    });   
+}
+
+```
+
+f) 
+DynamoDB_Questionnaire_Read_ById
+```javascript
+
+const AWS       = require('aws-sdk');
+const docClient = new AWS.DynamoDB.DocumentClient({region: 'us-east-2'});
+const table = "Questionnaire";
+var error = null;
+
+exports.handler  = function(e, ctx, callback) 
+{
+    if ( !e.id || e.id == undefined || e.id == "" || e.id == 0 || e.id <= 0 )
+    {
+        error = new Error("You must supply a number > 0 for the id of the questionnaire");
+        callback(error);
+    }
+    else
+    {
+        if ( e.id > 0)
+        {
+            let newid = parseInt(e.id);
+            let scanningParameters = 
+            {
+                TableName: table,
+                FilterExpression : 'id = :this_id',
+             ExpressionAttributeValues : {':this_id' : newid}
+            }
+            docClient.scan(scanningParameters, function(err, data) 
+            {
+                if(err) 
+                {
+                    callback(err,null);
+                }
+                else 
+                {
+                    callback(null, data);
+                }
+            }); 
+        }
+        else
+        {
+            error = new Error("You must supply a number > 0 for the id of the questionnaire");
+            callback(error);
+        }
+    }
+}
+
+```
+
+g) 
+DynamoDB_Questionnaire_Read_ByType
+```javascript
+
+const AWS       = require('aws-sdk');
+const docClient = new AWS.DynamoDB.DocumentClient({region: 'us-east-2'});
+const table = "Questionnaire";
+var error = null;
+exports.handler  = function(e, ctx, callback) 
+{
+    if ( !e.questionnaireType || e.questionnaireType == undefined || e.questionnaireType == "" )
+    {
+        error = new Error("You must supply a valid questionnaireType of either quiz, game, or survey");
+        callback(error);
+    }
+    else if (e.questionnaireType !== "game" && e.questionnaireType !== "quiz" && e.questionnaireType !== "survey")
+    {
+        error = new Error("You must supply a valid questionnaireType of either quiz, game, or survey");
+        callback(error); 
+    }
+    else
+    {
+        let newtype = e.questionnaireType;
+        let scanningParameters = 
+        {
+            TableName: table,
+            FilterExpression : 'questionnaireType = :this_type',
+            ExpressionAttributeValues : {':this_type' : newtype}
+        }
+        docClient.scan(scanningParameters, function(err, data) 
+        {
+            if(err) 
+            {
+                callback(err,null);
+            }
+            else 
+            {
+                callback(null, data);
+            }
+        });  
+    }
+}
+
+```
+
+h) 
+DynamoDB_Questionnaire_Write
+```javascript
+
+const AWS       = require('aws-sdk');
+const docClient = new AWS.DynamoDB.DocumentClient({region: 'us-east-2'});
+var error = null;
+exports.handler  = function(e, ctx, callback) 
+{
+	if ( !e.id || e.id == undefined || e.id == "" || e.id == 0 || e.id <= 0 )
+	{
+		error = new Error("You must supply a number > 0 for the id of the questionnaire");
+		callback(error);
+ 	}
+	else if ( !e.firstQuestionId || e.firstQuestionId == undefined || e.firstQuestionId == "" || e.firstQuestionId === 0 || e.firstQuestionId <= 0 )
+	{
+		error = new Error("You must supply a number > 0 for the first question id of the questionnaire");
+		callback(error);
+	}
+	else if ( !e.title || e.title == undefined || e.title == "" || e.title.length <  10 )
+	{
+		error = new Error("You must supply a valid title for the questionnaire with a length of at least 10 characters");
+		callback(error);
+	}
+	else if ( !e.desc || e.desc == undefined || e.desc == "" || e.desc.length <  10 )
+	{
+		error = new Error("You must supply a valid description for the questionnaire with a length of at least 10 characters");
+		callback(error);
+	}
+	else if ( !e.questionnaireType || e.questionnaireType == undefined || e.questionnaireType == "")
+	{
+		error = new Error("You must supply a valid questionnaire type of either quiz, game, or survey");
+		callback(error);
+	}
+	else if ( e.questionnaireType !== "game" && e.questionnaireType !== "quiz" && e.questionnaireType !== "survey")
+	{
+		error = new Error("You must supply a valid questionnaire type of either quiz, game, or survey");
+		callback(error);
+	}
+	else
+	{
+		if (e.id > 0)
+		{
+			if ( e.firstQuestionId > 0)
+			{
+				if ( e.questionnaireType == "game")
+				{
+					if ( !e.endText || e.endText == undefined || e.endText == "" || e.endText.length <  3 )
+					{
+						error = new Error("You must supply a valid endText for the questionnaire with a length of at least 3 characters");
+						callback(error);
+					}
+					else
+					{
+						var params = 
+						{
+							Item: 
+							{
+								id: e.id,
+								title:   e.title,
+								desc: e.desc,
+								questionnaireType: e.questionnaireType,
+								firstQuestionId: e.firstQuestionId,
+								endText: e.endText
+							},
+							TableName: 'Questionnaire',
+							ConditionExpression: "attribute_not_exists(id)",
+							"required": ["id"],
+							"required": ["title"],
+							"required": ["desc"],
+							"required": ["questionnaireType"],
+							"required": ["firstQuestionId"],
+							"required": ["endText"]
+						};
+						docClient.put(params, function(err, data) 
+						{
+							if(err) 
+							{
+								callback(err,null);
+							}
+							else 
+							{
+								callback(null, params);
+							}
+						}); 
+					}
+				}
+				else
+				{
+					var params = 
+					{
+						Item: 
+						{
+							id: e.id,
+							title:   e.title,
+							desc: e.desc,
+							questionnaireType: e.questionnaireType,
+							firstQuestionId: e.firstQuestionId
+						},
+						TableName: 'Questionnaire',
+						ConditionExpression: "attribute_not_exists(id)",
+						"required": ["id"],
+						"required": ["title"],
+						"required": ["desc"],
+						"required": ["questionnaireType"],
+						"required": ["firstQuestionId"]
+					};
+					docClient.put(params, function(err, data) 
+					{
+						if(err) 
+						{
+							callback(err,null);
+						}
+						else 
+						{
+							callback(null, params);
+						}
+					}); 
+				}
+			}
+			else
+			{
+				error = new Error("You must supply a number > 0 for the firstQuestionId of the questionnaire");
+				callback(error);
+			}
+		}
+		else
+		{
+			error = new Error("You must supply a number > 0 for the id of the questionnaire");
+			callback(error);
+		}
+	}
+}
+
+```
+
+i) 
+DynamoDB_Questions_Quiz_Write
+```javascript
+
+const AWS       = require('aws-sdk');
+const docClient = new AWS.DynamoDB.DocumentClient({region: 'us-east-2'});
+var table = "Questions";
+var error = null;
+
+exports.handler  = function(e, ctx, callback) 
+{
+    if ( !e.id || e.id == undefined || e.id == "" || e.id == 0 || e.id <= 0 )
+    {
+        error = new Error("You must supply a number > 0 for the id of the question");
+        callback(error);
+    }
+    else if ( !e.content || e.content == undefined || e.content == "" || e.content.length <  10 )
+    {
+        error = new Error("You must supply valid content for the question with a length of at least 10 characters");
+        callback(error);
+    }
+    else if ( !e.correctAnswerId || e.correctAnswerId == undefined || e.correctAnswerId == "" || e.correctAnswerId == 0 || e.correctAnswerId <= 0 )
+    {
+        error = new Error("You must supply a number > 0 for the correctAnswwerId of the question");
+        callback(error);
+    }
+    else
+    {
+        if (e.id > 0)
+        {
+            if (e.correctAnswerId > 0)
+            {
+                var params = 
+                {
+                    Item: 
+                    {
+                        id:   e.id,
+                        content: e.content,
+                        correctAnswerId: e.correctAnswerId,
+                        mediaLink: e.mediaLink
+                    },
+                    TableName: table,
+                    ConditionExpression: "attribute_not_exists(id)",
+                    required: ["id"],
+                    required: ["content"],
+                    required: ["correctAnswerId"]
+                };
+                docClient.put(params, function(err, data) 
+                {
+                    if(err) 
+                    {
+                        callback(err,null);
+                    }
+                    else 
+                    {
+                        callback(null, params);
+                    }
+                }); 
+            }
+            else
+            {
+                error = new Error("You must supply a number > 0 for the correctAnswwerId of the question");
+                callback(error);
+            }
+        }
+        else
+        {
+            error = new Error("You must supply a number > 0 for the id of the question");
+            callback(error);
+            
+        }
+    }
+}
+
+```
+
+j) 
+DynamoDB_Questions_Read
+```javascript
+
+const AWS       = require('aws-sdk');
+const docClient = new AWS.DynamoDB.DocumentClient({region: 'us-east-2'});
+
+exports.handler  = function(e, ctx, callback) 
+{
+    let scanningParameters = 
+	{
+        TableName: 'Questions',
+        Limit: 100
+    }
+    docClient.scan(scanningParameters, function(err, data) 
+	{
+        if(err) 
+		{
+            callback(err,null);
+        }
+        else 
+		{
+            callback(null, data);
+        }
+    });   
+}
+
+```
+
+k)
+DynamoDB_Questions_ReadContent_ById
+```javascript
+
+const AWS       = require('aws-sdk');
+const docClient = new AWS.DynamoDB.DocumentClient({region: 'us-east-2'});
+const table = "Questions";
+var error = null;
+exports.handler  = function(e, ctx, callback) 
+{
+    if ( !e.id || e.id == undefined || e.id == "" || e.id == 0 || e.id <= 0 )
+    {
+        error = new Error("You must supply a number > 0 for the id of the question");
+        callback(error);
+    }
+    else
+    {
+        if ( e.id > 0)
+        {
+            let newid = parseInt(e.id);
+            let scanningParameters = 
+            {
+                TableName: table,
+                ProjectionExpression : "content", 
+                FilterExpression : 'id = :id',
+                ExpressionAttributeValues : {':id' : newid}
+            }
+            docClient.scan(scanningParameters, function(err, data) 
+            {
+                if(err) 
+                {
+                    callback(err,null);
+                }
+                else 
+                {
+                    callback(null, data);
+                }
+            });   
+        }
+        else
+        {
+            error = new Error("You must supply a number > 0 for the id of the questionn");
+            callback(error);
+        }
+    }
+}
+
+```
+
+l)
+DynamoDB_Questions_ReadCorrectAnswer_ById
+```javascript
+
+const AWS       = require('aws-sdk');
+const docClient = new AWS.DynamoDB.DocumentClient({region: 'us-east-2'});
+const table = "Questions";
+var error = null;
+exports.handler  = function(e, ctx, callback) 
+{
+    if ( !e.id || e.id == undefined || e.id == "" || e.id == 0 || e.id <= 0 )
+    {
+        error = new Error("You must supply a number > 0 for the id of the question");
+        callback(error);
+    }
+    else
+    {
+        if ( e.id > 0)
+        {
+            let newid = parseInt(e.id);
+            let scanningParameters = 
+            {
+                TableName: table,
+                ProjectionExpression : "correctAnswerId", 
+                FilterExpression : 'id = :id',
+                ExpressionAttributeValues : {':id' : newid}
+            }
+            docClient.scan(scanningParameters, function(err, data) 
+            {
+                if(err) 
+                {
+                    callback(err,null);
+                }
+                else 
+                {
+                    callback(null, data);
+                }
+            });
+        }
+        else
+        {
+            error = new Error("You must supply a number > 0 for the id of the question");
+            callback(error);
+        }
+    }
+}
+
+```
+
+m)
+DynamoDB_Questions_Read_ById
+```javascript
+
+const AWS       = require('aws-sdk');
+const docClient = new AWS.DynamoDB.DocumentClient({region: 'us-east-2'});
+const table = "Questions";
+var error = null;
+exports.handler  = function(e, ctx, callback) 
+{
+    if ( !e.id || e.id == undefined || e.id == "" || e.id == 0 || e.id <= 0 )
+    {
+        error = new Error("You must supply a number > 0 for the id of the question");
+        callback(error);
+    }
+    else
+    {
+        if ( e.id > 0)
+        {
+            let newid = parseInt(e.id);
+            let scanningParameters = 
+            {
+                TableName: table,
+                FilterExpression : 'id = :this_id',
+                ExpressionAttributeValues : {':this_id' : newid}
+            }
+            docClient.scan(scanningParameters, function(err, data) 
+            {
+                if(err) 
+                {
+                    callback(err,null);
+                }
+                else 
+                {
+                    callback(null, data);
+                }
+            });   
+        }
+        else
+        {
+            error = new Error("You must supply a number > 0 for the id of the question");
+            callback(error);
+        }
+    }
+}
+
+```
+
+n)
+DynamoDB_Questions_Write
+```javascript
+
+const AWS       = require('aws-sdk');
+const docClient = new AWS.DynamoDB.DocumentClient({region: 'us-east-2'});
+var table = "Questions";
+var error = null;
+
+exports.handler  = function(e, ctx, callback) 
+{
+    if ( !e.id || e.id == undefined || e.id == "" || e.id == 0 || e.id <= 0 )
+    {
+        error = new Error("You must supply a number > 0 for the id of the question");
+        callback(error);
+    }
+    else if ( !e.content || e.content == undefined || e.content == "" || e.content.length <  10 )
+    {
+        error = new Error("You must supply valid content for the question with a length of at least 10 characters");
+        callback(error);
+    }
+    else
+    {
+        if (e.id > 0)
+        {
+            var params = 
+            {
+                Item: 
+                {
+                    id:   e.id,
+                    content: e.content,
+                    mediaLink: e.mediaLink
+                },
+                TableName: table,
+                ConditionExpression: "attribute_not_exists(id)",
+                required: ["id"],
+                required: ["content"],
+            };
+            docClient.put(params, function(err, data) 
+            {
+                if(err) 
+                {
+                    callback(err,null);
+                }
+                else 
+                {
+                    callback(null, params);
+                }
+            }); 
+        }
+        else
+        {
+            error = new Error("You must supply a number > 0 for the id of the question");
+            callback(error);
+        }
+    }
+}
+
+```
 
 ## 6. Styling Guide
 (I am curious to know more about this. Is the style for code and comment syntax? Please be clear. Tony did say he had his own styling for CSS which he will apply later.)
