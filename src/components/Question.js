@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, ActivityIndicator } from 'react-native';
 import { Text, Button, ListItem, Overlay } from 'react-native-elements';
 import styles from '../styles/Question';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -48,11 +48,24 @@ let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, 
         }
       </ScrollView>
     </View>
+
+    {isLoading &&
+      <View>
+        <ActivityIndicator
+          animating={true}
+          size="large"
+          color="#0000ff"
+        />
+      </View>
+    }
+
+    {!isLoading &&
     <Button
       buttonStyle={styles.submitButton}
       onPress={checkAnswer}
       title="Submit answer"
     />
+    }
     {/* The overlay can show additional information about the question and/or answers if necessary */}
     {
       type === 'quiz' &&

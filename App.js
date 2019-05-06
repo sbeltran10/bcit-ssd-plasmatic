@@ -174,8 +174,7 @@ class App extends Component {
           modalVisible: true,
           correctAnswer: this.state.answers.find(a => {return this.state.question[0].correctAnswerId === a.id})
         })
-      }
-      else {
+      } else {
         this.saveAnswerSelection();
       }
     }
