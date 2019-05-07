@@ -19,7 +19,9 @@ export default StyleSheet.create({
     justifyContent: 'center'
   },
   mediaContainer: {
-    flex:1
+    flex:1,
+    borderWidth:1,
+    borderColor:'black'
   },
   answerContainer: {
     backgroundColor: '#F5FCFF'
