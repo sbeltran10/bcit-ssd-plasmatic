@@ -16,19 +16,27 @@ import { WebView } from 'react-native-webview';
  */
 let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, saveAnswerSelection, modalVisible, correctAnswer, isLoading, type }) => (
   <View style={styles.mainView}>
-    <ScrollView contentContainerStyle={styles.questionScrollView}>
-      <Text h4>{question[0].content}</Text>
-    {
-      question[0].mediaLink &&
-      <View style={styles.mediaContainer}>
-        <WebView source={{ uri: question[0].mediaLink }} />
-      </View>
-    }
-    </ScrollView>
 
-    <View style={styles.answersView}>
+    <View style={styles.questionSubView}>
+      <ScrollView contentContainerStyle={styles.questionScrollView}>
+
+       <View>
+        <Text h4>{question[0].content}</Text>
+       </View>
+
+      {
+        question[0].mediaLink &&
+        <View style={styles.subView}>
+          <WebView source={{ uri: question[0].mediaLink }} />
+        </View>
+      }
+      
+      </ScrollView>
+    </View>
+
+    <View style={styles.subView}>
       {/* A Scrollview is used in case the amount or length of th answers is greater than the screen's height */}
-      <ScrollView contentContainerStyle={styles.scrollView}>
+      <ScrollView contentContainerStyle={styles.answerScrollView}>
         {
           answers.map((answer, i) => (
             <ListItem

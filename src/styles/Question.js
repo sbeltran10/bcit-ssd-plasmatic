@@ -6,28 +6,24 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     width: '100%'
   },
-  questionView: {
+  questionSubView: {
+    flex: 1,
     padding: Platform.OS === 'ios' ? 50 : 20,
-    borderBottomColor: '#84CFFF',
-    borderBottomWidth: 2
-  },
-  answersView: {
-    flex: 1
-  },
-  scrollView: {
-    flexGrow: 1,
-    justifyContent: 'center'
-  },
-  questionScrollView: {
-    padding: Platform.OS === 'ios' ? 50 : 20,
-    flexGrow: 1,
     height: 50,
     justifyContent: 'center',
     borderBottomColor: '#84CFFF',
     borderBottomWidth: 2
   },
-  mediaContainer: {
-    flex:1
+  subView: {
+    flex: 1
+  },
+  answerScrollView: {
+    flexGrow: 1,
+    justifyContent: 'center'
+  },
+  questionScrollView: {
+    flexGrow: 1,
+    justifyContent: 'center',
   },
   answerContainer: {
     backgroundColor: '#F5FCFF'
