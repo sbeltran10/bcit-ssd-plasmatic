@@ -9,7 +9,7 @@
 
 [4. Api Guide](#api)
 
-[5. Lambdas: Question Generation Code]
+[5. Lambdas: Question Generation Code](#lambdas)
 
 [6. Styling Guide](#styling)
 
@@ -416,9 +416,11 @@ childQuestion: 3
 
 ```
 
-<a  name="styling"/>
 
-[Back to top](#top)  
+
+[Back to top](#top) 
+
+<a name="lambdas"/>
 
 ## 5. Lambdas for Backend Question Generation
 a) 
@@ -1208,6 +1210,7 @@ exports.handler  = function(e, ctx, callback)
 }
 
 ```
+<a  name="styling"/>
 
 ## 6. Styling Guide
 (I am curious to know more about this. Is the style for code and comment syntax? Please be clear. Tony did say he had his own styling for CSS which he will apply later.)
