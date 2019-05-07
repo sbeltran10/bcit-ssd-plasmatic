@@ -79,7 +79,7 @@ Folders & Files needed:
 
   
 
-- App.js
+- QuestionnaireQuest.js
 
   
 
@@ -104,20 +104,51 @@ Be sure to save your local.properties file after making this change.
   
 
 ### Embedding the Child Application
-(*** Please provide more detail here. Which files and folders get dropped where? Which dependencies are added and where? -- thank you Pat)
-  
 
-1. $ **npm install**
 
-  
+**Folders & Files needed:**
 
-2. $ **react-native link react-native-gesture-handler** (at project root)
 
-3. $ **react-native link react-native-vector-icons** (at project root)
+- src (folder)
 
-  
+- QuestionnaireQuest.js
 
-4. $ **react-native run-ios** OR **react-native run-android** (builds app)
+
+**Dependencies used:**
+
+- "lodash": "^4.17.11"
+
+- "prop-types": "^15.7.2"
+
+- "react-native-autoheight-webview": "^1.0.1"
+
+- "react-native-autoreheight-webview": "^1.1.1"
+
+- "react-native-gesture-handler": "^1.1.0"
+
+- "react-native-vector-icons": "^6.4.2"
+
+- "react-native-webview": "^5.8.1"
+
+
+1. After copying the src folder and the QuestionnaireQuest.js file,
+open your project's package.json
+
+
+2. Compare and copy missing dependencies from the list above
+
+
+3. $ **npm install**  
+
+
+4. $ **react-native link react-native-gesture-handler** (at project root)
+
+
+5. $ **react-native link react-native-vector-icons** (at project root)
+
+
+6. $ **react-native run-ios** OR **react-native run-android** (builds app)
+
 
 ### Common Errors at Initial Setup:
 
