@@ -139,29 +139,39 @@ class QuestionnaireQuest extends Component {
   fetchQuestion = (step) => {
     QuestionAPI.readById(this.state.selectedAnswer[0].childQuestion, (err, data) => {
       if (err) console.log(err);
-      let stateCopy = { ...this.state };
-      if (!data && this.state.type === 'survey') {
-        stateCopy.question = [];
-        this.setState(stateCopy, () => { this.updateCurrentStep('results') });
-      } else if (!data && this.state.type === 'quiz') {
-        stateCopy.question = [];
-        stateCopy.totalCountOfQuestions = this.state.summary.length;
-        stateCopy.countCorrect = this.countCorrectAnswers();
-        this.setState(stateCopy, () => { this.updateCurrentStep('quizResults') });
-      } else if (!data && this.state.type === 'game') {
-        stateCopy.question = [];
-        this.setState(stateCopy, () => { this.updateCurrentStep('gameResults') });
-      } else {
-        stateCopy.question = data;
-        this.setState(stateCopy, () => { this.fetchAnswers(step) });
+      else {
+        let stateCopy = { ...this.state };
+        stateCopy.selectedAnswer = []
+
+        if (!data && this.state.type === 'survey') {
+          stateCopy.question = [];
+          this.setState(stateCopy, () => { this.updateCurrentStep('results') });
+        } else if (!data && this.state.type === 'quiz') {
+          stateCopy.question = [];
+          stateCopy.totalCountOfQuestions = this.state.summary.length;
+          stateCopy.countCorrect = this.countCorrectAnswers();
+          this.setState(stateCopy, () => { this.updateCurrentStep('quizResults') });
+        } else if (!data && this.state.type === 'game') {
+          stateCopy.question = [];
+          this.setState(stateCopy, () => { this.updateCurrentStep('gameResults') });
+        } else {
+          stateCopy.question = data;
+          this.setState(stateCopy, () => { this.fetchAnswers(step) });
+        }
       }
     })
   }
 
   selectAnswer = (answer) => {
     stateCopy = { ...this.state };
-    if (this.state.question[0].isMultiple) {
-      stateCopy.selectedAnswer.push(answer)
+    if (this.state.type === 'survey' && this.state.question[0].isMultiple) {
+      const isSelected = this.state.selectedAnswer.find(a => a.id === answer.id)
+      if (isSelected) {
+        stateCopy.selectedAnswer.splice(stateCopy.selectedAnswer.indexOf(answer), 1)
+      }
+      else {
+        stateCopy.selectedAnswer.push(answer)
+      }
     }
     else {
       stateCopy.selectedAnswer = stateCopy.answers.filter(a => { return a.id === answer.id });
@@ -207,9 +217,17 @@ class QuestionnaireQuest extends Component {
       }
     }
 
-    let qa = {
+    let answerText
+    if (this.state.question[0].isMultiple) {
+      answerText = this.state.selectedAnswer.map(a => a.content)
+    }
+    else {
+      answerText = this.state.selectedAnswer[0].content
+    }
+
+    const qa = {
       questionText: this.state.question[0].content,
-      answerText: this.state.selectedAnswer[0].content,
+      answerText: answerText,
       isRightWrong: result,
       correctAnswer: correctAnswer
     };

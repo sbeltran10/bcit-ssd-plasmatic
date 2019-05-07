@@ -30,18 +30,17 @@ let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, 
       <ScrollView contentContainerStyle={styles.scrollView}>
         {
           answers.map((answer, i) => (
-            <>
+            <React.Fragment key={i}>
               {
                 question[0].isMultiple ?
                   <ListItem
-                    key={i}
-                    leftIcon={selectedAnswer && selectedAnswer.find(a => a === answer.id) ?
-                      { name: 'check_box' }
+                    leftIcon={selectedAnswer && selectedAnswer.find(a => a.id === answer.id) ?
+                      { name: 'check-box' }
                       :
-                      { name: 'check_box_outline_blank' }}
+                      { name: 'check-box-outline-blank' }}
                     title={answer.content}
                     onPress={() => selectAnswer(answer)}
-                    containerStyle={selectedAnswer && selectedAnswer.find(a => a === answer.id) ?
+                    containerStyle={selectedAnswer && selectedAnswer.find(a => a.id === answer.id) ?
                       styles.answerContainerSelected
                       :
                       styles.answerContainer
@@ -49,7 +48,6 @@ let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, 
                   />
                   :
                   <ListItem
-                    key={i}
                     leftIcon={selectedAnswer[0] && selectedAnswer[0].id === answer.id ?
                       { name: 'radio-button-checked' }
                       :
@@ -64,7 +62,7 @@ let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, 
                   />
               }
 
-            </>
+            </React.Fragment>
           ))
         }
       </ScrollView>

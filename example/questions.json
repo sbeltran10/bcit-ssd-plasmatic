@@ -110,6 +110,7 @@
   },
   {
     "id": 9002,
-    "content": "Which days of the week do you have to use public transportation? (Check all that apply)"
+    "content": "Which days of the week do you have to use public transportation? (Check all that apply)",
+    "isMultiple": true
   }
 ]

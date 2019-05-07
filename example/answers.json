@@ -528,7 +528,7 @@
     "parentQuestion": 9000,
     "childQuestion": 9001
   },
-  {
+ {
     "id": 9001,
     "content": "Bus",
     "parentQuestion": 9000,
@@ -575,5 +575,47 @@
     "content": "More than 5",
     "parentQuestion": 9001,
     "childQuestion": 9002
+  },
+  {
+    "id": 9009,
+    "content": "Monday",
+    "parentQuestion": 9002,
+    "childQuestion": -1
+  },
+  {
+    "id": 9010,
+    "content": "Tuesday",
+    "parentQuestion": 9002,
+    "childQuestion": -1
+  },
+  {
+    "id": 9011,
+    "content": "Wednesday",
+    "parentQuestion": 9002,
+    "childQuestion": -1
+  },
+  {
+    "id": 9012,
+    "content": "Thursday",
+    "parentQuestion": 9002,
+    "childQuestion": -1
+  },
+  {
+    "id": 9013,
+    "content": "Friday",
+    "parentQuestion": 9002,
+    "childQuestion": -1
+  },
+  {
+    "id": 9014,
+    "content": "Saturday",
+    "parentQuestion": 9002,
+    "childQuestion": -1
+  },
+  {
+    "id": 9015,
+    "content": "Sunday",
+    "parentQuestion": 9002,
+    "childQuestion": -1
   }
 ]
