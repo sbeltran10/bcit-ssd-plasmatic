@@ -36,5 +36,11 @@ export default StyleSheet.create({
   },
   activityIndicator: {
     marginBottom: Platform.OS === 'ios' ? 27 : 5,
+  },
+  mediaActivityIndicator: {
+    justifyContent:'center', 
+    alignItems:'center', 
+    alignSelf:'center', 
+    position:'absolute'
   }
 })
