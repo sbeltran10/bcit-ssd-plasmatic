@@ -14,7 +14,7 @@ import { WebView } from 'react-native-webview';
  * This functinal component renders a question along with its associated answers and the elments required to submit
  * the answer and display the result of selecting a specific answer
  */
-let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, saveAnswerSelection, modalVisible, correctAnswer, isLoading, type, mediaIsLoading, mediaLoaded }) => (
+let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, saveAnswerSelection, modalVisible, correctAnswer, isLoading, type, mediaIsLoading, mediaLoading }) => (
   <View style={styles.mainView}>
     <View style={styles.questionView}>
       <Text h4>{question[0].content}</Text>
@@ -22,10 +22,16 @@ let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, 
     {
       question[0].mediaLink &&
       <View style={styles.mediaContainer}>
-        {mediaIsLoading && <ActivityIndicator animating={true} size="large" color="#0000ff"/> } 
         <WebView 
-          onLoad={() => mediaLoaded()}
+          onLoadStart={() => mediaLoading(true)}
+          onLoad={() => mediaLoading(false)}
           source={{ uri: question[0].mediaLink }} />
+
+        {mediaIsLoading && 
+          <View style={styles.mediaActivityIndicator}>
+            <ActivityIndicator animating={true} size="small" color="#0000ff"/> 
+          </View>
+        } 
       </View>
     }
     <View style={styles.answersView}>

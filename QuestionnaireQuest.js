@@ -20,7 +20,7 @@ import AnswerAPI from './src/api/AnswerAPI';
 import QuestionnaireAPI from './src/api/QuestionnaireAPI';
 import QuestionAPI from './src/api/QuestionAPI';
 
-import styles from './src/styles/App';
+import styles from './src/styles/QuestionnaireQuest';
 
 
 class QuestionnaireQuest extends Component {
@@ -109,9 +109,9 @@ class QuestionnaireQuest extends Component {
     this.setState(stateCopy, () => { this.fetchFirstQuestion(step) })
   }
 
-  updateMediaLoading = () => {
+  updateMediaLoading = (value) => {
     let stateCopy = {...this.state};
-    stateCopy.mediaIsLoading = false;
+    stateCopy.mediaIsLoading = value;
     this.setState(stateCopy)
   }
 
@@ -320,7 +320,7 @@ class QuestionnaireQuest extends Component {
             isLoading={this.state.isLoading}
             type={this.state.type}
             mediaIsLoading={this.state.mediaIsLoading}
-            mediaLoaded={this.updateMediaLoading}
+            mediaLoading={this.updateMediaLoading}
           />
         }
 
