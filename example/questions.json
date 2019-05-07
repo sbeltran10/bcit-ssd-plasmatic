@@ -13,43 +13,43 @@
   },
   {
     "id": 103,
-    "content":"Would you recommend our website to your friends?"
+    "content": "Would you recommend our website to your friends?"
   },
   {
     "id": 5,
-    "content":"In which type of housing do you currently live?"
+    "content": "In which type of housing do you currently live?"
   },
   {
     "id": 6,
-    "content":"Which of the following best describes your current housing situation?"
+    "content": "Which of the following best describes your current housing situation?"
   },
   {
     "id": 7,
-    "content":"Are you satisfied with your current living arrangements?"
+    "content": "Are you satisfied with your current living arrangements?"
   },
   {
     "id": 8,
-    "content":"What factors are most important to you when choosing your home or apartment?"
+    "content": "What factors are most important to you when choosing your home or apartment?"
   },
   {
     "id": 9,
-    "content":"Do you feel that there is adequate affordable/handicapped accessible housing in your area?"
+    "content": "Do you feel that there is adequate affordable/handicapped accessible housing in your area?"
   },
   {
     "id": 10,
-    "content":"How comfortable is your employer's work environment?"
+    "content": "How comfortable is your employer's work environment?"
   },
   {
     "id": 11,
-    "content":"Is your health insurance plan better or worse than those of other employers"
+    "content": "Is your health insurance plan better or worse than those of other employers"
   },
   {
     "id": 12,
-    "content":"How fair is your employer's sick day policy?"
+    "content": "How fair is your employer's sick day policy?"
   },
   {
     "id": 13,
-    "content":"Are you satisfied with your employee benefits?"
+    "content": "Are you satisfied with your employee benefits?"
   },
   {
     "id": 200,
@@ -97,5 +97,19 @@
     "id": 3,
     "content": "What is the capital of BC?",
     "correctAnswerId": 9
+  },
+  // Multiple choice questionnaire
+  {
+    "id": 9000,
+    "content": "In a typical day, which of the following forms of transportation do you use? (Check all that apply)",
+    "isMultiple": true
+  },
+  {
+    "id": 9001,
+    "content": "How many hours do you spend in traffic daily?"
+  },
+  {
+    "id": 9002,
+    "content": "Which days of the week do you have to use public transportation? (Check all that apply)"
   }
 ]
