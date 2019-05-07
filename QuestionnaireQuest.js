@@ -41,7 +41,8 @@ class QuestionnaireQuest extends Component {
       summary: [],
       totalCountOfQuestions: 0,
       countCorrect: 0,
-      isLoading: false
+      isLoading: false,
+      mediaIsLoading: true
     }
   }
 
@@ -106,6 +107,12 @@ class QuestionnaireQuest extends Component {
     let stateCopy = {...this.state};
     stateCopy.isLoading = true;
     this.setState(stateCopy, () => { this.fetchFirstQuestion(step) })
+  }
+
+  updateMediaLoading = () => {
+    let stateCopy = {...this.state};
+    stateCopy.mediaIsLoading = false;
+    this.setState(stateCopy)
   }
 
   fetchFirstQuestion = (step) => {
@@ -289,6 +296,8 @@ class QuestionnaireQuest extends Component {
             correctAnswer={this.state.correctAnswer}
             isLoading={this.state.isLoading}
             type={this.state.type}
+            mediaIsLoading={this.state.mediaIsLoading}
+            mediaLoaded={this.updateMediaLoading}
           />
         }
 
