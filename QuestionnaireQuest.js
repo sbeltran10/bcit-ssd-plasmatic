@@ -20,7 +20,7 @@ import AnswerAPI from './src/api/AnswerAPI';
 import QuestionnaireAPI from './src/api/QuestionnaireAPI';
 import QuestionAPI from './src/api/QuestionAPI';
 
-import styles from './src/styles/App';
+import styles from './src/styles/QuestionnaireQuest';
 
 
 class QuestionnaireQuest extends Component {
