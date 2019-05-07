@@ -16,15 +16,16 @@ import { WebView } from 'react-native-webview';
  */
 let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, saveAnswerSelection, modalVisible, correctAnswer, isLoading, type }) => (
   <View style={styles.mainView}>
-    <View style={styles.questionView}>
+    <ScrollView contentContainerStyle={styles.questionScrollView}>
       <Text h4>{question[0].content}</Text>
-    </View>
     {
       question[0].mediaLink &&
       <View style={styles.mediaContainer}>
         <WebView source={{ uri: question[0].mediaLink }} />
       </View>
     }
+    </ScrollView>
+
     <View style={styles.answersView}>
       {/* A Scrollview is used in case the amount or length of th answers is greater than the screen's height */}
       <ScrollView contentContainerStyle={styles.scrollView}>
