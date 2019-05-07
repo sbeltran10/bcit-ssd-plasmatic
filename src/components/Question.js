@@ -22,18 +22,10 @@ let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, 
     {
       question[0].mediaLink &&
       <View style={styles.mediaContainer}>
-         {mediaIsLoading &&
-          <View style={styles.activityIndicator}>
-            <ActivityIndicator
-              animating={true}
-              size="large"
-              color="#0000ff"
-            />
-          </View>
-      } 
+        {mediaIsLoading && <ActivityIndicator animating={true} size="large" color="#0000ff"/> } 
         <WebView 
-         onLoad={() => mediaLoaded()}
-        source={{ uri: question[0].mediaLink }} />
+          onLoad={() => mediaLoaded()}
+          source={{ uri: question[0].mediaLink }} />
       </View>
     }
     <View style={styles.answersView}>

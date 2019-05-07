@@ -109,7 +109,7 @@ class QuestionnaireQuest extends Component {
     this.setState(stateCopy, () => { this.fetchFirstQuestion(step) })
   }
 
-  updateMediaLoadingFFQ = () => {
+  updateMediaLoading = () => {
     let stateCopy = {...this.state};
     stateCopy.mediaIsLoading = false;
     this.setState(stateCopy)
@@ -297,7 +297,7 @@ class QuestionnaireQuest extends Component {
             isLoading={this.state.isLoading}
             type={this.state.type}
             mediaIsLoading={this.state.mediaIsLoading}
-            mediaLoaded={this.updateMediaLoadingFFQ}
+            mediaLoaded={this.updateMediaLoading}
           />
         }
 
