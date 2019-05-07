@@ -33,20 +33,39 @@ let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, 
       <ScrollView contentContainerStyle={styles.scrollView}>
         {
           answers.map((answer, i) => (
-            <ListItem
-              key={i}
-              leftIcon={selectedAnswer[0] && selectedAnswer[0].id === answer.id ?
-                { name: 'radio-button-checked' }
-                :
-                { name: 'radio-button-unchecked' }}
-              title={answer.content}
-              onPress={() => selectAnswer(answer.id)}
-              containerStyle={selectedAnswer[0] && selectedAnswer[0].id === answer.id ?
-                styles.answerContainerSelected
-                :
-                styles.answerContainer
+            <React.Fragment key={i}>
+              {
+                question[0].isMultiple ?
+                  <ListItem
+                    leftIcon={selectedAnswer && selectedAnswer.find(a => a.id === answer.id) ?
+                      { name: 'check-box' }
+                      :
+                      { name: 'check-box-outline-blank' }}
+                    title={answer.content}
+                    onPress={() => selectAnswer(answer)}
+                    containerStyle={selectedAnswer && selectedAnswer.find(a => a.id === answer.id) ?
+                      styles.answerContainerSelected
+                      :
+                      styles.answerContainer
+                    }
+                  />
+                  :
+                  <ListItem
+                    leftIcon={selectedAnswer[0] && selectedAnswer[0].id === answer.id ?
+                      { name: 'radio-button-checked' }
+                      :
+                      { name: 'radio-button-unchecked' }}
+                    title={answer.content}
+                    onPress={() => selectAnswer(answer)}
+                    containerStyle={selectedAnswer[0] && selectedAnswer[0].id === answer.id ?
+                      styles.answerContainerSelected
+                      :
+                      styles.answerContainer
+                    }
+                  />
               }
-            />
+
+            </React.Fragment>
           ))
         }
       </ScrollView>

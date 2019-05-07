@@ -13,7 +13,6 @@
     "type": "survey",
     "firstQuestionId": 5
   },
-
   {
     "id": 3,
     "title": "Employee Benefits",
@@ -21,7 +20,6 @@
     "type": "survey",
     "firstQuestionId": 10
   },
-
   {
     "id": 4,
     "title": "General Information",
@@ -29,7 +27,6 @@
     "type": "quiz",
     "firstQuestionId": 1
   },
-
   {
     "id": 5,
     "title": "Science Trivia",
@@ -37,7 +34,6 @@
     "type": "quiz",
     "firstQuestionId": 1
   },
-
   {
     "id": 6,
     "title": "Financial Management",
@@ -45,7 +41,6 @@
     "type": "quiz",
     "firstQuestionId": 1
   },
-
   {
     "id": 7,
     "title": "Zork",
@@ -53,7 +48,6 @@
     "type": "game",
     "firstQuestionId": 1
   },
-
   {
     "id": 8,
     "title": "Beyond Zork",
@@ -61,7 +55,6 @@
     "type": "game",
     "firstQuestionId": 1
   },
-
   {
     "id": 9,
     "title": "Return to Zork",
@@ -82,5 +75,14 @@
     "desc": "A Quiz about the Provinces of Canada",
     "type": "quiz",
     "firstQuestionId": 3
+  },
+
+  // Multiple choice survey
+  {
+    "id": 9000,
+    "title": "Commuting",
+    "desc": "A survey about the forms of transportation you use daily",
+    "questionnaireType": "survey",
+    "firstQuestionId": 9000
   }
 ]

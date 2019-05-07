@@ -46,7 +46,7 @@ class QuestionnaireQuest extends Component {
     }
   }
 
-  componentWillMount() {
+  componentWillMount () {
     this.onPickerValueChange('survey');
   }
 
@@ -104,7 +104,7 @@ class QuestionnaireQuest extends Component {
   }
 
   updateLoadingFFQ = (step) => {
-    let stateCopy = {...this.state};
+    let stateCopy = { ...this.state };
     stateCopy.isLoading = true;
     this.setState(stateCopy, () => { this.fetchFirstQuestion(step) })
   }
@@ -136,38 +136,53 @@ class QuestionnaireQuest extends Component {
   // used as callback @ fetchFirstQuestion, fetchQuestion 
   fetchAnswers = (step) => {
     AnswerAPI.getByParentId(this.state.question[0].id, (err, data) => {
-      if(err) console.log(err);
-      let stateCopy = {...this.state};
+      if (err) console.log(err);
+      let stateCopy = { ...this.state };
       stateCopy.answers = data;
-      this.setState(stateCopy, () => {this.updateCurrentStep(step)})
+      this.setState(stateCopy, () => { this.updateCurrentStep(step) })
     })
   }
 
   fetchQuestion = (step) => {
     QuestionAPI.readById(this.state.selectedAnswer[0].childQuestion, (err, data) => {
       if (err) console.log(err);
-      let stateCopy = { ...this.state };
-      if (!data && this.state.type === 'survey') {
-        stateCopy.question = [];
-        this.setState(stateCopy, () => { this.updateCurrentStep('results') });
-      } else if (!data && this.state.type === 'quiz') {
-        stateCopy.question = [];
-        stateCopy.totalCountOfQuestions = this.state.summary.length;
-        stateCopy.countCorrect = this.countCorrectAnswers();
-        this.setState(stateCopy, () => { this.updateCurrentStep('quizResults') });
-      } else if (!data && this.state.type === 'game') {
-        stateCopy.question = [];
-        this.setState(stateCopy, () => { this.updateCurrentStep('gameResults') });
-      } else {
-        stateCopy.question = data;
-        this.setState(stateCopy, () => { this.fetchAnswers(step) });
+      else {
+        let stateCopy = { ...this.state };
+        stateCopy.selectedAnswer = []
+
+        if (!data && this.state.type === 'survey') {
+          stateCopy.question = [];
+          this.setState(stateCopy, () => { this.updateCurrentStep('results') });
+        } else if (!data && this.state.type === 'quiz') {
+          stateCopy.question = [];
+          stateCopy.totalCountOfQuestions = this.state.summary.length;
+          stateCopy.countCorrect = this.countCorrectAnswers();
+          this.setState(stateCopy, () => { this.updateCurrentStep('quizResults') });
+        } else if (!data && this.state.type === 'game') {
+          stateCopy.question = [];
+          this.setState(stateCopy, () => { this.updateCurrentStep('gameResults') });
+        } else {
+          stateCopy.question = data;
+          this.setState(stateCopy, () => { this.fetchAnswers(step) });
+        }
       }
     })
   }
 
-  selectAnswer = (id) => {
+  selectAnswer = (answer) => {
     stateCopy = { ...this.state };
-    stateCopy.selectedAnswer = stateCopy.answers.filter(a => { return a.id === id });
+    if (this.state.type === 'survey' && this.state.question[0].isMultiple) {
+      const isSelected = this.state.selectedAnswer.find(a => a.id === answer.id)
+      if (isSelected) {
+        stateCopy.selectedAnswer.splice(stateCopy.selectedAnswer.indexOf(answer), 1)
+      }
+      else {
+        stateCopy.selectedAnswer.push(answer)
+      }
+    }
+    else {
+      stateCopy.selectedAnswer = stateCopy.answers.filter(a => { return a.id === answer.id });
+    }
     this.setState(stateCopy, () => { console.log(this.state) });
   }
 
@@ -180,13 +195,13 @@ class QuestionnaireQuest extends Component {
       if (this.state.type === 'quiz') {
         this.setState({
           modalVisible: true,
-          correctAnswer: this.state.answers.find(a => {return this.state.question[0].correctAnswerId === a.id})
+          correctAnswer: this.state.answers.find(a => { return this.state.question[0].correctAnswerId === a.id })
         })
-      }else if (this.state.type === 'game' && this.state.selectedAnswer[0].outcome) {
-          this.setState({
-            modalVisible: true
-          });
-      }else {
+      } else if (this.state.type === 'game' && this.state.selectedAnswer[0].outcome) {
+        this.setState({
+          modalVisible: true
+        });
+      } else {
         this.saveAnswerSelection();
       }
     }
@@ -209,13 +224,21 @@ class QuestionnaireQuest extends Component {
       }
     }
 
-    let qa = {
+    let answerText
+    if (this.state.question[0].isMultiple) {
+      answerText = this.state.selectedAnswer.map(a => a.content)
+    }
+    else {
+      answerText = this.state.selectedAnswer[0].content
+    }
+
+    const qa = {
       questionText: this.state.question[0].content,
-      answerText: this.state.selectedAnswer[0].content,
+      answerText: answerText,
       isRightWrong: result,
       correctAnswer: correctAnswer
     };
-    let stateCopy = {...this.state};
+    let stateCopy = { ...this.state };
     stateCopy.isLoading = true;
     this.setState(stateCopy, () => { this.saveToSummary(qa, step) })
   }
@@ -228,7 +251,7 @@ class QuestionnaireQuest extends Component {
     this.setState(stateCopy, () => { console.log(this.state); this.submitAnswer(step) });
   }
 
-  resetPicker(step) {
+  resetPicker (step) {
     let stateCopy = { ...this.state };
     stateCopy.currentStep = step;
     stateCopy.isLoading = false;
