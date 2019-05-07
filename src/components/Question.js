@@ -22,7 +22,7 @@ let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, 
     {
       question[0].mediaLink &&
       <View style={styles.mediaContainer}>
-        <WebView 
+        <WebView style={styles.webView}
           onLoadStart={() => mediaLoading(true)}
           onLoad={() => mediaLoading(false)}
           source={{ uri: question[0].mediaLink }} />

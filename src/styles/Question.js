@@ -19,7 +19,9 @@ export default StyleSheet.create({
     justifyContent: 'center'
   },
   mediaContainer: {
-    flex:1,
+    flex:1
+  },
+  webView: {
     borderWidth:1,
     borderColor:'black'
   },
