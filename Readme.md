@@ -120,6 +120,8 @@ Be sure to save your local.properties file after making this change.
 
 - "react-native-webview": "^5.8.1"
 
+- "react-elements": "^1.1.0",
+
 
 1. After copying the src folder and QuestionnaireQuest.js to the project root,
 open your project's package.json
