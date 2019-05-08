@@ -41,7 +41,7 @@ const Intro = ({ questionnaire, isLoading, updateLoadingFFQ }) => (
 
 Intro.propTypes = {
   // Currently selected questionnaire
-  questionnaire: PropTypes.object,
+  questionnaire: PropTypes.array,
   // State that indicates if there is a fetch operation in progress
   isLoading: PropTypes.bool,
   // Fuction to fetch the first question of the questionnaire
