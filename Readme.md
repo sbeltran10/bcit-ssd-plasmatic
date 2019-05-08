@@ -142,6 +142,20 @@ open your project's package.json
 6. $ **react-native run-ios** OR **react-native run-android** (builds app)
 
 
+### Embedding the Component
+Currently, to embed the component you can only return the <QuestionnairQuest> tag.
+...
+import React, {Component} from 'react';
+import QuestionnaireQuest from './QuestionnaireQuest';
+export default class App extends Component {
+  render() {
+    return (
+        <QuestionnaireQuest></QuestionnaireQuest>
+    );
+  }
+}
+...
+
 ### Common Errors at Initial Setup:
 
   
