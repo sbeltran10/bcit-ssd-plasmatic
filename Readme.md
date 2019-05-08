@@ -104,23 +104,22 @@ Be sure to save your local.properties file after making this change.
 - QuestionnaireQuest.js
 
 
-**Dependencies used:**
-
-- "lodash": "^4.17.11"
-
-- "prop-types": "^15.7.2"
-
-- "react-native-autoheight-webview": "^1.0.1"
-
-- "react-native-autoreheight-webview": "^1.1.1"
-
-- "react-native-gesture-handler": "^1.1.0"
-
-- "react-native-vector-icons": "^6.4.2"
-
-- "react-native-webview": "^5.8.1"
-
-- "react-elements": "^1.1.0",
+**Dependencies used in package.json include the following:**
+```
+  "dependencies": {
+    .
+    .
+    .
+    "lodash": "^4.17.11",
+    "prop-types": "^15.7.2",
+    "react-native-autoheight-webview": "^1.0.1",
+    "react-native-autoreheight-webview": "^1.1.1",
+    "react-native-gesture-handler": "^1.1.0",
+    "react-native-vector-icons": "^6.4.2",
+    "react-native-elements": "^1.1.0",
+    "react-native-webview": "^5.8.1"
+  },
+```
 
 
 1. After copying the src folder and QuestionnaireQuest.js to the project root,
