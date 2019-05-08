@@ -8,13 +8,11 @@ import Outcome from './Outcome';
 import PropTypes from 'prop-types';
 import { WebView } from 'react-native-webview';
 
-
-
 /**
  * This functinal component renders a question along with its associated answers and the elments required to submit
  * the answer and display the result of selecting a specific answer
  */
-let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, saveAnswerSelection, modalVisible, correctAnswer, isLoading, type, mediaIsLoading, mediaLoading }) => (
+let Question = ({ question = [{ content: "No question content" }], answers, selectAnswer, selectedAnswer, checkAnswer, saveAnswerSelection, modalVisible, correctAnswer, isLoading, type, mediaIsLoading, mediaLoading }) => (
   <View style={styles.mainView}>
     <View style={styles.questionView}>
       <Text h4>{question[0].content}</Text>
@@ -27,53 +25,53 @@ let Question = ({ question, answers, selectAnswer, selectedAnswer, checkAnswer, 
           onLoad={() => mediaLoading(false)}
           source={{ uri: question[0].mediaLink }} />
 
-        {mediaIsLoading && 
+        {mediaIsLoading &&
           <View style={styles.mediaActivityIndicator}>
-            <ActivityIndicator animating={true} size="small" color="#0000ff"/> 
+            <ActivityIndicator animating={true} size="small" color="#0000ff" />
           </View>
-        } 
+        }
       </View>
     }
     <View style={styles.answersView}>
-      {/* A Scrollview is used in case the amount or length of th answers is greater than the screen's height */}
+      {/* A Scrollview is used in case the amount or length of the answers is greater than the screen's height */}
       <ScrollView contentContainerStyle={styles.scrollView}>
         {
           answers.map((answer, i) => (
-            <React.Fragment key={i}>
-              {
-                question[0].isMultiple ?
-                  <ListItem
-                    leftIcon={selectedAnswer && selectedAnswer.find(a => a.id === answer.id) ?
-                      { name: 'check-box' }
-                      :
-                      { name: 'check-box-outline-blank' }}
-                    title={answer.content}
-                    onPress={() => selectAnswer(answer)}
-                    containerStyle={selectedAnswer && selectedAnswer.find(a => a.id === answer.id) ?
-                      styles.answerContainerSelected
-                      :
-                      styles.answerContainer
-                    }
-                  />
-                  :
-                  <ListItem
-                    leftIcon={selectedAnswer[0] && selectedAnswer[0].id === answer.id ?
-                      { name: 'radio-button-checked' }
-                      :
-                      { name: 'radio-button-unchecked' }}
-                    title={answer.content}
-                    onPress={() => selectAnswer(answer)}
-                    containerStyle={selectedAnswer[0] && selectedAnswer[0].id === answer.id ?
-                      styles.answerContainerSelected
-                      :
-                      styles.answerContainer
-                    }
-                  />
-              }
+            < React.Fragment key = { i } >
+            {
+              question[0].isMultiple ?
+                <ListItem
+                  leftIcon={selectedAnswer && selectedAnswer.find(a => a.id === answer.id) ?
+                    { name: 'check-box' }
+                    :
+                    { name: 'check-box-outline-blank' }}
+                  title={answer.content}
+                  onPress={() => selectAnswer(answer)}
+                  containerStyle={selectedAnswer && selectedAnswer.find(a => a.id === answer.id) ?
+                    styles.answerContainerSelected
+                    :
+                    styles.answerContainer
+                  }
+                />
+                :
+                <ListItem
+                  leftIcon={selectedAnswer[0] && selectedAnswer[0].id === answer.id ?
+                    { name: 'radio-button-checked' }
+                    :
+                    { name: 'radio-button-unchecked' }}
+                  title={answer.content}
+                  onPress={() => selectAnswer(answer)}
+                  containerStyle={selectedAnswer[0] && selectedAnswer[0].id === answer.id ?
+                    styles.answerContainerSelected
+                    :
+                    styles.answerContainer
+                  }
+                />
+            }
 
             </React.Fragment>
-          ))
-        }
+      ))
+    }
       </ScrollView>
     </View>
 

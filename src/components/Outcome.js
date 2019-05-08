@@ -5,7 +5,7 @@ import styles from '../styles/AnswerCorrectIncorrect';
 import PropTypes from 'prop-types';
 
 /**
- * This component shows whenever a right or wrong answer was selected when the questionnaire type is quiz
+ * This component shows the out oucome of choosing an option in questionnaire of the type game
  */
 let Outcome = ({ saveAnswerSelection, selectedAnswer, isLoading }) => (
   <View style={styles.mainView}>
