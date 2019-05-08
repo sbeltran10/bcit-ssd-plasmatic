@@ -39,7 +39,7 @@ const Intro = ({ questionnaire, isLoading, updateLoadingFFQ }) => (
   </View >
 )
 
-Outcome.propTypes = {
+Intro.propTypes = {
   // Currently selected questionnaire
   questionnaire: PropTypes.object,
   // State that indicates if there is a fetch operation in progress
