@@ -37,7 +37,7 @@ The application is a media rich branching questionnaire designed in React-Native
 
   
 
-To test the application in the Emulator, set up Xcode / Android Studio per specified in [React Native Instruction](https://facebook.github.io/react-native/docs/getting-started  "React Native Getting Started").
+To test the application in the Emulator, set up Xcode / Android Studio per specified in [React Native CLI Quickstart Instructions](https://facebook.github.io/react-native/docs/getting-started  "React Native Getting Started").
 
   
 
@@ -69,28 +69,6 @@ Folders & Files needed:
   
 
 - QuestionnaireQuest.js
-
-  
-
-To run the application in Android, create a local.properties file in the `android` folder. Then add a path to the Android sdk. You can find this path when navigating in Android Studio to Tools | SDK Manager | System Settings | Android SDK. On a Mac the path looks like:
-
-  
-
-`sdk.dir=/Users/pm/Library/Android/sdk`
-
-  
-
-On Windows the path looks like:
-
-  
-
-`sdk.dir=C:\\Users\\XX\\AppData\\Local\\Android\\Sdk`
-
-  
-
-Be sure to save your local.properties file after making this change.
-
-  
 
 ### Embedding the Child Application
 
