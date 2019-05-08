@@ -8,7 +8,7 @@
  */
 
 import React, { Component } from 'react';
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import Index from './src/components/Index';
 import Intro from './src/components/Intro';
 import Question from './src/components/Question';
@@ -75,7 +75,7 @@ class QuestionnaireQuest extends Component {
     stateCopy.selectedQuestionnaireId = id;
     //title needed for the results page
     stateCopy.selectedQuestionnaireTitle = title;
-    this.setState(stateCopy, () => { console.log(this.state) })
+    this.setState(stateCopy)
   }
 
   countCorrectAnswers () {
@@ -100,7 +100,7 @@ class QuestionnaireQuest extends Component {
   fetchQuestionnaire = (step) => {
     let stateCopy = { ...this.state };
     stateCopy.questionnaire = stateCopy.questionnaires.filter(q => { return q.id === stateCopy.selectedQuestionnaireId });
-    this.setState(stateCopy, () => { console.log(this.state); this.updateCurrentStep(step) })
+    this.setState(stateCopy, () => { this.updateCurrentStep(step) })
   }
 
   updateLoadingFFQ = (step) => {
@@ -110,7 +110,7 @@ class QuestionnaireQuest extends Component {
   }
 
   updateMediaLoading = (value) => {
-    let stateCopy = {...this.state};
+    let stateCopy = { ...this.state };
     stateCopy.mediaIsLoading = value;
     this.setState(stateCopy)
   }
@@ -183,7 +183,7 @@ class QuestionnaireQuest extends Component {
     else {
       stateCopy.selectedAnswer = stateCopy.answers.filter(a => { return a.id === answer.id });
     }
-    this.setState(stateCopy, () => { console.log(this.state) });
+    this.setState(stateCopy);
   }
 
   submitAnswer = (step) => {
@@ -248,7 +248,7 @@ class QuestionnaireQuest extends Component {
     stateCopy = { ...this.state };
     stateCopy.summary.push(qa);
     stateCopy.modalVisible = false;
-    this.setState(stateCopy, () => { console.log(this.state); this.submitAnswer(step) });
+    this.setState(stateCopy, () => { this.submitAnswer(step) });
   }
 
   resetPicker (step) {
@@ -265,7 +265,7 @@ class QuestionnaireQuest extends Component {
     stateCopy.summary = [];
     stateCopy.type = 'survey';
     stateCopy.modalVisible = false;
-    this.setState(stateCopy, () => { console.log(this.state); this.resetPicker(step) })
+    this.setState(stateCopy, () => { this.resetPicker(step) })
   }
 
   /*---  render  ---*/
