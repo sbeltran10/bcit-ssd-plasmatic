@@ -38,7 +38,7 @@ The application is a media rich branching questionnaire designed in React-Native
 
   
 
-To test the application in the Emulator, set up Xcode / Android studio per specified in [React Native Instruction](https://facebook.github.io/react-native/docs/getting-started  "React Native Getting Started").
+To test the application in the Emulator, set up Xcode / Android Studio per specified in [React Native Instruction](https://facebook.github.io/react-native/docs/getting-started  "React Native Getting Started").
 
   
 
