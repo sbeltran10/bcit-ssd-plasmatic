@@ -9,9 +9,11 @@
 
 [4. Api Guide](#api)
 
-[5. Lambdas: Question Generation Code](#lambdas)
+[5. Styling Guide](#styling)
 
-[6. Team](#team)
+[6. Lambdas: Question Generation Code](#lambdas)
+
+[7. Team](#team)
 
 
 
@@ -407,9 +409,17 @@ childQuestion: 3
 
 [Back to top](#top) 
 
+<a name="styling"/>
+
+## 5. Styling Guide
+
+The styling of the functional components is handled by having one style file for each functional component file. These style files are located inside the src/styles folder and the name of each file is the same as the name of each component.
+
+[Back to top](#top) 
+
 <a name="lambdas"/>
 
-## 5. Lambdas for Backend Question Generation
+## 6. Lambdas for Backend Question Generation
 a) 
 DynamoDB_Answers_Read
 
@@ -1202,7 +1212,7 @@ exports.handler  = function(e, ctx, callback)
 
 <a name="team"/>
 
-## 6. Team
+## 7. Team
 
 <a href="https://github.com/c-ywj" target="_blank">**@c-wyj**</a>
 <a href="https://github.com/ajadversalo" target="_blank">**@ajadversalo**</a>
