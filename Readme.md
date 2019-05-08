@@ -212,7 +212,7 @@ updateSelectedQuestionnaireId | func | Callback to update the chosen questionnai
 |:---|---|:---|
 isLoading | bool | Correct answer associated with the currently active question
 saveAnswerSelection | func | Function called to save the answer selection, triggered when the next button is pressed
-selectedAnswer | Currently selected answer
+selectedAnswer | array | Currently selected answer
 
 #### Question PropTypes
 |Name | Type | Description|
