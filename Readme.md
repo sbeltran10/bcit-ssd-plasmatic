@@ -104,7 +104,7 @@ Be sure to save your local.properties file after making this change.
 - QuestionnaireQuest.js
 
 
-**Dependencies used in package.json include the following:**
+**Dependencies required in package.json include the following:**
 ```
   "dependencies": {
     .
