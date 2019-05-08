@@ -26,7 +26,7 @@
 
   
 
-The application is a media rich branching questionnaire designed in React-Native.  Three different types of questionnaire are supported: survey, quiz and game.   
+The application is a media rich branching questionnaire designed in React-Native. Three different types of questionnaire are supported: survey, quiz and game.   
 
 
 <a  name="install"/>
@@ -38,7 +38,7 @@ The application is a media rich branching questionnaire designed in React-Native
 
   
 
-To test Application in Emulator, set up Xcode / Android studio per specified in [React Native Instruction](https://facebook.github.io/react-native/docs/getting-started  "React Native Getting Started").
+To test the application in the Emulator, set up Xcode / Android studio per specified in [React Native Instruction](https://facebook.github.io/react-native/docs/getting-started  "React Native Getting Started").
 
   
 
@@ -73,7 +73,7 @@ Folders & Files needed:
 
   
 
-To run the application in Android, create a local.properties file in the android folder. Then add a path to the Android sdk. You can find this path when navigating in Android studio to Tools | SDK Manager | System Settings | Android SDK. On a Mac the path looks like:
+To run the application in Android, create a local.properties file in the `android` folder. Then add a path to the Android sdk. You can find this path when navigating in Android studio to Tools | SDK Manager | System Settings | Android SDK. On a Mac the path looks like:
 
   
 
@@ -107,9 +107,6 @@ Be sure to save your local.properties file after making this change.
 **Dependencies required in package.json include the following:**
 ```
   "dependencies": {
-    .
-    .
-    .
     "lodash": "^4.17.11",
     "prop-types": "^15.7.2",
     "react-native-autoheight-webview": "^1.0.1",
@@ -129,16 +126,16 @@ open your project's package.json
 2. Compare and copy missing dependencies from the list above
 
 
-3. $ **npm install**  
+3. `$ npm install`  
 
 
-4. $ **react-native link react-native-gesture-handler** (at project root)
+4. `$ react-native link react-native-gesture-handler` (at project root)
 
 
-5. $ **react-native link react-native-vector-icons** (at project root)
+5. `$ react-native link react-native-vector-icons` (at project root)
 
 
-6. $ **react-native run-ios** OR **react-native run-android** (builds app)
+6. `$ react-native run-ios** OR **react-native run-android` (builds app)
 
 
 ### Embedding the Component
@@ -159,12 +156,12 @@ export default class App extends Component {
 
   
 
-If “Material Icon” error (“Unrecognized front family ‘Material Icons”) in IOS or if styling library does not implement in Android : :
+If “Material Icon” error (“Unrecognized front family ‘Material Icons”) in IOS or if styling library does not implement in Android:
 
   
   
 
-1. Run **\$react-native link react-native-vector-icons** , then build project again **$react-native run-ios** (at project root)
+1. Run `\$react-native link react-native-vector-icons` , then build project again `$react-native run-ios` (at project root)
 
   
 
@@ -172,7 +169,7 @@ If “Material Icon” error (“Unrecognized front family ‘Material Icons”)
 
   
 
-2. Delete Items inside of build folder ( iOS > build ), rebuild project $react-native run-ios or $react-native run-android
+2. Delete Items inside of build folder ( iOS > build ), rebuild project `$react-native run-ios` or `$react-native run-android`
 
   
 
@@ -369,6 +366,7 @@ firstQuestionId: 3
 |:---|---|:---|
 |id|number|Id of the question|
 |content|string|Text of the answer|
+|isMultiple|boolean (optional)|For questionnaires of the type "survey", this property determines if multiple answers can be selected|
 |correctAnswerId|number (optional)|Id of the correct answer if the questionnaire type is "quiz"|
 |mediaLink|string (optional)|Link pointing to any multimedia the question is associated with. Can be a video, image or audio|
 
