@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { View,ScrollView } from 'react-native';
+import React from 'react';
+import { View } from 'react-native';
 import { Text, Button } from 'react-native-elements';
 import styles from '../styles/SurveyResults';
 import PropTypes from 'prop-types';
 
 let GameResults = ({questionnaire, onExitButtonPress}) => (
-    <View style={styles.mainView}>
+    <View style={{flex: 1, justifyContent: 'center', height: 100}}>
         <Text>{questionnaire[0].endText}</Text>
         <Button
             containerStyle={styles.exitButton}
