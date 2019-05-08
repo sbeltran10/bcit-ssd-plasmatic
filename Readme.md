@@ -998,7 +998,7 @@ exports.handler  = function(e, ctx, callback)
             }
             else
             {
-                error = new Error("You must supply a number > 0 for the correctAnswwerId of the question");
+                error = new Error("You must supply a number > 0 for the correctAnswerId of the question");
                 callback(error);
             }
         }
