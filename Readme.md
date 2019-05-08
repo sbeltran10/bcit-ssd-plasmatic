@@ -1,3 +1,4 @@
+
 ## Content
 <a name="top"/>
 
@@ -167,49 +168,75 @@ If “Material Icon” error (“Unrecognized front family ‘Material Icons”)
 ## 3. Components
 
   
+#### AnswerCorrectIncorrect PropTypes
+|Name | Type | Description|
+|:---|---|:---|
+correctAnswer | object | Correct answer associated with currently selected question
+saveAnswerSelection | func | function called to save answer, triggered when next button is pressed
+selectedAnswer | array | currently selected answer
+
+#### GameAnswer PropTypes
+|Name | Type | Description|
+|:---|---|:---|
+onExitButtonPush | func | Called when the exit button is pressed
+questionnaire | array | Questionnaire choices
+
+#### Index PropTypes
+|Name | Type | Description|
+|:---|---|:---|
+fetchQuestionnaire | func | Callback to retrieve the filtered questionnaires
+onPickerValueChange | func | Callback to update the category state
+questionnaires | array | Array containing the queried questionnaires
+selectedQuestionnaireId | number | Primary key of the selected questionnaire
+type | string | Sting containing the questionnaire category
+updateSelectedQuestionnaireId | func | Callback to update the chosen questionnaire id
+
+
+#### Outcome PropTypes
+|Name | Type | Description|
+|:---|---|:---|
+isLoading | bool | Correct answer associated with the currently active question
+saveAnswerSelection | func | Function called to save the answer selection, triggered when the next button is pressed
+selectedAnswer | Currently selected answer
 
 #### Question PropTypes
 |Name | Type | Description|
 |:---|---|:---|
-question | array | Currently active question
 answers | array | Answers associated with the currently active question
-selectAnswer | func | Function called when an answer is picked from the list
 checkAnswer | func | Function called when an answer is submitted using the the button
-saveAnswerSelection | func | Function used to submit the answer selection, updating the currently active question and answers
-modalVisible | bool | Controls whenever the modal containing the correct/incorrect selection is visible
-selectedAnswer | array | Currently selected answer
 correctAnswer | object | Correct answer in case the type of questionnaire is a quiz
+modalVisible | bool | Controls whenever the modal containing the correct/incorrect selection is visible
+question | array | Currently active question
+saveAnswerSelection | func | Function used to submit the answer selection, updating the currently active question and answers
+selectAnswer | func | Function called when an answer is picked from the list
+selectedAnswer | array | Currently selected answer
 
-  
 
-#### QuestionairreList PropTypes
-
+#### QuestionnaireList PropTypes
 |Name | Type | Description|
 |:---|---|:---|
-questionnaires | array | Array containing the queried questionnaires
 onSelect | func | Callback to update the category state
+questionnaires | array | Array containing the queried questionnaires
 selectedQuestionnaireId | number | Primary key of the selected questionnaire
-  
 
-#### QuestionairreType PropTypes
-
+#### QuestionnaireType PropTypes
 |Name | Type | Description|
 |:---|---|:---|
 onExitButtonPress | func | Called when the exit button is pressed
 
-  
-
-#### **SurveyResults PropTypes**
-
+#### Quiz Results PropTypes
 |Name | Type | Description|
 |:---|---|:---|
-resultsText | string | Text to display
+onExitButtonPress | func | Called when the exit button is pressed
+
+#### SurveyResults PropTypes
+|Name | Type | Description|
+|:---|---|:---|
 onExitButtonPress | func | Function to be called when the exit button is pressed
+resultsText | string | Text to display|
 
-  
-  
+
 #### State Variables
-
 |Name | Type | Description|
 |:---|---|:---|
 | answers | array | List of all the answers from the database |
@@ -220,8 +247,8 @@ onExitButtonPress | func | Function to be called when the exit button is pressed
 | questionnaire | array | Filtered list of questionnaires based on the type
 |questionnaires|array | List of all questionnaires from the database|
 |selectedAnswer | int | Index of the selected answer|
-|selectedQuestionaireTitle | string | Title of currently selected questionnaire|
 |selectedQuestionnaireID | int | Index of currently selected questionnaire|
+|selectedQuestionaireTitle | string | Title of currently selected questionnaire|
 |summary | array | Survey/quiz questions, result and correct answer|
 |totalCountOfQuestions | int | Number of questions in a questionnaire
 |type | string | Questionnaire category
