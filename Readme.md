@@ -1,7 +1,7 @@
 ## Content
 <a name="top"/>
 
-[1. Plasmatic Game App](#plasmatic)
+[1. QuestionnaireQuest](#qq)
 
 [2. Initial Setup & Installation](#install)
 
@@ -11,33 +11,20 @@
 
 [5. Lambdas: Question Generation Code](#lambdas)
 
-[6. Styling Guide](#styling)
-
-[7. Team](#team)
+[6. Team](#team)
 
 
 
-<a  name="plasmatic"/>
+<a  name="qq"/>
 
   
 
-## 1. Plasmatic Game App
+## 1. QuestionnaireQuest App
 
   
 
-The application is a branching survey game designed in React-Native.
+The application is a media rich branching questionnaire designed in React-Native.  Three different types of questionnaire are supported: survey, quiz and game.   
 
-  
-  
-
-### Project Description Requirement
-
-  
-  
-
-We have the need for a very simple “game” like function in our app. It would be something as simple as a choose your own adventure or a scavenger hunt type app. It would be in React Native with maybe a React input that would allow the creation of the screens/path for the game.
-
-  
 
 <a  name="install"/>
 
@@ -1210,16 +1197,12 @@ exports.handler  = function(e, ctx, callback)
 }
 
 ```
-<a  name="styling"/>
-
-## 6. Styling Guide
-(I am curious to know more about this. Is the style for code and comment syntax? Please be clear. Tony did say he had his own styling for CSS which he will apply later.)
 
 [Back to top](#top) 
 
 <a name="team"/>
 
-## 7. Team
+## 6. Team
 
 <a href="https://github.com/c-ywj" target="_blank">**@c-wyj**</a>
 <a href="https://github.com/ajadversalo" target="_blank">**@ajadversalo**</a>
