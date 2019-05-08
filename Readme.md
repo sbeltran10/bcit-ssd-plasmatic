@@ -73,7 +73,7 @@ Folders & Files needed:
 
   
 
-To run the application in Android, create a local.properties file in the `android` folder. Then add a path to the Android sdk. You can find this path when navigating in Android studio to Tools | SDK Manager | System Settings | Android SDK. On a Mac the path looks like:
+To run the application in Android, create a local.properties file in the `android` folder. Then add a path to the Android sdk. You can find this path when navigating in Android Studio to Tools | SDK Manager | System Settings | Android SDK. On a Mac the path looks like:
 
   
 
