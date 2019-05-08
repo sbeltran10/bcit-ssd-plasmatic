@@ -38,7 +38,7 @@ The application is a media rich branching questionnaire designed in React-Native
 
   
 
-To test the application in the Emulator, set up Xcode / Android studio per specified in [React Native Instruction](https://facebook.github.io/react-native/docs/getting-started  "React Native Getting Started").
+To test the application in the Emulator, set up Xcode / Android Studio per specified in [React Native Instruction](https://facebook.github.io/react-native/docs/getting-started  "React Native Getting Started").
 
   
 
@@ -998,7 +998,7 @@ exports.handler  = function(e, ctx, callback)
             }
             else
             {
-                error = new Error("You must supply a number > 0 for the correctAnswwerId of the question");
+                error = new Error("You must supply a number > 0 for the correctAnswerId of the question");
                 callback(error);
             }
         }

@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 const QuizResults = ({ quizTitle, countCorrect, totalCountOfQuestions, quizResults, onExitButtonPress }) => (
   <View>
-    <Text h2>{quizTitle}</Text>
+    <Text h2 style={styles.title}>{this.props.quizTitle}</Text>
     <Text h3>Score: {countCorrect}/{totalCountOfQuestions}</Text>
     <ScrollView>
       {quizResults.map((item, key) => (
