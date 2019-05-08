@@ -10,7 +10,7 @@ class QuizResults extends Component {
   render() {
     return (
         <View>
-           <Text h2>{this.props.quizTitle}</Text>
+           <Text h2 style={styles.title}>{this.props.quizTitle}</Text>
            <Text h3>Score: {this.props.countCorrect}/{this.props.totalCountOfQuestions}</Text>
            <ScrollView>
             {this.props.quizResults.map((item, key) => (
