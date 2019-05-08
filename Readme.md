@@ -116,7 +116,7 @@ open your project's package.json
 
 
 ### Embedding the Component
-To embed the component you must return the <QuestionnairQuest> tag by itself.
+To embed the QuestionnaireQuest component you must return the <QuestionnairQuest> tag by itself.
 ```
 import React, {Component} from 'react';
 import QuestionnaireQuest from './QuestionnaireQuest';
