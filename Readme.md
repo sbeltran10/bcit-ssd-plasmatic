@@ -84,6 +84,9 @@ Folders & Files needed:
 **Dependencies required in package.json include the following:**
 ```
   "dependencies": {
+     .
+     .
+     .
     "lodash": "^4.17.11",
     "prop-types": "^15.7.2",
     "react-native-autoheight-webview": "^1.0.1",
