@@ -8,7 +8,7 @@
 
 [3. Components](#components)
 
-[4. Api Guide](#api)
+[4. API Guide](#api)
 
 [5. Styling Guide](#styling)
 
