@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 
 export default StyleSheet.create({  
     mainView: {
@@ -21,5 +21,8 @@ export default StyleSheet.create({
      exitButton: {
       height: 50,
       borderRadius: 1
+    },
+    title : {
+      padding: Platform.OS === 'ios' ? 50 : 20
     }
     })
