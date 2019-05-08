@@ -413,7 +413,7 @@ childQuestion: 3
 
 ## 5. Styling Guide
 
-The styling of the functional components is handled by having one style file for each functional component file. These style files are located inside the src/styles folder and the name of each file is the same as the name of each component.
+The styling of the functional components is handled by having one style file for each functional component file. These style files are located inside the src/styles folder and the name of each file is the same as the name of its corresponding component.
 
 [Back to top](#top) 
 
