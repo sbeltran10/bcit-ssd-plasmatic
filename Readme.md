@@ -115,7 +115,7 @@ open your project's package.json
 6. `$ react-native run-ios** OR **react-native run-android` (builds app)
 
 
-### Embedding the Component
+#### Embedding the Component
 To embed the QuestionnaireQuest component you must return the <QuestionnairQuest> tag by itself.
 ```
 import React, {Component} from 'react';
