@@ -459,7 +459,7 @@ The styling of the functional components is handled by having one style file for
 <a name="lambdas"/>
 
 ## 6. Lambdas for Backend Question Generation
-<a name="#lambda_a"/>
+<a name="lambda_a"/>
 
 a) 
 DynamoDB_Answers_Read
