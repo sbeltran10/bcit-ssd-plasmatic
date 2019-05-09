@@ -459,10 +459,10 @@ The styling of the functional components is handled by having one style file for
 <a name="lambdas"/>
 
 ## 6. Lambdas for Backend Question Generation
-<a name="lambda_a"/>
+
 
 a) 
-DynamoDB_Answers_Read
+DynamoDB_Answers_Read <a name="lambda_a"/>
 
 ```javascript
 
@@ -538,9 +538,9 @@ exports.handler  = function(e, ctx, callback)
 }
 
 ```
-<a name="lambda_c"/>
+
 c) 
-Dynamo_Answers_Read_ByParentId
+Dynamo_Answers_Read_ByParentId<a name="lambda_c"/>
 ```javascript
 
 const AWS       = require('aws-sdk');
@@ -587,9 +587,9 @@ exports.handler  = function(e, ctx, callback)
 }
 
 ```
-<a name="lambda_d"/>
+
 d) 
-DynamoDB_Answers_write
+DynamoDB_Answers_write<a name="lambda_d"/>
 ```javascript
 
 const AWS       = require('aws-sdk');
@@ -678,9 +678,9 @@ exports.handler  = function(e, ctx, callback)
 }
 
 ```
-<a name="lambda_e"/>
+
 e) 
-DynamoDB_Questionnaire_Read
+DynamoDB_Questionnaire_Read<a name="lambda_e"/>
 ```javascript
 
 const AWS       = require('aws-sdk');
@@ -708,9 +708,9 @@ exports.handler  = function(e, ctx, callback)
 }
 
 ```
-<a name="lambda_f"/>
+
 f) 
-DynamoDB_Questionnaire_Read_ById
+DynamoDB_Questionnaire_Read_ById<a name="lambda_f"/>
 ```javascript
 
 const AWS       = require('aws-sdk');
@@ -757,9 +757,9 @@ exports.handler  = function(e, ctx, callback)
 }
 
 ```
-<a name="lambda_g"/>
+
 g) 
-DynamoDB_Questionnaire_Read_ByType
+DynamoDB_Questionnaire_Read_ByType<a name="lambda_g"/>
 ```javascript
 
 const AWS       = require('aws-sdk');
@@ -802,9 +802,9 @@ exports.handler  = function(e, ctx, callback)
 }
 
 ```
-<a name="lambda_h"/>
+
 h) 
-DynamoDB_Questionnaire_Write
+DynamoDB_Questionnaire_Write<a name="lambda_h"/>
 ```javascript
 
 const AWS       = require('aws-sdk');
@@ -938,9 +938,9 @@ exports.handler  = function(e, ctx, callback)
 }
 
 ```
-<a name="lambda_i"/>
+
 i) 
-DynamoDB_Questions_Quiz_Write
+DynamoDB_Questions_Quiz_Write<a name="lambda_i"/>
 ```javascript
 
 const AWS       = require('aws-sdk');
@@ -1014,9 +1014,9 @@ exports.handler  = function(e, ctx, callback)
 }
 
 ```
-<a name="lambda_j"/>
+
 j) 
-DynamoDB_Questions_Read
+DynamoDB_Questions_Read<a name="lambda_j"/>
 ```javascript
 
 const AWS       = require('aws-sdk');
@@ -1043,9 +1043,9 @@ exports.handler  = function(e, ctx, callback)
 }
 
 ```
-<a name="lambda_k"/>
+
 k)
-DynamoDB_Questions_ReadContent_ById
+DynamoDB_Questions_ReadContent_ById<a name="lambda_k"/>
 ```javascript
 
 const AWS       = require('aws-sdk');
@@ -1092,9 +1092,9 @@ exports.handler  = function(e, ctx, callback)
 }
 
 ```
-<a name="lambda_l"/>
+
 l)
-DynamoDB_Questions_ReadCorrectAnswer_ById
+DynamoDB_Questions_ReadCorrectAnswer_ById<a name="lambda_l"/>
 ```javascript
 
 const AWS       = require('aws-sdk');
@@ -1141,9 +1141,9 @@ exports.handler  = function(e, ctx, callback)
 }
 
 ```
-<a name="lambda_m"/>
+
 m)
-DynamoDB_Questions_Read_ById
+DynamoDB_Questions_Read_ById<a name="lambda_m"/>
 ```javascript
 
 const AWS       = require('aws-sdk');
@@ -1189,9 +1189,9 @@ exports.handler  = function(e, ctx, callback)
 }
 
 ```
-<a name="lambda_n"/>
+
 n)
-DynamoDB_Questions_Write
+DynamoDB_Questions_Write<a name="lambda_n"/>
 ```javascript
 
 const AWS       = require('aws-sdk');
