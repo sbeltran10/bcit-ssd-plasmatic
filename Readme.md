@@ -490,9 +490,9 @@ exports.handler  = function(e, ctx, callback)
 
 ```
 
-<a name="lambda_b"/>
+
 b) 
-DynamoDB_Answers_Read_ById
+DynamoDB_Answers_Read_ById<a name="lambda_b"/>
 ```javascript
 
 const AWS = require('aws-sdk');
