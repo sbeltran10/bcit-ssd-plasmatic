@@ -12,9 +12,9 @@
 [5. Styling Guide](#styling)
 
 [6. Lambdas: Question Generation Code](#lambdas)
-
-[a. DynamoDB_Answers_Read](#lambda_a)
-[b. DynamoDB_Answers_Read_ById](#lambda_b)
+|:---|
+|a. DynamoDB_Answers_Read](#lambda_a)|
+|b. DynamoDB_Answers_Read_ById](#lambda_b)|
 
 [c. Dynamo_Answers_Read_ByParentId](#lambda_c)
 
