@@ -13,8 +13,9 @@
 
 [6. Lambdas: Question Generation Code](#lambdas)
 
-
-[a. DynamoDB_Answers_Read](#lambda_a)
+|lambda |
+|:---|
+|[a. DynamoDB_Answers_Read](#lambda_a)
 |[b. DynamoDB_Answers_Read_ById](#lambda_b)|
 |[c. Dynamo_Answers_Read_ByParentId](#lambda_c)
 |[d. DynamoDB_Answers_write](#lambda_d)
@@ -456,7 +457,7 @@ The styling of the functional components is handled by having one style file for
 <a name="lambdas"/>
 
 ## 6. Lambdas for Backend Question Generation
-<a  name="#lambda_a"/>
+<a name="#lambda_a"/>
 
 a) 
 DynamoDB_Answers_Read
@@ -486,7 +487,7 @@ exports.handler  = function(e, ctx, callback)
 }
 
 ```
-<a  name="#lambda_b"/>
+<a name="#lambda_b"/>
 b) 
 DynamoDB_Answers_Read_ById
 ```javascript
@@ -534,7 +535,7 @@ exports.handler  = function(e, ctx, callback)
 }
 
 ```
-<a  name="#lambda_c"/>
+<a name="#lambda_c"/>
 c) 
 Dynamo_Answers_Read_ByParentId
 ```javascript
@@ -583,7 +584,7 @@ exports.handler  = function(e, ctx, callback)
 }
 
 ```
-<a  name="#lambda_d"/>
+<a name="#lambda_d"/>
 d) 
 DynamoDB_Answers_write
 ```javascript
@@ -674,7 +675,7 @@ exports.handler  = function(e, ctx, callback)
 }
 
 ```
-<a  name="#lambda_e"/>
+<a name="#lambda_e"/>
 e) 
 DynamoDB_Questionnaire_Read
 ```javascript
@@ -704,7 +705,7 @@ exports.handler  = function(e, ctx, callback)
 }
 
 ```
-<a  name="#lambda_f"/>
+<a name="#lambda_f"/>
 f) 
 DynamoDB_Questionnaire_Read_ById
 ```javascript
@@ -753,7 +754,7 @@ exports.handler  = function(e, ctx, callback)
 }
 
 ```
-<a  name="#lambda_g"/>
+<a name="#lambda_g"/>
 g) 
 DynamoDB_Questionnaire_Read_ByType
 ```javascript
@@ -798,7 +799,7 @@ exports.handler  = function(e, ctx, callback)
 }
 
 ```
-<a  name="#lambda_h"/>
+<a name="#lambda_h"/>
 h) 
 DynamoDB_Questionnaire_Write
 ```javascript
@@ -934,7 +935,7 @@ exports.handler  = function(e, ctx, callback)
 }
 
 ```
-<a  name="#lambda_i"/>
+<a name="#lambda_i"/>
 i) 
 DynamoDB_Questions_Quiz_Write
 ```javascript
@@ -1010,7 +1011,7 @@ exports.handler  = function(e, ctx, callback)
 }
 
 ```
-<a  name="#lambda_j"/>
+<a name="#lambda_j"/>
 j) 
 DynamoDB_Questions_Read
 ```javascript
@@ -1039,7 +1040,7 @@ exports.handler  = function(e, ctx, callback)
 }
 
 ```
-<a  name="#lambda_k"/>
+<a name="#lambda_k"/>
 k)
 DynamoDB_Questions_ReadContent_ById
 ```javascript
@@ -1088,7 +1089,7 @@ exports.handler  = function(e, ctx, callback)
 }
 
 ```
-<a  name="#lambda_l"/>
+<a name="#lambda_l"/>
 l)
 DynamoDB_Questions_ReadCorrectAnswer_ById
 ```javascript
@@ -1137,7 +1138,7 @@ exports.handler  = function(e, ctx, callback)
 }
 
 ```
-<a  name="#lambda_m"/>
+<a name="#lambda_m"/>
 m)
 DynamoDB_Questions_Read_ById
 ```javascript
@@ -1185,7 +1186,7 @@ exports.handler  = function(e, ctx, callback)
 }
 
 ```
-<a  name="#lambda_n"/>
+<a name="#lambda_n"/>
 n)
 DynamoDB_Questions_Write
 ```javascript
