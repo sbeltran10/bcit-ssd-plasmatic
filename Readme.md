@@ -14,7 +14,6 @@
 [6. Lambdas: Question Generation Code](#lambdas)
 
 [a. DynamoDB_Answers_Read](#lambda_a)
-
 [b. DynamoDB_Answers_Read_ById](#lambda_b)
 
 [c. Dynamo_Answers_Read_ByParentId](#lambda_c)
@@ -24,7 +23,6 @@
 [e. DynamoDB_Questionnaire_Read](#lambda_e)
 
 [f. DynamoDB_Questionnaire_Read_ById](#lambda_f)
-
 [g. DynamoDB_Questionnaire_Read_ByType](#lambda_g)
 
 [h. DynamoDB_Questionnaire_Write](#lambda_h)
