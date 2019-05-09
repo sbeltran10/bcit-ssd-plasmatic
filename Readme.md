@@ -13,6 +13,7 @@
 
 [6. Lambdas: Question Generation Code](#lambdas)
 
+|lambda|
 |:---|
 |[a. DynamoDB_Answers_Read](#lambda_a)|
 |[b. DynamoDB_Answers_Read_ById](#lambda_b)|
