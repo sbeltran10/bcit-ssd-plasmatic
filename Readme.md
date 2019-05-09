@@ -12,6 +12,20 @@
 [5. Styling Guide](#styling)
 
 [6. Lambdas: Question Generation Code](#lambdas)
+[a. DynamoDB_Answers_Read](#lambda_a)
+[b. DynamoDB_Answers_Read_ById](#lambda_b)
+[c. Dynamo_Answers_Read_ByParentId](#lambda_c)
+[d. DynamoDB_Answers_write](#lambda_d)
+[e. DynamoDB_Questionnaire_Read](#lambda_e)
+[f. DynamoDB_Questionnaire_Read_ById](#lambda_f)
+[g. DynamoDB_Questionnaire_Read_ByType](#lambda_g)
+[h. DynamoDB_Questionnaire_Write](#lambda_h)
+[i. DynamoDB_Questions_Quiz_Write](#lambda_i)
+[j. DynamoDB_Questions_Read](#lambda_j)
+[k. DynamoDB_Questions_ReadContent_ById](#lambda_k)
+[l. DynamoDB_Questions_ReadCorrectAnswer_ById](#lambda_l)
+[m. DynamoDB_Questions_Read_ById](#lambda_m)
+[n. DynamoDB_Questions_Write](#lambda_n)
 
 [7. Team](#team)
 
@@ -440,6 +454,8 @@ The styling of the functional components is handled by having one style file for
 <a name="lambdas"/>
 
 ## 6. Lambdas for Backend Question Generation
+<a  name="#lambda_a"/>
+
 a) 
 DynamoDB_Answers_Read
 
@@ -468,7 +484,7 @@ exports.handler  = function(e, ctx, callback)
 }
 
 ```
-
+<a  name="#lambda_b"/>
 b) 
 DynamoDB_Answers_Read_ById
 ```javascript
